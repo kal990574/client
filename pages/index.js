@@ -14,7 +14,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-
+      
       </footer>
     </div>
   )
