@@ -14,6 +14,7 @@ export default function Home() {
       <main className={styles.main}>
           <a href={'/login'}>login</a>
           <a href={'/signup'}>signup</a>
+          <a href={'/calendar'}>calendar</a>
       </main>
 
       <footer className={styles.footer}>
