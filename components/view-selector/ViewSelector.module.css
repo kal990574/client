@@ -1,0 +1,67 @@
+.closeContainer {
+    position: absolute;
+    right: 94px;
+    width: 100px;
+    height: 32px;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.openContainer {
+    position: absolute;
+    top: 20px;
+    right: 94px;
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.selectItem {
+    margin: 0;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectItem:first-child:hover {
+    background-color: whitesmoke;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.selectItem:nth-child(n) {
+    border-bottom: 1px solid lightgray;
+}
+
+.selectItem:nth-child(n):hover {
+    background-color: whitesmoke;
+}
+
+.selectItem:last-child {
+    border: none;
+}
+
+.selectItem:last-child:hover {
+    background-color: whitesmoke;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
