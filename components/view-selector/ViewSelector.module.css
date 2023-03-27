@@ -12,6 +12,7 @@
 }
 
 .openContainer {
+    z-index: 999;
     position: absolute;
     top: 20px;
     right: 94px;
@@ -28,6 +29,7 @@
 }
 
 .icon {
+    z-index: 999;
     width: 20px;
     height: 20px;
 }
@@ -42,6 +44,12 @@
     justify-content: center;
 }
 
+.selectItem:first-child {
+    background-color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
 .selectItem:first-child:hover {
     background-color: whitesmoke;
     border-top-left-radius: 15px;
@@ -49,6 +57,7 @@
 }
 
 .selectItem:nth-child(n) {
+    background-color: white;
     border-bottom: 1px solid lightgray;
 }
 
@@ -57,6 +66,9 @@
 }
 
 .selectItem:last-child {
+    background-color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     border: none;
 }
 
