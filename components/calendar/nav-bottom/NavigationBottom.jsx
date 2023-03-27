@@ -1,17 +1,15 @@
 import React from 'react';
 import styles from './NavigationBottom.module.css';
-import { BiCalendar} from "react-icons/bi";
-import {CiMemoPad} from "react-icons/ci";
-import {MdFeed} from "react-icons/md";
-import {GiNotebook} from "react-icons/gi";
+import { BiCalendar, BiNews, BiBookBookmark } from "react-icons/bi";
+import { HiOutlineDocumentText } from "react-icons/hi2";
 
 export default function NavigationBottom() {
     return (
         <section className={styles.container}>
                 <BiCalendar class={styles.icon} />
-                <MdFeed class={styles.icon} />
-                <GiNotebook class={styles.icon} />
-                <CiMemoPad class={styles.icon} />
+                <BiNews class={styles.icon} />
+                <BiBookBookmark class={styles.icon} />
+                <HiOutlineDocumentText class={styles.icon} />
         </section>
     );
 }
