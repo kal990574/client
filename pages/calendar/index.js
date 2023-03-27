@@ -16,7 +16,7 @@ export default function Calendar() {
         <div className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             <NavigationTop open={open} setOpen={setOpen}/>
-            <NavigationBottom open={open} setOpen={setOpen}/>
+            <NavigationBottom />
             calendar page
         </div>
     );
