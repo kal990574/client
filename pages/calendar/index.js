@@ -3,6 +3,7 @@ import NavigationTop from "../../components/calendar/nav-top/NavigationTop";
 import NavigationBottom from "../../components/calendar/nav-bottom/NavigationBottom";
 import CustomHead from "../../components/head/CustomHead";
 import styles from './Calendar.module.css';
+import FriendsCircleList from "../../components/calendar/friends-circle-list/FriendsCircleList";
 
 export default function Calendar() {
     const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Calendar() {
         <div className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             <NavigationTop open={open} setOpen={setOpen}/>
+            <FriendsCircleList />
             <NavigationBottom />
             calendar page
         </div>

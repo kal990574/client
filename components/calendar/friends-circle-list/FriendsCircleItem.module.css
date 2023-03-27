@@ -1,0 +1,61 @@
+.container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 122px;
+    padding: 0 4px;
+}
+
+.container button {
+    border: none;
+    background: white;
+    color: rgb(38, 38, 38);
+    --font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.profileImgBox {
+    border-radius: 50px;
+    border: 3px solid lightgray;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    margin: 0;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.profileImgInnerBox {
+    background-color: white;
+    border-radius: 50px;
+    /*border: 1px solid lightgray;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+}
+
+.selectedProfileImgBox {
+    border-radius: 50px;
+    background-color: #0070f3;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    margin: 0;
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
+.profileImg {
+    border-radius: 50px;
+    width: 56px;
+    height: 56px;
+}
