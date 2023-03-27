@@ -14,12 +14,12 @@ export default function Calendar() {
     }
 
     return(
-        <div className={styles.container} onClick={onClickView}>
+        <main className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             <NavigationTop open={open} setOpen={setOpen}/>
             <FriendsCircleList />
             <NavigationBottom />
             calendar page
-        </div>
+        </main>
     );
 }
