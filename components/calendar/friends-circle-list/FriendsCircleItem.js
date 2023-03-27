@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './FriendsCircleItem.module.css';
 
-export default function FriendsCircleItem({selected, key, title, src}) {
+export default function FriendsCircleItem({selected, title, src}) {
     return (
-        <li className={styles.container} key={key}>
+        <li className={styles.container}>
             <button>
                 <div className={selected ? styles.selectedProfileImgBox : styles.profileImgBox}>
                     <div className={styles.profileImgInnerBox}>

@@ -11,7 +11,7 @@ export default function FriendsCircleList() {
                     <ul>
                         {
                             FRIENDS_LIST.map((item, index) => {
-                                return <FriendsCircleItem title={item.title} selected={index === 0} src={item.src} key={index} />
+                                return <FriendsCircleItem key={index} selected={index === 0} title={item.title} src={item.src} />
                             })
                         }
                     </ul>
