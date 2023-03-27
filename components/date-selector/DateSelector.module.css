@@ -1,0 +1,56 @@
+.container {
+    width: calc(100% - 20px);
+    height: 62px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dateSelectBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.dateSelectBox span {
+    font-size: 24px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.date {
+    font-size: 20px;
+}
+
+.typeSelectBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typeSelectBox div {
+    width: 34px;
+    height: 34px;
+    border-radius: 50px;
+    margin-left: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected {
+    background-color: lightgray;
+    border: 1px solid lightgray;
+}
+
+.notSelected {
+    background-color: white;
+    border: 1px solid lightgray;
+}
