@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import NavigationTop from "../../components/calendar/nav-top/NavigationTop";
-import NavigationBottom from "../../components/calendar_bottom/NavigationBottom";
+import NavigationBottom from "../../components/calendar/nav-bottom/NavigationBottom";
 import CustomHead from "../../components/head/CustomHead";
 import styles from './Calendar.module.css';
 
