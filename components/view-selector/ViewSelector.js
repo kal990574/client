@@ -3,9 +3,7 @@ import styles from './ViewSelector.module.css';
 import { BiCaretDown } from "react-icons/bi";
 import VIEW_TYPE_ARRAY from './config';
 
-export default function ViewSelector({open, setOpen}) {
-    const [viewType, setViewType] = useState(0);
-
+export default function ViewSelector({open, setOpen, viewType, setViewType}) {
     const onClickViewSelector = (event) => {
         setOpen((prev) => {
             return !prev;
