@@ -16,7 +16,7 @@ export default function Calendar({viewType}) {
             <DateSelector viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
             { viewType === 0 || viewType === 1 ? <Days /> : <></> }
             {
-                viewType === 0 ? <MonthView viewContent={viewContent} />
+                viewType === 0 ? <MonthView viewContent={viewContent} currentDate={currentDate} />
                     : viewType === 1 ? <WeekView viewContent={viewContent} />
                     : <DayView viewContent={viewContent} />
             }

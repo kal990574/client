@@ -1,0 +1,34 @@
+.container {
+    width: 100%;
+    height: calc(100% - 333px);
+    padding-top: 5px;
+    /*background-color: #F5BF55;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.week {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /*padding: 2px;*/
+    /*background-color: lightgray;*/
+}
+
+.week:nth-child(n) {
+    border-top: 1px solid #888888;
+}
+
+.week:last-child {
+    border-bottom: 1px solid #888888;
+}
+
+.days:nth-child(n) {
+    border-right: 1px solid #888888;
+}
+
+.days:last-child {
+    border: none;
+}
