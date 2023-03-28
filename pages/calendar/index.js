@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import NavigationTop from "../../components/calendar/nav-top/NavigationTop";
-import NavigationBottom from "../../components/calendar/nav-bottom/NavigationBottom";
+import NavigationTop from "../../components/nav-top/NavigationTop";
+import NavigationBottom from "../../components/nav-bottom/NavigationBottom";
 import CustomHead from "../../components/head/CustomHead";
 import styles from './Calendar.module.css';
-import FriendsCircleList from "../../components/calendar/friends-circle-list/FriendsCircleList";
+import FriendsCircleList from "../../components/friends-circle-list/FriendsCircleList";
 import MonthView from "../../components/view/month-view/MonthView";
 import WeekView from "../../components/view/week-view/WeekView";
 import DayView from "../../components/view/day-view/DayView";
