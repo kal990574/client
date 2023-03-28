@@ -2,7 +2,6 @@
     width: 100%;
     height: calc(100% - 333px);
     padding-top: 5px;
-    /*background-color: #F5BF55;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,8 +12,6 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    /*padding: 2px;*/
-    /*background-color: lightgray;*/
 }
 
 .week:nth-child(n) {
@@ -25,10 +22,31 @@
     border-bottom: 1px solid #888888;
 }
 
+.days span {
+    display: block;
+    margin: 2px 0 0 2px;
+}
+
 .days:nth-child(n) {
     border-right: 1px solid #888888;
 }
 
 .days:last-child {
     border: none;
+}
+
+.sun {
+    color: red;
+}
+
+.sat {
+    color: blue;
+}
+
+.date {
+    color: #222222;
+}
+
+.today {
+    background-color: lightgrey;
 }
