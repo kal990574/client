@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import styles from './DateSelector.module.css';
 import { BiCaretDown, BiCalendar, BiBookBookmark } from "react-icons/bi";
 
-export default function DateSelector({viewContent, setViewContent, currentDate}) {
-    const [selectedDate, setSelectedDate] = useState(currentDate);
-
+export default function DateSelector({viewContent, setViewContent, selectedDate, setSelectedDate}) {
     return (
         <div className={styles.container}>
             <div className={styles.dateSelectBox}>
