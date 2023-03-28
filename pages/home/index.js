@@ -10,9 +10,6 @@ import Calendar from "../../components/calendar/Calendar";
 export default function Home() {
     const [open, setOpen] = useState(false);
     const [viewType, setViewType] = useState(0);
-    const [viewContent, setViewContent] = useState(true); // ture: calendar, false: diary
-
-    const currentDate = new Date();
 
     const onClickView = (event) => {
         if(open) {
@@ -25,8 +22,7 @@ export default function Home() {
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             <NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />
             <FriendsCircleList />
-            <DateSelector viewContent={viewContent} setViewContent={setViewContent} currentDate={currentDate} />
-            <Calendar viewType={viewType} viewContent={viewContent}/>
+            <Calendar viewType={viewType} />
             <NavigationBottom />
         </main>
     );
