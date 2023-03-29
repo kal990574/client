@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './DateSelector.module.css';
 import { BiCaretDown, BiCalendar, BiBookBookmark } from "react-icons/bi";
 
