@@ -28,6 +28,9 @@
 .days:nth-child(n) {
     border-right: 1px solid #888888;
 }
+.days:nth-child(n):hover {
+    background-color:aquamarine;
+}
 
 .days:last-child {
     border: none;
