@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './NavigationBottom.module.css';
-import { BiCalendar, BiNews, BiBookBookmark } from "react-icons/bi";
-import { HiOutlineDocumentText } from "react-icons/hi2";
+import { BiHome, BiNews, BiGroup } from "react-icons/bi";
 import { useRouter } from 'next/router'
 
 export default function NavigationBottom() {
@@ -13,10 +12,9 @@ export default function NavigationBottom() {
 
     return (
         <section className={styles.container}>
-                <BiCalendar id={'calendar'} class={styles.icon} onClick={onClickIcon} />
+                <BiHome id={'home'} class={styles.icon} onClick={onClickIcon} />
                 <BiNews id={'feed'} class={styles.icon} onClick={onClickIcon} />
-                <BiBookBookmark id={'diary'} class={styles.icon} onClick={onClickIcon} />
-                <HiOutlineDocumentText id={'memo'} class={styles.icon} onClick={onClickIcon} />
+                <BiGroup id={'group'} class={styles.icon} onClick={onClickIcon} />
         </section>
     );
 }
