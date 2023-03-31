@@ -31,3 +31,13 @@
     font-weight: 700;
 }
 
+.addButtonContainer {
+    width: 46px;
+    height: 46px;
+    position: fixed;
+    bottom: 10px;
+    margin-bottom: 30%;
+    right: 40px;
+    z-index: 1000;
+}
+

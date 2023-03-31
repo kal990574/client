@@ -3,6 +3,7 @@ import '../../calendar/configs';
 import DATE from "../../calendar/configs";
 import {DETAIL_SCHEDULE} from "../../../common/dummy";
 import DetailScheduleCard from "../../card/detail-schedule-card/DetailScheduleCard";
+import RoundButton from "../../button/round-button/RoundButton";
 
 /**
  * @returns {JSX.Element}
@@ -20,6 +21,9 @@ export default function DetailScheduleModal({dateString, setOpenModal}) {
                         return <DetailScheduleCard props={item}>{item.title}</DetailScheduleCard>
                     })
                 }
+            </div>
+            <div className={styles.addButtonContainer}>
+                <RoundButton />
             </div>
         </section>
     )
