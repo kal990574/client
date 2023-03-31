@@ -10,4 +10,31 @@ const FRIENDS_LIST = [
     { src: './img.png', title: '유정협' },
 ]
 
-export default FRIENDS_LIST;
+const DETAIL_SCHEDULE = [
+    {
+        id: 0,
+        color: 'pink',
+        title: "벚꽃축제",
+        timeType: 'part',
+        timeStampS: '9:00am',
+        timeStampE: '2:00pm'
+    },
+    {
+        id: 1,
+        color: 'purple',
+        title: "스터디",
+        timeType: 'part',
+        timeStampS: '3:00pm',
+        timeStampE: '5:00pm'
+    },
+    {
+        id: 2,
+        color: 'green',
+        title: "공강",
+        timeType: 'pull',
+        timeStampS: '',
+        timeStampE: ''
+    },
+]
+
+export {FRIENDS_LIST, DETAIL_SCHEDULE};
