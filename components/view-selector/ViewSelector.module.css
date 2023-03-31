@@ -12,7 +12,7 @@
 }
 
 .openContainer {
-    z-index: 999;
+    z-index: 900;
     position: absolute;
     top: 20px;
     right: 94px;
@@ -29,7 +29,7 @@
 }
 
 .icon {
-    z-index: 999;
+    z-index: 900;
     width: 20px;
     height: 20px;
 }
