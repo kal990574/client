@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Calendar.module.css';
 import MonthView from "../view/month-view/MonthView";
 import WeekView from "../view/week-view/WeekView";
@@ -11,21 +11,29 @@ export default function Calendar({viewType}) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [viewContent, setViewContent] = useState(true); // ture: calendar, false: diary
-    const [open, setOpen] = useState();
+    const [day, setDay] = useState(null);
+    const [openModal, setOpenModal] = useState(false);
 
-    // eslint-disable-next-line react/jsx-key
+    useEffect(() => {
+        if(day !== null) {
+            setOpenModal((prev) => true);
+        } else {
+            setOpenModal((prev) => false);
+        }
+    },[day]);
+
     const render = [<DateSelector viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />,
     <>{ viewType === 0 || viewType === 1 ? <Days /> : <></> }</>];
 
     if(viewType === 0) {
-        render.push(<MonthView viewContent={viewContent} currentDate={currentDate} />);
+        render.push(<MonthView setDay={setDay} viewContent={viewContent} currentDate={currentDate} />);
     } else if(viewType === 1) {
         render.push(<WeekView viewContent={viewContent} />);
     } else {
         render.push(<DayView viewContent={viewContent} />);
     }
 
-    render.push(<DetailScheduleModal />);
+    openModal && render.push(<DetailScheduleModal dateString={day} setOpenModal={setOpenModal} />);
 
     return <>{render}</>;
 }
