@@ -1,10 +1,9 @@
 import React from 'react';
-import { HiX }from "react-icons/hi";
+import NavigationTop from "../../components/nav-top-viewSchedule/NavigationTop";
 export default function ViewSchedule() {
     return(
         <>
-        <div>일정 세부사항</div>
-        <HiX />
+        <NavigationTop />
         </>
     );
 }
