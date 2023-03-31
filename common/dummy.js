@@ -13,7 +13,7 @@ const FRIENDS_LIST = [
 const DETAIL_SCHEDULE = [
     {
         id: 0,
-        color: 'pink',
+        color: '#FFCECE',
         title: "벚꽃축제",
         timeType: 'part',
         timeStampS: '9:00am',
@@ -21,7 +21,7 @@ const DETAIL_SCHEDULE = [
     },
     {
         id: 1,
-        color: 'purple',
+        color: '#9351FF',
         title: "스터디",
         timeType: 'part',
         timeStampS: '3:00pm',
@@ -29,9 +29,9 @@ const DETAIL_SCHEDULE = [
     },
     {
         id: 2,
-        color: 'green',
+        color: '#51FF96',
         title: "공강",
-        timeType: 'pull',
+        timeType: 'full',
         timeStampS: '',
         timeStampE: ''
     },
