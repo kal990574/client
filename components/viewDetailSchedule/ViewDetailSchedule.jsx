@@ -5,8 +5,8 @@ export default function NavigationTop({open, setOpen}) {
     return (
         <>
         <div style={{background:`${DETAIL_SCHEDULE[0].color}`}} className={styles.color}></div>
-        <div>{DETAIL_SCHEDULE[0].title}</div>
-        <div>세부사항</div>
+        <div className={styles.title}>{DETAIL_SCHEDULE[0].title}</div>
+        <div className={styles.detail}>세부사항</div>
         <div>{DETAIL_SCHEDULE[0].timeStampS} ~ {DETAIL_SCHEDULE[0].timeStampE}</div>
         <div>장소</div>
         <div>인원</div>
