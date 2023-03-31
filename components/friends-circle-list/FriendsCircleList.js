@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FriendsCircleList.module.css';
 import FriendsCircleItem from "./FriendsCircleItem";
-import FRIENDS_LIST from "../../common/dummy";
+import {FRIENDS_LIST} from "../../common/dummy";
 
 export default function FriendsCircleList() {
     return (
