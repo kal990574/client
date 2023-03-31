@@ -3,7 +3,7 @@ import styles from './NavigationTop.module.css';
 import { BiMenu } from "react-icons/bi";
 import { HiChatAlt2, HiX }from "react-icons/hi";
 
-export default function NavigationTop({open, setOpen, viewType, setViewType}) {
+export default function NavigationTop({open, setOpen}) {
     return (
         <>
         <section className={styles.container}>
