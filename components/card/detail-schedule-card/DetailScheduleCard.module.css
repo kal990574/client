@@ -1,0 +1,25 @@
+.container {
+    margin-left: 14px;
+    margin-top: 14px;
+    width: calc(100% - 34px);
+    height: 42px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.color {
+    margin-right: 14px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.title {
+    font-size: 18px;
+}
+
+.time {
+    font-size: 14px;
+}
