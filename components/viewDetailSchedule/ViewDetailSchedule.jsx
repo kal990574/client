@@ -9,8 +9,9 @@ export default function NavigationTop({open, setOpen}) {
                 <div className={styles.title}>{DETAIL_SCHEDULE[0].title}</div>
             </div>
             <div className={styles.detail}>오랜만에 데이트</div>
-            <div className={`${styles.middle} ${styles.item}`}>
+            <div className={`${styles.time} ${styles.item}`}>
                 <div>{DETAIL_SCHEDULE[0].timeStampS}</div>
+                <div></div>
                 <div>{DETAIL_SCHEDULE[0].timeStampE}</div>
             </div>
             <div className={styles.item}>장소</div>

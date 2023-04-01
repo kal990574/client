@@ -30,9 +30,14 @@
     margin-top: 13px;
     font-size: 12px;
 }
-.middle {
-    display: flex;
+.time div:first-child {
+    float: left;
+    margin-left: 70px;
+}
+.time div:last-child {
+    float: right;
+    margin-right: 70px;
 }
 .item {
-    margin-top: 20px;
+    margin-top: 15px;
 }
