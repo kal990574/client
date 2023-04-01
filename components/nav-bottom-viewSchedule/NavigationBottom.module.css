@@ -1,4 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
 .comment {
     background: rgba(255, 118, 118, 0.28);
     border-radius: 30px;
+    width: 80vw;
+    bottom: 40px;
+    height: 40px;
+    position: absolute;
 }
