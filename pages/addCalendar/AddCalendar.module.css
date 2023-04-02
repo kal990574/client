@@ -1,6 +1,29 @@
 .container {
     width: 100vw;
     height: 100vh;
+}
 
-    background-color: lightgrey;
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.text16 {
+    font-size: 16px;
+}
+
+.topNav {
+    width: calc(100% - 36px);
+    height: 52px;
+    background-color: #F5BF55;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    justify-content: space-between;
+}
+
+.formContainer {
+    width: 100%;
+    height: calc(100% - 52px);
+    background-color: #B1B1B1;
 }
