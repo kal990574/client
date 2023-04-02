@@ -9,12 +9,21 @@ import RoundButton from "../../button/round-button/RoundButton";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function DetailScheduleModal({dateString, setOpenModal}) {
+export default function DetailScheduleModal({dateString, setOpenModal, setDay}) {
     const date = new Date(Date.parse(dateString));
 
     return (
-        <section className={styles.container} onClick={(e) => console.log(e.currentTarget)}>
-            <div className={styles.modalContainer} onClick={(e) => console.log(e.currentTarget)}>
+        <>
+        {/*  modal layer  */}
+        <section id={'outContainer'} className={styles.container} onClick={(e) => {
+            console.log(e.currentTarget.id);
+            if(e.currentTarget.id === 'outContainer') {
+                setOpenModal((prev) => false);
+                setDay((prev) => null);
+            }
+        }}></section>
+            {/* modal */}
+            <div className={styles.modalContainer}>
                 <h1 className={styles.date}>{date.getMonth()+1+'월 '+date.getDate()+'일 '+DATE[date.getDay()]}</h1>
                 {
                     DETAIL_SCHEDULE.map((item) => {
@@ -25,6 +34,6 @@ export default function DetailScheduleModal({dateString, setOpenModal}) {
             <div className={styles.addButtonContainer}>
                 <RoundButton />
             </div>
-        </section>
+        </>
     )
 }

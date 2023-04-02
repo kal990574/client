@@ -26,14 +26,14 @@ export default function Calendar({viewType}) {
     <>{ viewType === 0 || viewType === 1 ? <Days /> : <></> }</>];
 
     if(viewType === 0) {
-        render.push(<MonthView setDay={setDay} viewContent={viewContent} currentDate={currentDate} />);
+        render.push(<MonthView stateDay={day} setDay={setDay} viewContent={viewContent} currentDate={currentDate} />);
     } else if(viewType === 1) {
         render.push(<WeekView viewContent={viewContent} />);
     } else {
         render.push(<DayView viewContent={viewContent} />);
     }
 
-    openModal && render.push(<DetailScheduleModal dateString={day} setOpenModal={setOpenModal} />);
+    openModal && render.push(<DetailScheduleModal dateString={day} setOpenModal={setOpenModal} setDay={setDay} />);
 
     return <>{render}</>;
 }

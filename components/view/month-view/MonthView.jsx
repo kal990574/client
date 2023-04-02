@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './MonthView.module.css';
 import {addDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek} from "date-fns";
 import DetailScheduleModal from "../../modal/detail-schedule-modal/DetailScheduleModal";
 
-export default function MonthView({setDay, viewContent, currentDate, selectedDate, onDateClick}) {
+export default function MonthView({stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -11,7 +11,6 @@ export default function MonthView({setDay, viewContent, currentDate, selectedDat
     const today = new Date();
 
     const onClickEvent = (e) => {
-        console.log(e.target.id);
         setDay(e.target.id);
     }
 
