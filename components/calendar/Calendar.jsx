@@ -22,7 +22,7 @@ export default function Calendar({viewType}) {
         }
     },[day]);
 
-    const render = [<DateSelector viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />,
+    const render = [<DateSelector key={'-1'} viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />,
     <>{ viewType === 0 || viewType === 1 ? <Days /> : <></> }</>];
 
     if(viewType === 0) {
