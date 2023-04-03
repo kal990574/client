@@ -17,7 +17,8 @@ const DETAIL_SCHEDULE = [
         title: "벚꽃축제",
         timeType: 'part',
         timeStampS: '9:00am',
-        timeStampE: '2:00pm'
+        timeStampE: '2:00pm',
+        place: '성호관',
     },
     {
         id: 1,
@@ -25,7 +26,8 @@ const DETAIL_SCHEDULE = [
         title: "스터디",
         timeType: 'part',
         timeStampS: '3:00pm',
-        timeStampE: '5:00pm'
+        timeStampE: '5:00pm',
+        place: '성호관',
     },
     {
         id: 2,
@@ -33,7 +35,8 @@ const DETAIL_SCHEDULE = [
         title: "공강",
         timeType: 'full',
         timeStampS: '',
-        timeStampE: ''
+        timeStampE: '',
+        place: '',
     },
 ]
 
