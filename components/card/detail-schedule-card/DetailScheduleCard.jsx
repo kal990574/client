@@ -1,9 +1,14 @@
 import styles from './DetailScheduleCard.module.css';
+import {useRouter} from "next/router";
 
 
 // props
-// {id, title, color, timeType, timeStampS, timeStampE}
+// {id, title, color, timeType, timeStampS, timeStampE, place}
 export default function DetailScheduleCard({props}) {
+    const router = useRouter();
+    const onClick = (e) => {
+        router.push(`/viewSchedule?id=${props.id}`);
+    }
     let time = [];
 
     if(props.timeType === 'full') {
@@ -13,7 +18,7 @@ export default function DetailScheduleCard({props}) {
         )
     }
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={onClick}>
             <div style={{background: props.color}} className={styles.color}>
             </div>
             <div>
