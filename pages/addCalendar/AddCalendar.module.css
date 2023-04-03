@@ -104,3 +104,28 @@
     border-radius: 50px;
     background: rgba(15, 15, 15, 0.87);
 }
+
+.dateContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.dateLine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.dateLine div {
+    font-size: 16px;
+}
+
+.dateLine div:first-child {
+    margin-right: 42px;
+}
+
+/* add friends */
+.addFriends {
+    margin-bottom: 12px;
+}

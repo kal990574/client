@@ -46,8 +46,8 @@ export default function AddCalendar() {
                             ? <div>
                                 {date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일     종일"}
                             </div>
-                            : <div>
-                                <div>
+                            : <div className={styles.dateContainer}>
+                                <div className={styles.dateLine}>
                                     <div>
                                         start date
                                     </div>
@@ -55,7 +55,7 @@ export default function AddCalendar() {
                                         start time
                                     </div>
                                 </div>
-                                <div>
+                                <div className={styles.dateLine}>
                                     <div>
                                         end date
                                     </div>
@@ -75,7 +75,7 @@ export default function AddCalendar() {
                 </div>
                 <div className={styles.innerContainer}>
                     {/* add friends */}
-                    <div>
+                    <div className={styles.addFriends}>
                         일정을 함께할 친구를 추가
                     </div>
                     <BiPlusCircle className={styles.icon24} />
