@@ -37,4 +37,10 @@ const DETAIL_SCHEDULE = [
     },
 ]
 
-export {FRIENDS_LIST, DETAIL_SCHEDULE};
+const COLOR_LIST = [
+    { color: '#FFA6A6', name: '데이트'},
+    { color: '#7367FF', name: '캡스톤디자인'},
+    { color: '#1400FF', name: '빅데이터응용보안'},
+]
+
+export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST};
