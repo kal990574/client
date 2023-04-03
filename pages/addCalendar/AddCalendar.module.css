@@ -15,7 +15,6 @@
 .topNav {
     width: calc(100% - 36px);
     height: 52px;
-    background-color: #F5BF55;
     display: flex;
     align-items: center;
     padding: 0 18px;
@@ -25,7 +24,6 @@
 .formContainer {
     width: 100%;
     height: calc(100% - 80px);
-    background-color: #B1B1B1;
 }
 
 /* input */
@@ -42,4 +40,67 @@
     padding: 0;
     font-size: 20px;
     border-bottom: 1px solid #858585;
+}
+
+/* color */
+.innerContainer {
+    width: calc(100% - 48px);
+    padding: 0 24px;
+    margin-bottom: 22px;
+}
+
+.colorContainer {
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+    border-radius: 50%;
+}
+
+.flexible {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.icon {
+    margin: 0 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.icon24 {
+    width: 24px;
+    height: 24px;
+}
+
+/* toggle */
+.toggleOnContainer {
+    width: 32px;
+    height: 16px;
+    background: #DBD8FF;
+    border: 1px solid #3E00EF;
+    border-radius: 50px;
+}
+
+.toggleOffContainer {
+    width: 32px;
+    height: 16px;
+    background: #C6C6C6;
+    border: 1px solid #797979;
+    border-radius: 50px;
+}
+
+.toggleOn {
+    margin-left: 16px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    background: rgba(14, 58, 214, 0.87);
+}
+
+.toggleOff {
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    background: rgba(15, 15, 15, 0.87);
 }
