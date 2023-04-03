@@ -6,20 +6,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    font-weight: 700;
     /*background: rgba(255, 118, 118, 0.28);*/
 }
 .icon {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }
-.iconRight {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-}
-.title {
-    text-align: center;
-}
+

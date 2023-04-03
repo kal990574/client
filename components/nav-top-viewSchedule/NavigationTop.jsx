@@ -7,12 +7,10 @@ export default function NavigationTop({open, setOpen}) {
     return (
         <>
         <section className={styles.container}>
-            <div>
-                <HiX className={styles.icon} />
-                <BiMenu className={styles.iconRight} />
-            </div>
+            <HiX className={styles.icon} />
+            <h2>일정 세부사항</h2>
+            <BiMenu className={styles.icon} />
         </section>
-        <h2 className={styles.title}>일정 세부사항</h2>
         </>
     );
 }
