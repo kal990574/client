@@ -3,6 +3,7 @@ import { BiX, BiTime, BiPlusCircle } from 'react-icons/bi';
 import {useRouter} from "next/router";
 import {useState} from "react";
 import ColorModal from "../../components/modal/color-modal/ColorModal";
+import SearchModal from "../../components/modal/search-modal/SearchModal";
 
 // date:
 export default function AddCalendar() {
@@ -10,16 +11,24 @@ export default function AddCalendar() {
     const date = new Date(Number(router.query.date));
     const [time, setTime] = useState(false);
     const [openColor, setOpenColor] = useState(false);
+    const [openFriends, setOpenFriends] = useState(false);
 
     const openColorModal = (e) => {
         setOpenColor((prev) =>  !prev);
     };
 
+    const openSearchFriendsModal = (e) => {
+        setOpenFriends((prev) => !prev);
+    };
+
     return (
         <main className={styles.container}>
             {
-                openColor ? <ColorModal close={openColorModal} />
-                    : <></>
+                openColor ? <ColorModal close={openColorModal} /> : <></>
+            }
+
+            {
+                openFriends ? <SearchModal close={openSearchFriendsModal} /> : <></>
             }
             <div className={styles.topNav}>
                 {/* top navigation */}
@@ -87,7 +96,7 @@ export default function AddCalendar() {
                     <div className={styles.addFriends}>
                         일정을 함께할 친구를 추가
                     </div>
-                    <BiPlusCircle className={styles.icon24} />
+                    <BiPlusCircle className={styles.icon24} onClick={openSearchFriendsModal} />
                 </div>
             </div>
         </main>
