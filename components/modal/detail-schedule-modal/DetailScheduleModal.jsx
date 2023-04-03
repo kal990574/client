@@ -4,6 +4,7 @@ import DATE from "../../calendar/configs";
 import {DETAIL_SCHEDULE} from "../../../common/dummy";
 import DetailScheduleCard from "../../card/detail-schedule-card/DetailScheduleCard";
 import RoundButton from "../../button/round-button/RoundButton";
+import {useRouter} from "next/router";
 
 /**
  * @returns {JSX.Element}
@@ -11,12 +12,12 @@ import RoundButton from "../../button/round-button/RoundButton";
  */
 export default function DetailScheduleModal({dateString, setOpenModal, setDay}) {
     const date = new Date(Date.parse(dateString));
+    const router = useRouter();
 
     return (
         <>
         {/*  modal layer  */}
         <section id={'outContainer'} className={styles.container} onClick={(e) => {
-            console.log(e.currentTarget.id);
             if(e.currentTarget.id === 'outContainer') {
                 setOpenModal((prev) => false);
                 setDay((prev) => null);
@@ -32,7 +33,9 @@ export default function DetailScheduleModal({dateString, setOpenModal, setDay}) 
                 }
             </div>
             <div className={styles.addButtonContainer}>
-                <RoundButton />
+                <RoundButton onClickEvent={(e) => {
+                    router.push('/addCalendar');
+                }}/>
             </div>
         </>
     )
