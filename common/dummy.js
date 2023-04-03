@@ -14,6 +14,7 @@ const DETAIL_SCHEDULE = [
     {
         id: 0,
         color: '#FFCECE',
+        content: '오랜만에 데이트',
         title: "벚꽃축제",
         timeType: 'part',
         timeStampS: '9:00am',
@@ -24,6 +25,7 @@ const DETAIL_SCHEDULE = [
         id: 1,
         color: '#9351FF',
         title: "스터디",
+        content: '코딩테스트 스터디 with 수진 정협',
         timeType: 'part',
         timeStampS: '3:00pm',
         timeStampE: '5:00pm',
@@ -33,6 +35,7 @@ const DETAIL_SCHEDULE = [
         id: 2,
         color: '#51FF96',
         title: "공강",
+        content: '',
         timeType: 'full',
         timeStampS: '',
         timeStampE: '',
