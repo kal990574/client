@@ -2,16 +2,25 @@ import styles from './AddCalendar.module.css';
 import { BiX, BiTime, BiPlusCircle } from 'react-icons/bi';
 import {useRouter} from "next/router";
 import {useState} from "react";
+import ColorModal from "../../components/modal/color-modal/ColorModal";
 
 // date:
 export default function AddCalendar() {
     const router = useRouter();
     const date = new Date(Number(router.query.date));
     const [time, setTime] = useState(false);
+    const [openColor, setOpenColor] = useState(false);
 
-    console.log("date : ", date);
+    const openColorModal = (e) => {
+        setOpenColor((prev) =>  !prev);
+    };
+
     return (
         <main className={styles.container}>
+            {
+                openColor ? <ColorModal close={openColorModal} />
+                    : <></>
+            }
             <div className={styles.topNav}>
                 {/* top navigation */}
                 <BiX className={styles.icon24} onClick={(e) => {router.back()}} />
@@ -29,8 +38,8 @@ export default function AddCalendar() {
                 </div>
                 <div className={`${styles.innerContainer} ${styles.flexible}`}>
                     {/* color */}
-                    <div>색상</div>
-                    <div className={styles.colorContainer} style={{background: '#FFA6A6'}}></div>
+                    <div onClick={openColorModal}>색상</div>
+                    <div onClick={openColorModal} className={styles.colorContainer} style={{background: '#FFA6A6'}}></div>
                 </div>
                 <div className={`${styles.innerContainer}`}>
                     {/* date */}
