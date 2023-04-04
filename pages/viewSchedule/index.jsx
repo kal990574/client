@@ -16,7 +16,7 @@ export default function ViewSchedule() {
         <main className={styles.container}>
             <NavigationTop />
             <ViewDetailSchedule data={data} />
-            <NavigationBottom />
+            <NavigationBottom data={data} />
         </main>
     );
 }
