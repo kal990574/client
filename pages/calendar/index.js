@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import NavigationTop from "../../components/nav-top/NavigationTop";
-import NavigationBottom from "../../components/nav-bottom/NavigationBottom";
+import NavigationTop from "../../components/nav/nav-top/NavigationTop";
+import NavigationBottom from "../../components/nav/nav-bottom/NavigationBottom";
 import CustomHead from "../../components/head/CustomHead";
 import styles from './Calendar.module.css';
 import FriendsCircleList from "../../components/friends-circle-list/FriendsCircleList";
