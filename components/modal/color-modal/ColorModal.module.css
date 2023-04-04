@@ -21,16 +21,16 @@
 .icon {
     position: absolute;
     right: 0;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     margin: 4px;
 }
 
 .colorListContainer {
     width: calc(100% - 24px);
-    height: calc(100% - 46px);
+    height: calc(100% - 64px);
     padding: 12px;
-    margin-top: 32px;
+    margin-top: 40px;
 }
 
 .colorListItem {
@@ -39,7 +39,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 22px;
+    margin-left: 12px;
 }
 
 .color {

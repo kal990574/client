@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NavigationBottom.module.css';
-import {DETAIL_SCHEDULE} from "../../common/dummy";
+import {DETAIL_SCHEDULE} from "../../../common/dummy";
 
 export default function NavigationBottom({data}) {
     return (

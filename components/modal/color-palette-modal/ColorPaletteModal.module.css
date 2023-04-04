@@ -1,0 +1,74 @@
+.layer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+    background: rgba(217, 217, 217, 0.9);
+}
+
+.modal {
+    position: fixed;
+    bottom: 30%;
+    right: 7.5%;
+    width: 85%;
+    height: 55%;
+    z-index: 1002;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.topContainer {
+    width: calc(100% - 24px);
+    height: 52px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.closeIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+}
+
+.color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-left: 4px;
+    margin-right: 12px;
+    border: 1px solid #EEEEEE;
+}
+
+.categoryName {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.colorPaletteContainer {
+    width: 100%;
+    height: calc(100% - 112px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hex {
+    margin-top: 12px;
+}
+
+.button {
+    cursor: pointer;
+    width: calc(100% - 28px);
+    margin: 0 14px;
+    height: 30px;
+    background: #EEEEEE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+}

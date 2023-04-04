@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import ColorModal from "../../components/modal/color-modal/ColorModal";
 import SearchModal from "../../components/modal/search-modal/SearchModal";
+import ColorPaletteModal from "../../components/modal/color-palette-modal/ColorPaletteModal";
 
 // date:
 export default function AddCalendar() {
@@ -26,7 +27,6 @@ export default function AddCalendar() {
             {
                 openColor ? <ColorModal close={openColorModal} /> : <></>
             }
-
             {
                 openFriends ? <SearchModal close={openSearchFriendsModal} /> : <></>
             }
