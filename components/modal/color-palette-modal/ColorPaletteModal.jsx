@@ -4,7 +4,7 @@ import {useState} from "react";
 import { BiX } from 'react-icons/bi';
 
 export default function ColorPaletteModal({close}) {
-    const [hex, setHex] = useState("#ffff");
+    const [hex, setHex] = useState("#ffffff");
     const [category, setCategory] = useState('카테고리 이름');
 
     const onChangeCategory = (e) => {
