@@ -61,7 +61,7 @@ export default function AddCalendar() {
                     </div>
                     {
                         !time
-                            ? <div>
+                            ? <div style={{marginTop: '12px'}}>
                                 {date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일     종일"}
                             </div>
                             : <div className={styles.dateContainer}>
