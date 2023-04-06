@@ -1,19 +1,29 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import React, {useState} from 'react';
+import styles from '../styles/Home.module.css';
+import CustomHead from "../components/head/CustomHead";
+import NavigationTop from "../components/nav/nav-top/NavigationTop";
+import FriendsCircleList from "../components/friends-circle-list/FriendsCircleList";
+import NavigationBottom from "../components/nav/nav-bottom/NavigationBottom";
+import Calendar from "../components/calendar/Calendar";
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-          <a href={'/login'}>login</a>
-          <a href={'/signup'}>signup</a>
-          <a href={'/calendar'}>calendar</a>
-      </main>
+    const [open, setOpen] = useState(false);
+    const [viewType, setViewType] = useState(0);
 
-      <footer className={styles.footer}>
+    const onClickView = (event) => {
+        if(open) {
+            setOpen(false);
+        }
+    }
 
-      </footer>
-    </div>
-  )
+    return(
+        <main className={styles.container} onClick={onClickView}>
+            <CustomHead title={'Calendar'} content={'CalendarPage'}/>
+            <NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />
+            <FriendsCircleList />
+            <Caㅗlendar viewType={viewType} />
+            <NavigationBottom />
+        </main>
+    );
 }
+
