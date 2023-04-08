@@ -21,7 +21,7 @@ export default function Home() {
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             <NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />
             <FriendsCircleList />
-            <Caㅗlendar viewType={viewType} />
+            <Calendar viewType={viewType} />
             <NavigationBottom />
         </main>
     );
