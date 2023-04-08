@@ -24,7 +24,7 @@ export default function ColorModal({close}) {
             <div className={styles.modal}>
                 <BiX className={styles.icon} onClick={close} />
                 <div className={styles.colorListContainer}>
-                    <div className={styles.colorListItem}>
+                    <div className={styles.colorListItem} style={{marginBottom: '32px'}}>
                         <div onClick={onClickOpenColorPalette} className={styles.color} style={{background: '#D9D9D9'}}></div>
                         <div onClick={onClickOpenColorPalette} className={styles.colorName}>
                             색상 선택
