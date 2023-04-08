@@ -49,4 +49,10 @@ const COLOR_LIST = [
     { color: '#1400FF', name: '빅데이터응용보안'},
 ]
 
-export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST};
+const SCOPE_DISCLOSURE = [
+    { id: 0, title: '나만보기' },
+    { id: 1, title: '전체공개' },
+    { id: 2, title: '친구공개' },
+]
+
+export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE};

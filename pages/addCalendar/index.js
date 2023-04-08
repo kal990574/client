@@ -4,7 +4,8 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import ColorModal from "../../components/modal/color-modal/ColorModal";
 import SearchModal from "../../components/modal/search-modal/SearchModal";
-import ColorPaletteModal from "../../components/modal/color-palette-modal/ColorPaletteModal";
+import {SCOPE_DISCLOSURE} from '../../common/dummy';
+import ScopeModal from "../../components/modal/scope-modal/ScopeModal";
 
 // date:
 export default function AddCalendar() {
@@ -13,6 +14,12 @@ export default function AddCalendar() {
     const [time, setTime] = useState(false);
     const [openColor, setOpenColor] = useState(false);
     const [openFriends, setOpenFriends] = useState(false);
+    const [scope, setScope] = useState(0);
+    const [openScope, setOpenScope] = useState(false);
+
+    const openScopeModal = (e) => {
+        setOpenScope((prev) => !prev);
+    }
 
     const openColorModal = (e) => {
         setOpenColor((prev) =>  !prev);
@@ -29,6 +36,9 @@ export default function AddCalendar() {
             }
             {
                 openFriends ? <SearchModal close={openSearchFriendsModal} /> : <></>
+            }
+            {
+                openScope ? <ScopeModal close={openScopeModal} setScope={setScope} /> : <></>
             }
             <div className={styles.topNav}>
                 {/* top navigation */}
@@ -49,6 +59,12 @@ export default function AddCalendar() {
                     {/* color */}
                     <div onClick={openColorModal}>색상</div>
                     <div onClick={openColorModal} className={styles.colorContainer} style={{background: '#FFA6A6'}}></div>
+                </div>
+                <div className={`${styles.innerContainer} ${styles.flexible}`}>
+                    <div>공개범위</div>
+                    <div className={styles.scope} onClick={openScopeModal}>
+                        { SCOPE_DISCLOSURE[scope].title }
+                    </div>
                 </div>
                 <div className={`${styles.innerContainer}`}>
                     {/* date */}
