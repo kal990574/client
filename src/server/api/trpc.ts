@@ -15,10 +15,13 @@
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import { type Session } from "next-auth";
 
+import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
 
 type CreateContextOptions = {
+  session: Session | null;
 };
 
 /**
@@ -32,9 +35,8 @@ type CreateContextOptions = {
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
-  // TODO: Apply Auth Context
-
   return {
+    session: opts.session,
     prisma,
   };
 };
@@ -48,9 +50,9 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
 
-  // TODO: Apply Auth Context
+  const session = await getServerAuthSession({ req, res });
 
-  return createInnerTRPCContext({})
+  return createInnerTRPCContext({ session: session })
 };
 
 export type Context = inferAsyncReturnType<typeof createTRPCContext>;
@@ -105,11 +107,13 @@ export const publicProcedure = t.procedure;
 
 /** Reusable middleware that enforces users are logged in before running the procedure. */
 const isAuthed = t.middleware(({ ctx, next }) => {
-  // TODO: check Authorization
-
+  if (!ctx.session || !ctx.session.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
   return next({
     ctx: {
-      prisma: ctx.prisma,
+      // infers the `session` as non-nullable
+      session: { ...ctx.session, user: ctx.session.user },
     },
   });
 });
