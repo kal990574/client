@@ -23,12 +23,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "styled-component": "^2.8.0",
+    "styled-components": "^5.3.9",
     "superjson": "^1.12.2",
     "uiw": "^4.21.25",
     "zod": "^3.21.4"
-    "styled-component": "^2.8.0",
-    "styled-components": "^5.3.9",
-    "uiw": "^4.21.25"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
