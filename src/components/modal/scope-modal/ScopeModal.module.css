@@ -9,8 +9,8 @@
 .modal {
     position: fixed;
     bottom: 45%;
-    right: 7.5%;
-    width: 85%;
+    right: 15%;
+    width: 70%;
     height: 30%;
     z-index: 1000;
     background: #FFFFFF;
