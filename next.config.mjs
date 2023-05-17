@@ -6,6 +6,7 @@ const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
+  typescript: false,
 }
 
 export default nextConfig;
