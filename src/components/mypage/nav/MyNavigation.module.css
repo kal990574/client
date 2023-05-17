@@ -1,0 +1,33 @@
+.container {
+    width: calc(100% - 20px);
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.iconContainer {
+    width: 184px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.iconContainer * {
+    margin-left: 10px;
+}
