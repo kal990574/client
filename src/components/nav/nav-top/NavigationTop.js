@@ -7,14 +7,14 @@ export default function NavigationTop({open, setOpen, viewType, setViewType}) {
     return (
         <section className={styles.container}>
             <div>
-                <BiMenu class={styles.icon} />
+                <BiMenu className={styles.icon} />
             </div>
             <div className={styles.iconContainer}>
                 {
                     viewType !== undefined && <ViewSelector open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />
                 }
-                <BiBell class={styles.icon} />
-                <BiUserCircle class={styles.icon} />
+                <BiBell className={styles.icon} />
+                <BiUserCircle className={styles.icon} />
             </div>
         </section>
     );
