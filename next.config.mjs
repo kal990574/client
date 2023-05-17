@@ -1,3 +1,5 @@
+await import("./src/env.mjs");
+
 /** @type {import('next').NextConfig} */
 // reactStrictMode: true -> 렌더링 두번
 const nextConfig = {
@@ -6,4 +8,4 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+export default nextConfig;

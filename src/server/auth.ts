@@ -10,6 +10,7 @@ import KakaoProvider from "next-auth/providers/kakao";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
+import {Adapter, AdapterAccount} from "next-auth/adapters";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -32,6 +33,13 @@ declare module "next-auth" {
     // }
 }
 
+const adapter: Adapter = {
+    ...PrismaAdapter(prisma),
+    linkAccount: ({refresh_token_expires_in: _, ...data}) => { // Filter useless properties
+        return prisma.account.create({ data }) as unknown as AdapterAccount
+    }
+}
+
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -46,13 +54,12 @@ export const authOptions: NextAuthOptions = {
                 id: user.id,
             },
         }),
-        
     },
-    adapter: PrismaAdapter(prisma),
+    adapter: adapter,
     providers: [
         KakaoProvider({
             clientId: env.KAKAO_CLIENT_ID,
-            clientSecret: env.KAKAO_CLIENT_SECRET
+            clientSecret: env.KAKAO_CLIENT_SECRET,
         }),
         /**
          * ...add more providers here.
