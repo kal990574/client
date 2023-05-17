@@ -1,6 +1,6 @@
 import styles from './ColorModal.module.css';
 import { BiX } from 'react-icons/bi';
-import {COLOR_LIST} from '../../../common/dummy';
+import {COLOR_LIST} from '~/common/dummy';
 import {useState} from "react";
 import ColorPaletteModal from "../color-palette-modal/ColorPaletteModal";
 

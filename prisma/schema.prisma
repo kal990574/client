@@ -60,6 +60,14 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  ScheduleParticipant        ScheduleParticipant[]
+  ScheduleParticipantInviter ScheduleParticipantInvite[] @relation("inviter")
+  ScheduleParticipantInvited ScheduleParticipantInvite[] @relation("invitee")
+  Following                  Following[]                 @relation("followee")
+  Follower                   Following[]                 @relation("follower")
+  OwnedSchedules             Schedule[]
+  GroupParticipant           GroupParticipant[]
 }
 
 model VerificationToken {
@@ -68,4 +76,111 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Following {
+  id String @id @default(cuid())
+
+  followerId String
+  follower   User   @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+
+  followeeId String
+  followee   User   @relation("followee", fields: [followeeId], references: [id], onDelete: Cascade)
+
+  @@index([followerId])
+  @@index([followeeId])
+}
+
+model Schedule {
+  id        String    @id @default(cuid())
+  title     String
+  summary   String
+  startDate DateTime  @db.Date
+  startTime DateTime? @db.Time
+  endDate   DateTime  @db.Date
+  endTime   DateTime? @db.Time
+  location  String
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  participants              ScheduleParticipant[]
+  ScheduleParticipantInvite ScheduleParticipantInvite[]
+
+  @@index([ownerId])
+}
+
+model ScheduleParticipantInvite {
+  id         String   @id @default(cuid())
+  scheduleId String
+  schedule   Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  inviterId String
+  inviter   User   @relation("inviter", fields: [inviterId], references: [id], onDelete: Cascade)
+
+  inviteeId String
+  invitee   User   @relation("invitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId])
+  @@index([inviterId])
+  @@index([inviteeId])
+}
+
+model ScheduleParticipant {
+  id String @id @default(cuid())
+
+  scheduleId String
+  schedule   Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId])
+  @@index([userId])
+}
+
+model Group {
+  id   String @id @default(cuid())
+  name String
+
+  schedules    GroupSchedule[]
+  participants GroupParticipant[]
+}
+
+enum GroupRole {
+  Admin
+  User
+}
+
+model GroupParticipant {
+  groupId String
+  group   Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  role GroupRole
+
+  participantId String
+  participant   User   @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, participantId])
+  @@index([groupId])
+  @@index([participantId])
+}
+
+model GroupSchedule {
+  id        String    @id @default(cuid())
+  title     String
+  summary   String
+  startDate DateTime  @db.Date
+  startTime DateTime? @db.Time
+  endDate   DateTime  @db.Date
+  endTime   DateTime? @db.Time
+  location  String
+
+  groupId String
+  group   Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@index([groupId])
 }

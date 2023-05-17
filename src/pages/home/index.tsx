@@ -6,8 +6,17 @@ import styles from './Home.module.css'
 import FriendsCircleList from "../../components/friends-circle-list/FriendsCircleList";
 import DateSelector from "../../components/date-selector/DateSelector";
 import Calendar from "../../components/calendar/Calendar";
+import {api} from "../../utils/api";
+import {useSession} from "next-auth/react";
 
 export default function Home() {
+    const { data: sessionData } = useSession();
+    const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
+    useEffect(() => {
+        console.log(schedules.data);
+    }, [schedules]);
+
     const [open, setOpen] = useState(false);
     const [viewType, setViewType] = useState(0);
 
