@@ -7,6 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   typescript: false,
+  eslint: false
 }
 
 export default nextConfig;
