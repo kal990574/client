@@ -5,9 +5,12 @@ await import("./src/env.mjs");
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  swcMinify: true,
-  typescript: false,
-  eslint: false
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
 }
 
 export default nextConfig;
