@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './FriendsCircleItem.module.css';
+import Image from "next/image";
 
 export default function FriendsCircleItem({selected, title, src}) {
     return (
@@ -7,7 +8,7 @@ export default function FriendsCircleItem({selected, title, src}) {
             <button>
                 <div className={selected ? styles.selectedProfileImgBox : styles.profileImgBox}>
                     <div className={styles.profileImgInnerBox}>
-                        <img className={styles.profileImg} src={src}/>
+                        <Image className={styles.profileImg} src={src}/>
                     </div>
                     {/*<span className={styles.profileImgContainer}>*/}
                     {/*</span>*/}
