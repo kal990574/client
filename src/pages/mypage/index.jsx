@@ -1,5 +1,6 @@
 import styles from './Mypage.module.css';
 import MyNavigation from "../../components/mypage/nav/my-navigation";
+import {useRouter} from "next/router";
 
 const CategoryItem =  ({color, name}) => {
     return (
@@ -13,6 +14,11 @@ const CategoryItem =  ({color, name}) => {
 export default function Mypage() {
     const follower = 14;
     const following = 22;
+    const router = useRouter();
+
+    const goEdit = () => {
+        router.push('mypage/edit');
+    }
 
     return (
         <main className={styles.container}>
@@ -28,7 +34,7 @@ export default function Mypage() {
                         </span>
                     </div>
                     <div className={styles.profileEditButtonContainer}>
-                        <button className={styles.profileEditButton}>프로필 편집</button>
+                        <button onClick={goEdit} className={styles.profileEditButton}>프로필 편집</button>
                     </div>
                     <div className={styles.followingContainer}>
                         <div className={styles.following}>
