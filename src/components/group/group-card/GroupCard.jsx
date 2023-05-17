@@ -14,7 +14,7 @@ export default function GroupCard({primaryColor, FontColor, InviteColor, groupNa
                 <h1 style={{color: fontColor}}>{
                     groupName
                 }</h1>
-               <BiX className={styles.icon} />
+               {/*<BiX className={styles.icon} />*/}
             </div>
             <div className={styles.contentContainer}>
                 <div className={styles.contentDiv}>
