@@ -35,7 +35,7 @@ w
                 <div className={styles.memberContainer}>
                     <h2 onClick={inviteMember} className={styles.font16_700}>멤버 초대</h2>
                     <div onClick={inviteMember}>
-                        {memberList.map((m) => <span>{m.name}</span>)}
+                        {memberList.map((m, index) => <span key={index}>{m.name}</span>)}
                     </div>
                 </div>
             </div>
