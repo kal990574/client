@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styles from './Login.module.css';
 import DefaultInput from "../../components/Input/default-input/DefaultInput";
 import {useRouter} from "next/router";
+import Image from "next/image";
 
 export default function Login() {
     const router = useRouter();
@@ -33,7 +34,7 @@ export default function Login() {
                 <section className={styles.logoContainer}>
                     <div>
                         {/* 임시 이미지 */}
-                        <img className={styles.logoImg} src={'./gathering.png'}/>
+                        <Image className={styles.logoImg} src={'./gathering.png'}/>
                     </div>
                     <div className={styles.appTitleContainer}>
                         <h1>CALENDARY</h1>

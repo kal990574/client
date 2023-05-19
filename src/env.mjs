@@ -18,6 +18,8 @@ const server = z.object({
     // VERCEL_URL doesn't include `https` so it cant be validated as a URL
     process.env.VERCEL ? z.string().min(1) : z.string().url(),
   ),
+  KAKAO_CLIENT_ID: z.string(),
+  KAKAO_CLIENT_SECRET: z.string(),
 });
 
 /**
@@ -37,9 +39,15 @@ const client = z.object({
 const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   DATABASE_URL: process.env.DATABASE_URL,
+  
+  // Next-Auth
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+
+  // Next-Auth KAKAO
+  KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
+  KAKAO_CLIENT_SECRET: process.env.KAKAO_CLIENT_SECRET,
 };
 
 // Don't touch the part below

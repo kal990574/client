@@ -4,12 +4,19 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import ColorModal from "../../components/modal/color-modal/ColorModal";
 import SearchModal from "../../components/modal/search-modal/SearchModal";
+import {useSession} from "next-auth/react";
+import {api} from "../../utils/api";
+import {NextPage} from "next";
 import {SCOPE_DISCLOSURE} from '../../common/dummy';
 import ScopeModal from "../../components/modal/scope-modal/ScopeModal";
 
 // date:
-export default function AddCalendar() {
+const AddCalendarPage: NextPage = () => {
     const router = useRouter();
+
+    const { data: sessionData } = useSession();
+    const createScheduleMutation  = api.schedule.createSchedule.useMutation();
+
     const date = new Date(Number(router.query.date));
     const [time, setTime] = useState(false);
     const [openColor, setOpenColor] = useState(false);
@@ -29,6 +36,7 @@ export default function AddCalendar() {
         setOpenFriends((prev) => !prev);
     };
 
+
     return (
         <main className={styles.container}>
             {
@@ -43,7 +51,16 @@ export default function AddCalendar() {
             <div className={styles.topNav}>
                 {/* top navigation */}
                 <BiX className={styles.icon24} onClick={(e) => {router.back()}} />
-                <div className={styles.text16}>저장</div>
+                <div className={styles.text16} onClick={() => {
+                    createScheduleMutation.mutate({
+                        title: "testTitle",
+                        summary: "test Summary",
+                        startDate: new Date(),
+                        endDate: new Date(),
+                    }, {
+                        onSuccess: () => router.push("/")
+                    })
+                }}>저장</div>
             </div>
             <div className={styles.formContainer}>
                 {/* input */}
@@ -117,4 +134,5 @@ export default function AddCalendar() {
             </div>
         </main>
     )
-}
+};
+export default AddCalendarPage;

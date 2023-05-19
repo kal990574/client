@@ -1,10 +1,10 @@
 import styles from './ColorPaletteModal.module.css';
-import {Wheel} from "@uiw/react-color";
-import {useState} from "react";
+import { Wheel } from "@uiw/react-color";
+import { useState } from "react";
 import { BiX } from 'react-icons/bi';
 
-export default function ColorPaletteModal({close}) {
-    const [hex, setHex] = useState("#ffffff");
+const ColorPaletteModal = ({close}) => {
+    const [hex, setHex] = useState("#ffff");
     const [category, setCategory] = useState('카테고리 이름');
 
     const onChangeCategory = (e) => {
@@ -21,13 +21,15 @@ export default function ColorPaletteModal({close}) {
                     <BiX className={styles.closeIcon} onClick={close} />
                 </div>
                 <div className={styles.colorPaletteContainer}>
-                    <Wheel color={hex} onChange={(color) => {
-                        setHex(color.hex);
-                    }}/>
+                    {/*<Wheel color={hex} onChange={(color) => {*/}
+                    {/*    setHex(color.hex);*/}
+                    {/*}}/>*/}
                     <span className={styles.hex}>{hex}</span>
                 </div>
                 <button className={styles.button}>추가</button>
             </div>
         </>
     );
-}
+};
+
+export default ColorPaletteModal;
