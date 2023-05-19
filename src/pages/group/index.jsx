@@ -5,6 +5,7 @@ import NavigationBottom from "../../components/nav/nav-bottom/NavigationBottom";
 import styles from './Group.module.css';
 import {BsFillPlusCircleFill} from 'react-icons/bs'
 import GroupCard from "../../components/group/group-card/GroupCard";
+import {useRouter} from "next/router";
 
 const dummy = [
     {
@@ -26,6 +27,12 @@ const dummy = [
 ]
 
 export default function Group() {
+    const router = useRouter();
+
+    const addGroup = () => {
+        router.push('/group/add');
+    }
+
     return (
         <main className={styles.pageContainer}>
             <CustomHead title={'Group'} content={'GroupPage'}/>
@@ -33,7 +40,7 @@ export default function Group() {
             <section className={styles.sectionContainer}>
                 <div className={styles.titleContainer}>
                     <h1>MY Group</h1>
-                    <BsFillPlusCircleFill className={styles.icon} />
+                    <BsFillPlusCircleFill onClick={addGroup} className={styles.icon} />
                 </div>
                 <div className={styles.groupListContainer}>
                     <div className={styles.groupListInnerContainer}>
