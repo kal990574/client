@@ -1,0 +1,41 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.innerContainer {
+    width: 100vw;
+    height: calc(100% - 72px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #F5BF55;
+}
+
+.groupCardContainer {
+    width: 90%;
+    height: 186px;
+    border-radius: 10px;
+    margin: 20px 0;
+    background-color: yellow;
+}
+
+.categoryContainer {
+    margin: 20px 0;
+    width: 90%;
+    height: 100px;
+    background-color: #888888;
+}
+
+.memberContainer {
+    margin: 20px 0;
+    width: 90%;
+    height: 100px;
+    background-color: teal;
+}
+
+.font16_700 {
+    font-size: 16px;
+    font-weight: 700;
+}
