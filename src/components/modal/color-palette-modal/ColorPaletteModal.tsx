@@ -1,13 +1,13 @@
 import styles from './ColorPaletteModal.module.css';
 import { Wheel } from "@uiw/react-color";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BiX } from 'react-icons/bi';
 
-const ColorPaletteModal = ({close}) => {
+const ColorPaletteModal = (close : () => void ) => {
     const [hex, setHex] = useState("#ffff");
     const [category, setCategory] = useState('카테고리 이름');
 
-    const onChangeCategory = (e) => {
+    const onChangeCategory = (e: React.FormEvent<HTMLInputElement>) => {
         setCategory(e.currentTarget.value);
     }
 

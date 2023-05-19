@@ -24,15 +24,15 @@ const AddCalendarPage: NextPage = () => {
     const [scope, setScope] = useState(0);
     const [openScope, setOpenScope] = useState(false);
 
-    const openScopeModal = (e) => {
+    const openScopeModal = () => {
         setOpenScope((prev) => !prev);
     }
 
-    const openColorModal = (e) => {
+    const openColorModal = () => {
         setOpenColor((prev) =>  !prev);
     };
 
-    const openSearchFriendsModal = (e) => {
+    const openSearchFriendsModal = () => {
         setOpenFriends((prev) => !prev);
     };
 

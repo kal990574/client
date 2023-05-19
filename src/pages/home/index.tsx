@@ -21,7 +21,7 @@ export default function Home() {
     const [open, setOpen] = useState(false);
     const [viewType, setViewType] = useState(0);
 
-    const onClickView = (event) => {
+    const onClickView = () => {
         if(open) {
             setOpen(false);
         }
