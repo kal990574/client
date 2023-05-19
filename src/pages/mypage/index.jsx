@@ -22,7 +22,7 @@ export default function Mypage() {
 
     return (
         <main className={styles.container}>
-            <MyNavigation />
+            <MyNavigation title={'마이페이지'} />
             <div className={styles.contentContainer}>
                 <section className={styles.profileSection}>
                     <div className={styles.profileImgContainer}>

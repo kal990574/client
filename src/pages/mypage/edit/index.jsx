@@ -9,7 +9,7 @@ export default function MyEdit() {
     return (
         <main>
             <CustomHead title={'MyEdit'} content={'MyEditPage'}/>
-            <MyNavigation />
+            <MyNavigation title={'프로필 편집'} />
 
 
         </main>
