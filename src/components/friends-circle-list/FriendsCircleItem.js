@@ -8,7 +8,8 @@ export default function FriendsCircleItem({index, selected, title, src, setSelec
             <button onClick={() => setSelected((prev) => index)}>
                 <div className={selected ? styles.selectedProfileImgBox : styles.profileImgBox}>
                     <div className={styles.profileImgInnerBox}>
-                        <Image className={styles.profileImg} src={src}/>
+                        <Image width={56}
+                        height={56} className={styles.profileImg} src={src}/>
                     </div>
                     {/*<span className={styles.profileImgContainer}>*/}
                     {/*</span>*/}
