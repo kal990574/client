@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './FriendsCircleItem.module.css';
 
-export default function FriendsCircleItem({selected, title, src}) {
+export default function FriendsCircleItem({index, selected, title, src, setSelected}) {
     return (
         <li className={styles.container}>
-            <button>
+            <button onClick={() => setSelected((prev) => index)}>
                 <div className={selected ? styles.selectedProfileImgBox : styles.profileImgBox}>
                     <div className={styles.profileImgInnerBox}>
                         <img className={styles.profileImg} src={src}/>

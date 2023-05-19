@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './FriendsCircleList.module.css';
 import FriendsCircleItem from "./FriendsCircleItem";
 import {FRIENDS_LIST} from "../../common/dummy";
 
 export default function FriendsCircleList() {
+    const [selected, setSelected] = useState(0);
+
     return (
         <div className={styles.outerContainer}>
             <div className={styles.innerContainer}>
@@ -11,7 +13,7 @@ export default function FriendsCircleList() {
                     <ul>
                         {
                             FRIENDS_LIST.map((item, index) => {
-                                return <FriendsCircleItem key={index} selected={index === 0} title={item.title} src={item.src} />
+                                return <FriendsCircleItem index={index} setSelected={setSelected} key={index} selected={index === selected} title={item.title} src={item.src} />
                             })
                         }
                     </ul>
