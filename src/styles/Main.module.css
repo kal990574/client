@@ -1,5 +1,19 @@
 .container {
   width: 100vw;
   height: 100vh;
-  /*background-color: #888888;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.kakao {
+  width: 85%;
+  height: 52px;
 }
