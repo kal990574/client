@@ -38,8 +38,8 @@ export default function Group() {
                 <div className={styles.groupListContainer}>
                     <div className={styles.groupListInnerContainer}>
                         {
-                            dummy.map(d => {
-                                return <GroupCard content={d.content} groupName={d.groupName} FontColor={d.FontColor} InviteColor={d.InviteColor} memberList={d.memberList} primaryColor={d.primaryColor} />
+                            dummy.map((d, index) => {
+                                return <GroupCard key={index} content={d.content} groupName={d.groupName} FontColor={d.FontColor} InviteColor={d.InviteColor} memberList={d.memberList} primaryColor={d.primaryColor} />
                             })
                         }
                     </div>
