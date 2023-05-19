@@ -13,7 +13,7 @@ export default function NavigationBottom() {
     return (
         <section className={styles.container}>
             <BiNews id={'feed'} className={styles.icon} onClick={onClickIcon} />
-            <BiHome id={'/'} className={styles.icon} onClick={onClickIcon} />
+            <BiHome id={'/home'} className={styles.icon} onClick={onClickIcon} />
             <BiGroup id={'group'} className={styles.icon} onClick={onClickIcon} />
         </section>
     );
