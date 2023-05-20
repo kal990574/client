@@ -1,25 +1,15 @@
 import React from 'react';
 import styles from '../styles/Main.module.css';
-import {useRouter} from "next/router";
+import {signIn} from "next-auth/react";
 
 export default function Main({session}) {
-    console.log("Main session: ", session);
-    const router = useRouter();
-    const onClickKakao = async () => {
-        const res = await fetch('http://localhost:3000/api/auth/callback/kakao').then((response) => {
-            console.log(response);
-            router.replace(response.url)
-        }).catch((err) => {
-           console.log(err);
-        });
-
-        console.log(res);
-    }
 
     return(
         <main className={styles.container}>
             <h1 className={styles.logo}>CALENDARY</h1>
-            <img onClick={onClickKakao} className={styles.kakao} src={'/kakao_login.png'} />
+            <div className={styles.kakaoContainer}>
+                <img onClick={() => signIn('kakao')} className={styles.kakao} src={'/kakao_login.png'} />
+            </div>
         </main>
     );
 }
