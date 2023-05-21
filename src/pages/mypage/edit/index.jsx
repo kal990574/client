@@ -8,6 +8,9 @@ import { BiCamera } from "react-icons/bi";
 
 
 export default function MyEdit() {
+    const [nickName, setNickName] = useState('이재현');
+    const [introduce, setIntroduce] = useState('이재현이다 나는');
+
     const router = useRouter();
     const inputRef = useRef(null);
     const [img, setImg] = useState('/img.png');
@@ -25,6 +28,14 @@ export default function MyEdit() {
             };
         });
         }, []);
+
+    const onChangeInput = (e) => {
+        if(e.target.name ==='nickName') {
+            setNickName(e.target.value);
+        } else if(e.target.name === 'introduce') {
+            setIntroduce(e.target.value);
+        }
+    }
 
     return (
         <main className={styles.container}>
@@ -48,10 +59,22 @@ export default function MyEdit() {
 
                 </div>
                 <div className={styles.nickNameContainer}>
-w
+                    <input
+                        name={'nickName'}
+                        onChange={onChangeInput}
+                        value={nickName}
+                        className={styles.nickNameInput}
+                        type={'text'} required="required" />
                 </div>
                 <div className={styles.introduceContainer}>
-w
+                    <label className={styles.introduceLabel}>프로필 소개</label>
+                    <input
+                        placeholder={'입력(최대 60글자)'}
+                        name={'introduce'}
+                        onChange={onChangeInput}
+                        value={introduce}
+                        className={styles.introduceInput}
+                        type={'text'} />
                 </div>
             </div>
         </main>
