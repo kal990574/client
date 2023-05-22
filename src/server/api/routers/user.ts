@@ -7,12 +7,10 @@ import {
 } from "~/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
-    // 특정 사용자 정보 조회
-    getUserInfo: protectedProcedure.input(z.object({
+    // 사용자 정보 조회
+    getUserInfo: publicProcedure.input(z.object({
         id: z.string(),
     })).query(async ({ ctx, input  }) => {
-        const userId = ctx.session.user.id;
-
         const followerCount = await ctx.prisma.following.count({
             where: {
                 followeeId: input.id
@@ -37,11 +35,51 @@ export const userRouter = createTRPCRouter({
             followingCount: followingCount,
         }
     }),
+    // 해당 사용자를 팔로잉 하는 리스트
+    getFollowerList: publicProcedure.input(z.object({
+        userId: z.string(),
+    })).query(async ({ ctx, input  }) => {
+        const userId = input.userId;
+
+        return ctx.prisma.following.findMany({
+            where: {
+                followerId: userId,
+            }
+        })
+    }),
+    // 해당 사용자가 팔로잉 하는 리스트
+    getFollowingList: publicProcedure.input(z.object({
+        userId: z.string(),
+    })).query(async ({ ctx, input  }) => {
+        const userId = input.userId;
+
+        return ctx.prisma.following.findMany({
+            where: {
+                followeeId: userId,
+            }
+        })
+    }),
+
+    // 로그인 사용자 하위 카테고리 생성
     createCategory: protectedProcedure.input(z.object({
         name: z.string()
     })).mutation(async ({ ctx, input  }) => {
 
     }),
+
+
+    // 로그인 사용자 하위 카테고리 조회
+    getCategories: protectedProcedure.query(async ({ ctx, input  }) => {
+
+    }),
+
+    // 로그인 사용자 하위 카테고리 삭제
+    deleteCategory: protectedProcedure.input(z.object({
+        categoryId: z.string()
+    })).mutation(async ({ ctx, input  }) => {
+
+    }),
+
     // 프로필 수정
     updateMyProfile: protectedProcedure.input(z.object({
         
@@ -74,7 +112,8 @@ export const userRouter = createTRPCRouter({
 
     // 팔로우 요청 액션
     replyFollowRequest: protectedProcedure.input(z.object({
-        id: z.string()
+        id: z.string(),
+        isAccept: z.boolean()
     })).mutation(async ({ ctx, input  }) => {
         const userId = ctx.session.user.id;
 

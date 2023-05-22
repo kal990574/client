@@ -33,6 +33,7 @@ const joinedGroupProcedure = protectedProcedure.input(z.object({
 });
 
 export const groupRouter = createTRPCRouter({
+  // 참가한 그룹 조회
   getAllGroups: protectedProcedure.query(({ctx}) => {
     const userId = ctx.session.user.id;
 
@@ -48,9 +49,11 @@ export const groupRouter = createTRPCRouter({
   }),
 
   // 그룹 생성
-  createGroup: protectedProcedure.input(z.object({
-    name: z.string(),
-  })).mutation(async ({ ctx, input  }) => {
+  createGroup: protectedProcedure.input(
+      z.object({
+        name: z.string(),
+      })
+  ).mutation(async ({ ctx, input  }) => {
     const userId = ctx.session.user.id;
 
     return await ctx.prisma.group.create({
