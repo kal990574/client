@@ -66,6 +66,8 @@ model User {
   ScheduleParticipantInvited ScheduleParticipantInvite[] @relation("invitee")
   Following                  Following[]                 @relation("followee")
   Follower                   Following[]                 @relation("follower")
+  SentFollowRequests         FollowRequest[]             @relation("follow_request_sender")
+  ReceivedFollowRequests     FollowRequest[]             @relation("follow_request_receiver")
   OwnedSchedules             Schedule[]
   GroupParticipant           GroupParticipant[]
 }
@@ -78,6 +80,20 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model FollowRequest {
+  id String @id @default(cuid())
+
+  followerId String
+  follower   User   @relation("follow_request_sender", fields: [followerId], references: [id], onDelete: Cascade)
+
+  followeeId String
+  followee   User   @relation("follow_request_receiver", fields: [followeeId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followeeId])
+  @@index([followerId])
+  @@index([followeeId])
+}
+
 model Following {
   id String @id @default(cuid())
 
@@ -87,6 +103,7 @@ model Following {
   followeeId String
   followee   User   @relation("followee", fields: [followeeId], references: [id], onDelete: Cascade)
 
+  @@unique([followerId, followeeId])
   @@index([followerId])
   @@index([followeeId])
 }
