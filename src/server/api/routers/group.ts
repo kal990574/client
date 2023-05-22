@@ -8,6 +8,30 @@ import {
 import {GroupRole} from ".prisma/client";
 import {TRPCError} from "@trpc/server";
 
+const joinedGroupProcedure = protectedProcedure.input(z.object({
+  groupId: z.string(),
+})).use(async ({ ctx, input, next}) => {
+  const userId = ctx.session.user.id;
+
+  const isJoinedGroup = !!await ctx.prisma.groupParticipant.findUnique({
+    where: {
+      groupId_participantId: {
+        groupId: input.groupId,
+        participantId: userId,
+      }
+    }
+  });
+
+  if (!isJoinedGroup) {
+    throw new TRPCError({
+      code: 'FORBIDDEN',
+      message: "You are not in that group",
+    });
+  }
+
+  return next();
+});
+
 export const groupRouter = createTRPCRouter({
   getAllGroups: protectedProcedure.query(({ctx}) => {
     const userId = ctx.session.user.id;
@@ -23,6 +47,7 @@ export const groupRouter = createTRPCRouter({
     })
   }),
 
+  // 그룹 생성
   createGroup: protectedProcedure.input(z.object({
     name: z.string(),
   })).mutation(async ({ ctx, input  }) => {
@@ -36,7 +61,7 @@ export const groupRouter = createTRPCRouter({
             participantId: userId,
             role: GroupRole.Admin,
           }
-        }
+        },
       }
     })
   }),
@@ -71,5 +96,33 @@ export const groupRouter = createTRPCRouter({
     });
 
     return;
+  }),
+
+  // 스케쥴 조회
+  getSchedules: joinedGroupProcedure.query(async ({ ctx, input  }) => {
+    return ctx.prisma.groupSchedule.findMany({
+      where: {
+        groupId: input.groupId,
+      }
+    })
+  }),
+
+  // 스케쥴 생성
+  createSchedule: joinedGroupProcedure.input(z.object({
+    groupId: z.string(),
+    title: z.string(),
+    summary: z.string(),
+    categoryName: z.optional(z.string()),
+    location: z.optional(z.string()),
+    startDate: z.date(),
+    startTime: z.optional(z.date()),
+    endDate: z.date(),
+    endTime: z.optional(z.date()),
+  })).mutation(async ({ ctx, input  }) => {
+    return await ctx.prisma.groupSchedule.create({
+      data: {
+        ...input,
+      }
+    });
   }),
 });
