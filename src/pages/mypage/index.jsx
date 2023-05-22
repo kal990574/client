@@ -1,6 +1,8 @@
 import styles from './Mypage.module.css';
 import MyNavigation from "../../components/mypage/nav/my-navigation";
 import {useRouter} from "next/router";
+import Image from "next/image";
+import {useEffect} from "react";
 
 const CategoryItem =  ({color, name}) => {
     return (
@@ -11,13 +13,22 @@ const CategoryItem =  ({color, name}) => {
     )
 }
 
-export default function Mypage() {
+const UserPage = () => {
+    console.log("UserPage")
+
+}
+
+const Mypage =() => {
     const follower = 14;
     const following = 22;
-    const router = useRouter();
 
+    const router = useRouter();
     const goEdit = () => {
-        router.push('mypage/edit');
+        router.replace('/mypage/edit');
+    }
+
+    const goFollowPage = (e) => {
+        router.push('/mypage/follow');
     }
 
     return (
@@ -26,7 +37,7 @@ export default function Mypage() {
             <div className={styles.contentContainer}>
                 <section className={styles.profileSection}>
                     <div className={styles.profileImgContainer}>
-                        <img src={'img.png'} className={styles.profileImg}  alt={'user profile img'}/>
+                        <Image width={150} height={150} src={'/img.png'} className={styles.profileImg}  alt={'user profile img'}/>
                     </div>
                     <div className={styles.nameContainer}>
                         <span>
@@ -37,12 +48,12 @@ export default function Mypage() {
                         <button onClick={goEdit} className={styles.profileEditButton}>프로필 편집</button>
                     </div>
                     <div className={styles.followingContainer}>
-                        <div className={styles.following}>
+                        <div className={styles.following} name={'follower'} onClick={goFollowPage}>
                             <span>
                                 {follower} 팔로워
                             </span>
                         </div>
-                        <div className={styles.following}>
+                        <div className={styles.following} name={'following'} onClick={goFollowPage}>
                             <span>
                                 {following} 팔로잉
                             </span>
@@ -82,4 +93,16 @@ export default function Mypage() {
             </div>
         </main>
     )
+}
+
+
+export default function UserInfoPage() {
+    const router = useRouter();
+    const token = localStorage.getItem('token');
+
+    if(token) {
+        return Mypage();
+    } else {
+        return UserPage();
+    }
 }

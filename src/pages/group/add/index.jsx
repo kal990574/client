@@ -7,6 +7,11 @@ import {useState} from "react";
 export default function GroupAdd() {
     const [category, setCategory] = useState('');
     const [memberList, setMemberList] = useState([]);
+    const [groupName, setGroupName] = useState('');
+
+    const onChangeGroupName = (e) => {
+        setGroupName((prev) => e.target.value);
+    }
 
     const addGroup = () => {
         alert('success')
@@ -25,9 +30,16 @@ export default function GroupAdd() {
             <CustomHead title={'create group'} content={'GroupAddPage'}/>
             <MyNavigation title={'그룹 생성'} success={addGroup} />
             <div className={styles.innerContainer}>
-                <div className={styles.groupCardContainer}>
-w
-                </div>
+                {/*<div className={styles.groupCardContainer}>*/}
+                    <input
+                        onChange={onChangeGroupName}
+                        className={styles.groupCardContainer}
+                        placeholder={'그룹명을 입력하세요'}
+                        value={groupName}
+                        name={'groupName'}
+                        type={'text'}
+                        required={'required'} />
+                {/*</div>*/}
                 <div className={styles.categoryContainer}>
                     <h2 className={styles.font16_700} onClick={selectCategory}>카테고리 선택</h2>
                     <span onClick={selectCategory}>{category}</span>

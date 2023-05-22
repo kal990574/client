@@ -28,6 +28,7 @@ export default function DateSelector({setOpenMonthPicker, viewContent, setViewCo
                     selected={selectedDate}
                     onChange={date => setSelectedDate(date)}
                     selectsStart
+
                 />
                 {/*<span className={styles.date}>{selectedDate.getFullYear()}년 {selectedDate.getMonth()+1}월</span>*/}
                 <BiCaretDown className={styles.icon} />

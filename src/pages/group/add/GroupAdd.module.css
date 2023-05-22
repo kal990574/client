@@ -18,7 +18,15 @@
     height: 186px;
     border-radius: 10px;
     margin: 20px 0;
+    padding: 10px;
+    text-autospace: ideograph-space;
+    border: none;
     background-color: yellow;
+}
+
+.groupCardContainer:focus {
+    border: none;
+    outline: none;
 }
 
 .categoryContainer {
