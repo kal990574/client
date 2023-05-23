@@ -24,7 +24,14 @@
     position: absolute;
     top: 22px;
     left: 84px;
+}
 
+.deleteIcon {
+    width: 38px;
+    height: 38px;
+    top: 22px;
+    right: 20px;
+    position: absolute;
 }
 
 .searchInputContainer {
@@ -35,10 +42,11 @@
 
 .searchInput {
     width: calc(100% - 69px);
-    height: calc(100% - 14px);
+    height: calc(100% - 24px);
     border: 2px solid lightgray;
     font-size: 22px;
     font-weight: 600;
+    margin: 5px 0;
     padding: 5px 10px 5px 55px;
     border-radius: 30px;
     background-color: lightgray;
@@ -47,7 +55,9 @@
 .searchInput:focus{
     outline: none;
     width: calc(100% - 69px);
-    height: calc(100% - 14px);
+    height: calc(100% - 24px);
+    margin: 5px 0;
+    padding: 5px 10px 5px 55px;
     border: 2px solid blue;
 }
 
@@ -85,3 +95,8 @@
     font-size: 20px;
 }
 
+.searchResultBox {
+    width: 100%;
+    height: calc(100% - 80px);
+    overflow: scroll;
+}

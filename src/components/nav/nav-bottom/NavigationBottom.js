@@ -7,7 +7,7 @@ export default function NavigationBottom() {
     const router = useRouter();
 
     const onClickIcon = (e) => {
-        router.push(e.currentTarget.id);
+        router.push('/'+e.currentTarget.id);
     }
 
     return (
