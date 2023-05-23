@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NavigationBottom.module.css';
-import { BiHome, BiNews, BiGroup } from "react-icons/bi";
+import { BiHome, BiSearch, BiGroup } from "react-icons/bi";
 import { useRouter } from 'next/router'
 
 export default function NavigationBottom() {
@@ -12,7 +12,7 @@ export default function NavigationBottom() {
 
     return (
         <section className={styles.container}>
-            <BiNews id={'feed'} className={styles.icon} onClick={onClickIcon} />
+            <BiSearch id={'search'} className={styles.icon} onClick={onClickIcon} />
             <BiHome id={'/home'} className={styles.icon} onClick={onClickIcon} />
             <BiGroup id={'group'} className={styles.icon} onClick={onClickIcon} />
         </section>
