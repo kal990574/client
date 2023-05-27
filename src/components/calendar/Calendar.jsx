@@ -21,15 +21,16 @@ export default function Calendar({viewType, setOpenMonthPicker}) {
         }
     },[day]);
 
-    const render = [<DateSelector setOpenMonthPicker={setOpenMonthPicker} key={'-1'} viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />,
+    const render = [
+        <DateSelector key={'datePicker'} setOpenMonthPicker={setOpenMonthPicker} viewContent={viewContent} setViewContent={setViewContent} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />,
     <>{ viewType === 0 || viewType === 1 ? <Days /> : <></> }</>];
 
     if(viewType === 0) {
-        render.push(<MonthView stateDay={day} setDay={setDay} viewContent={viewContent} currentDate={currentDate} />);
+        render.push(<MonthView key={'monthView'} stateDay={day} setDay={setDay} viewContent={viewContent} currentDate={currentDate} />);
     } else if(viewType === 1) {
-        render.push(<WeekView viewContent={viewContent} />);
+        render.push(<WeekView key={'weekView'} viewContent={viewContent} />);
     } else {
-        render.push(<DayView viewContent={viewContent} />);
+        render.push(<DayView key={'dayView'} viewContent={viewContent} />);
     }
 
     openModal && render.push(<DetailScheduleModal dateString={day} setOpenModal={setOpenModal} setDay={setDay} />);
