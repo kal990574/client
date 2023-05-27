@@ -28,8 +28,8 @@ export default function NavigationTop({open, setOpen, viewType, setViewType}) {
                 {
                     path === '/' ? <ViewSelector open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} /> : <></>
                 }
-                <BiBell onClick={() => router.push('/alarm')} class={styles.icon} />
-                <BiUserCircle onClick={goMyPage} class={styles.icon} />
+                <BiBell onClick={() => router.push('/alarm')} className={styles.icon} />
+                <BiUserCircle onClick={goMyPage} className={styles.icon} />
             </div>
         </section>
     );
