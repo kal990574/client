@@ -5,15 +5,21 @@ import MyNavigation from "../../../components/mypage/nav/my-navigation";
 import {useCallback, useRef, useState} from "react";
 import Image from "next/image";
 import { BiCamera } from "react-icons/bi";
+import {api} from "../../../utils/api";
+import {useSession} from "next-auth/react";
 
 
 export default function MyEdit() {
-    const [nickName, setNickName] = useState('이재현');
-    const [introduce, setIntroduce] = useState('이재현이다 나는');
+    const {data: sessionData} = useSession();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userData = api.user.getUserInfo.useQuery({id: user.id}).data;
 
+    const [nickName, setNickName] = useState(userData.name);
+    const [introduce, setIntroduce] = useState(userData.introduce);
     const router = useRouter();
+
     const inputRef = useRef(null);
-    const [img, setImg] = useState('/img.png');
+    const [img, setImg] = useState(userData.image ? userData.image : '/img.png');
     const onUploadImage = useCallback((e) => {
         if (!e.target.files) {
             return;
@@ -60,6 +66,8 @@ export default function MyEdit() {
                 </div>
                 <div className={styles.nickNameContainer}>
                     <input
+                        maxLength={20}
+                        placeholder={'이름 입력(최대 20글자)'}
                         name={'nickName'}
                         onChange={onChangeInput}
                         value={nickName}
@@ -69,7 +77,8 @@ export default function MyEdit() {
                 <div className={styles.introduceContainer}>
                     <label className={styles.introduceLabel}>프로필 소개</label>
                     <input
-                        placeholder={'입력(최대 60글자)'}
+                        maxLength={60}
+                        placeholder={'소개 입력(최대 60글자)'}
                         name={'introduce'}
                         onChange={onChangeInput}
                         value={introduce}

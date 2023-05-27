@@ -10,11 +10,13 @@ import {useSession} from "next-auth/react";
 
 
 export default function Home() {
-    const { data: sessionData } = useSession();
+    const { data: sessionData, status } = useSession();
     const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
     const [openMonthPicker, setOpenMonthPicker] = useState(false);
 
     useEffect(() => {
+        console.log("sessionData ", sessionData);
+        console.log("status ", status);
         console.log(schedules.data);
     }, [schedules]);
 
