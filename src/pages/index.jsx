@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from '../styles/Main.module.css';
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
+import {useRouter} from "next/router";
 
 export default function Main({session}) {
+    const router = useRouter();
+    const { data: sessionData, status } = useSession();
+
+    if(status === 'authenticated') {
+        localStorage.setItem('user', JSON.stringify(sessionData.user));
+        if(sessionData.user.name === null) {
+            router.push('/mypage/edit')
+        } else {
+            router.push('/home');
+        }
+    }
 
     return(
         <main className={styles.container}>
