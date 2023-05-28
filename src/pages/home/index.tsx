@@ -31,7 +31,7 @@ export default function Home() {
     return(
         <main className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
-            <NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />
+            {/*<NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />*/}
             <FriendsCircleList />
             <Calendar setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
             <NavigationBottom />

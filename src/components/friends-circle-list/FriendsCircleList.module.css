@@ -3,7 +3,7 @@
     box-sizing: border-box;
     display: block;
     overflow-y: hidden;
-    padding: 10px 0;
+    padding: 20px 0 20px 0;
     position: relative;
 }
 

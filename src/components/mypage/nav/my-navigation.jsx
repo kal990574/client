@@ -1,5 +1,5 @@
 import styles from './MyNavigation.module.css';
-import { BiX } from 'react-icons/bi';
+import {BiBell, BiX} from 'react-icons/bi';
 import {useRouter} from "next/router";
 import {useSession} from "next-auth/react";
 import {useEffect} from "react";
@@ -13,7 +13,7 @@ export default function MyNavigation({title, success}) {
             <div className={styles.container}>
                 <BiX className={styles.icon} onClick={() => router.back()} />
                 <h1 className={styles.title}>{title}</h1>
-                <BiX className={styles.icon} style={{visibility: 'hidden'}} />
+                <BiBell onClick={() => router.push('/alarm')} className={styles.icon} />
             </div>
         )
     }

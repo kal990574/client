@@ -36,7 +36,7 @@ export default function Group() {
     return (
         <main className={styles.pageContainer}>
             <CustomHead title={'Group'} content={'GroupPage'}/>
-            <NavigationTop />
+            {/*<NavigationTop />*/}
             <section className={styles.sectionContainer}>
                 <div className={styles.titleContainer}>
                     <h1>MY Group</h1>

@@ -5,7 +5,6 @@ import {BiSearch} from "react-icons/bi";
 import {useRouter} from "next/router";
 import UserListItem from "../../components/mypage/user-list-item/user-list-item";
 
-
 export default function Search() {
     const router = useRouter();
     const [search, setSearch] = useState('');

@@ -15,7 +15,6 @@ const CategoryItem =  ({color, name}) => {
 
 const UserPage = () => {
     console.log("UserPage")
-
 }
 
 const Mypage =() => {
@@ -100,9 +99,9 @@ export default function UserInfoPage() {
     const router = useRouter();
     const token = localStorage.getItem('token');
 
-    if(token) {
+    // if(token) {
         return Mypage();
-    } else {
-        return UserPage();
-    }
+    // } else {
+    //     return UserPage();
+    // }
 }

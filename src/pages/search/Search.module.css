@@ -14,23 +14,23 @@
 }
 
 .icon {
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 30px;
 }
 
 .searchIcon {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 22px;
-    left: 84px;
+    top: 26px;
+    left: 76px;
 }
 
 .deleteIcon {
     width: 38px;
     height: 38px;
     top: 22px;
-    right: 20px;
+    right: 28px;
     position: absolute;
 }
 
