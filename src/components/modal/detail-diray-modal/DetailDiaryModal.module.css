@@ -102,6 +102,7 @@
 }
 
 .picture {
+    border: 1px solid gray;
     width: 70vw;
     height: 70vw;
     /*background-color: plum;*/
@@ -129,7 +130,7 @@
 }
 
 .leftBottom {
-    width: 150px;
+    width: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -8,6 +8,13 @@ const FRIENDS_LIST = [
     { src: '/img.png', title: '박소은', id: 'soeun' },
     { src: '/img.png', title: '전주현', id: 'juhyun' },
     { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+    { src: '/img.png', title: '유정협', id: 'junghyeop' },
+
 ]
 
 const DETAIL_SCHEDULE = [

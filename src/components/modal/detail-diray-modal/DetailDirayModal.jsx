@@ -31,8 +31,10 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
     const [emoji, setEmoji] = useState(-1);
     const [openScope, setOpenScope] = useState(false);
     const [ scope, setScope] = useState(0);
+    // const [ temperature, setTemperature] = useState(0);
 
     const inputRef = useRef(null);
+
     const onUploadImage = useCallback((e) => {
         if (!e.target.files) {
             return;
@@ -81,7 +83,9 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
     // 기분 온도
     // 오늘 일정
     return(
-        <section className={styles.container}>
+        <section
+            className={styles.container}
+        >
             {
                 openEmoji &&
                     <div
@@ -142,7 +146,7 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
             {/* bottom nav */}
             <div className={styles.bottomNav}>
                 <div className={styles.leftBottom}>
-                    <img className={styles.icon} src={'./colorPalette.png'}/>
+                    {/*<img className={styles.icon} src={'./colorPalette.png'}/>*/}
                     <AiFillPicture
                         onClick={()=>{
                             inputRef.current.click()
@@ -150,7 +154,7 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
                         className={styles.icon} />
                     <input style={{display: 'none'}} type="file" accept="image/*" ref={inputRef} onChange={onUploadImage} />
 
-                    <TbTemperatureCelsius className={styles.icon} />
+                    {/*<TbTemperatureCelsius className={styles.icon} />*/}
                 </div>
 
                 {
