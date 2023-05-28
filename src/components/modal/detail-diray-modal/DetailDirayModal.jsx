@@ -18,11 +18,19 @@ export const EMOJI = [
     {src: './emoji/8.png'},
 ]
 
+export const SCOPE = [
+    '전체공개',
+    '친구공개',
+    '나만보기',
+]
+
 export default function DetailDiaryModal({dateString, type, setOpenModal}) {
     const [picture, setPicure] = useState('');
     const textarea = useRef();
     const [openEmoji, setOpenEmoji] = useState(false);
     const [emoji, setEmoji] = useState(-1);
+    const [openScope, setOpenScope] = useState(false);
+    const [ scope, setScope] = useState(0);
 
     useEffect(() => {
 
@@ -121,7 +129,21 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
                     <TbTemperatureCelsius className={styles.icon} />
                 </div>
 
-                <span>공개범위</span>
+                {
+                    openScope &&
+                        <ul className={styles.scopeBox}>
+                            {
+                                SCOPE.map((m, index) => {
+                                    return <li key={index} onClick={() => {
+                                        setScope((prev) => index);
+                                        setOpenScope((prev) => false);
+                                    }}>{m}</li>
+                                })
+                            }
+                        </ul>
+                }
+
+                <span onClick={() => setOpenScope((prev) => true)}>{SCOPE[scope]}</span>
             </div>
         </section>
     );

@@ -152,3 +152,36 @@
 }
 
 .textInput:focus { outline: none; }
+
+.scopeBox {
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100px - 10px);
+    height: 120px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.scopeBox li:first-child {
+    border-bottom: 1px solid gray;
+}
+
+.scopeBox li:nth-child(2) {
+    border-bottom: 1px solid gray;
+}
+
+.scopeBox li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+}
+
