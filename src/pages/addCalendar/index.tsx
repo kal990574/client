@@ -17,7 +17,7 @@ const AddCalendarPage: NextPage = () => {
     const { data: sessionData } = useSession();
     const createScheduleMutation  = api.schedule.createSchedule.useMutation();
 
-    const date = new Date(Number(router.query.date));
+    const date = router.query.date ?  new Date(Number(router.query.date)) : new Date();
     const [time, setTime] = useState(false);
     const [openColor, setOpenColor] = useState(false);
     const [openFriends, setOpenFriends] = useState(false);

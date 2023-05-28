@@ -62,4 +62,15 @@ const SCOPE_DISCLOSURE = [
     { id: 2, title: '친구공개' },
 ]
 
-export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE};
+const DIARY_DUMMY = [
+    {date: '2023-05-28', content: '나는 배가 너무 고파용', icon: 0, picture: '', scope: 0  },
+    {date: '2023-05-29', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
+    {date: '2023-05-30', content: '나는 배가 너무 고파용', icon: 3, picture: '', scope: 1  },
+    {date: '2023-05-25', content: '나는 배가 너무 고파용', icon: 6, picture: '', scope: 2  },
+    {date: '2023-05-24', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 1  },
+    {date: '2023-05-01', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
+    {date: '2023-05-05', content: '나는 배가 너무 고파용', icon: 4, picture: '', scope: 1  },
+    {date: '2023-05-16', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 0  },
+];
+
+export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE, DIARY_DUMMY};

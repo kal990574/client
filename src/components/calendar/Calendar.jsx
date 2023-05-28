@@ -20,12 +20,11 @@ export default function Calendar({
 
     useEffect(() => {
         setCurrentDate((prev) => selectedMonth);
-
     }, [selectedMonth])
 
-    useEffect(() => {
-        console.log(viewContent)
-    }, [viewContent])
+    // useEffect(() => {
+    //     console.log(viewContent)
+    // }, [viewContent])
 
     useEffect(() => {
         if(day !== null) {

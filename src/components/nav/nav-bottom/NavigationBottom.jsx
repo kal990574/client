@@ -4,20 +4,19 @@ import {BiHome, BiSearch, BiGroup, BiUserCircle} from "react-icons/bi";
 import { useRouter } from 'next/router'
 import {IoAddCircle} from "react-icons/io5";
 import {signIn} from "next-auth/react";
+import {FiBook, FiCalendar} from 'react-icons/fi';
 
 export default function NavigationBottom() {
     const router = useRouter();
-    const [openAdd, setOpenAdd] = useState(false);
 
     const onClickIcon = (e) => {
         console.log(e.currentTarget.id);
         const token = localStorage.getItem('token');
-        // if(token) {
+        if(token) {
             router.replace('/'+e.currentTarget.id);
-        // } else {
-        //     signIn("kakao")
-        // }
-
+        } else {
+            signIn("kakao")
+        }
     }
 
     return (
@@ -25,6 +24,9 @@ export default function NavigationBottom() {
             <BiHome id={'home'} className={styles.icon} onClick={onClickIcon} />
             <BiSearch id={'search'} className={styles.icon} onClick={onClickIcon} />
             <IoAddCircle
+                onClick={() => {
+                    router.replace('/addCalendar');
+                }}
                 id={'add'}
                 className={styles.icon}
             />
