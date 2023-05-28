@@ -5,6 +5,7 @@ import {DETAIL_SCHEDULE} from "../../../common/dummy";
 import DetailScheduleCard from "../../card/detail-schedule-card/DetailScheduleCard";
 import RoundButton from "../../button/round-button/RoundButton";
 import {useRouter} from "next/router";
+import {useState} from "react";
 
 /**
  * @returns {JSX.Element}
@@ -12,6 +13,8 @@ import {useRouter} from "next/router";
  */
 export default function DetailScheduleModal({dateString, setOpenModal, setDay}) {
     const date = new Date(Date.parse(dateString));
+    const [detailSchedule, setDetailSchedule] = useState([]);
+
     const router = useRouter();
 
     return (

@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './FriendsCircleList.module.css';
 import FriendsCircleItem from "./FriendsCircleItem";
 import {FRIENDS_LIST} from "../../common/dummy";
+import {useSession} from "next-auth/react";
+import {api} from "~/utils/api";
 
 export default function FriendsCircleList() {
     const [selected, setSelected] = useState(0);
+    const { data: sessionData, status } = useSession();
+    const [friendList, setFriendList] = useState([]);
 
     return (
         <div className={styles.outerContainer}>

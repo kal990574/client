@@ -12,14 +12,16 @@ import {useSession} from "next-auth/react";
 export default function MyEdit() {
     const {data: sessionData} = useSession();
     const user = JSON.parse(localStorage.getItem('user'));
+    const updateUserMutation = api.user.updateMyProfile.useMutation();
+
     const userData = api.user.getUserInfo.useQuery({id: user.id}).data;
 
-    const [nickName, setNickName] = useState(userData.name);
-    const [introduce, setIntroduce] = useState(userData.introduce);
+    const [nickName, setNickName] = useState(user.name);
+    const [introduce, setIntroduce] = useState(user.introduce);
     const router = useRouter();
 
     const inputRef = useRef(null);
-    const [img, setImg] = useState(userData.image ? userData.image : '/img.png');
+    const [img, setImg] = useState(user.image ? user.image : '/img.png');
     const onUploadImage = useCallback((e) => {
         if (!e.target.files) {
             return;
@@ -43,10 +45,20 @@ export default function MyEdit() {
         }
     }
 
+    const onClickSuccess = () => {
+        updateUserMutation.mutate({
+            image: img,
+            name: nickName,
+            introduce: introduce,
+        }, {
+            onSuccess: () => router.push('/home')
+        })
+    }
+
     return (
         <main className={styles.container}>
             <CustomHead title={'MyEdit'} content={'MyEditPage'}/>
-            <MyNavigation title={'프로필 편집'} />
+            <MyNavigation title={'프로필 편집'} success={onClickSuccess} />
             <div className={styles.contentContainer}>
                 <div className={styles.profileImgContainer}>
                     <input style={{display: 'none'}} type="file" accept="image/*" ref={inputRef} onChange={onUploadImage} />
