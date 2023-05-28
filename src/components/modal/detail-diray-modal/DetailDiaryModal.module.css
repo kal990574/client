@@ -92,6 +92,7 @@
 }
 
 .pictureBox {
+    position: relative;
     width: 100%;
     height: 75vw;
     display: flex;
@@ -183,5 +184,14 @@
     justify-content: center;
     width: 100%;
     height: 40px;
+}
+
+.minusIcon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 15vw;
+    cursor: pointer;
 }
 

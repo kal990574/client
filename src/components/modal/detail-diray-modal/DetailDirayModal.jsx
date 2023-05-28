@@ -1,8 +1,8 @@
 import styles from './DetailDiaryModal.module.css';
 import {BiX} from "react-icons/bi";
 import {useRouter} from "next/router";
-import {useEffect, useRef, useState} from "react";
-import {AiFillPicture} from "react-icons/ai";
+import {useCallback, useEffect, useRef, useState} from "react";
+import {AiFillPicture, AiFillMinusCircle} from "react-icons/ai";
 import {TbTemperatureCelsius} from "react-icons/tb";
 import EmojiModal from "~/components/modal/emoji-modal/EmojiModal";
 
@@ -31,6 +31,22 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
     const [emoji, setEmoji] = useState(-1);
     const [openScope, setOpenScope] = useState(false);
     const [ scope, setScope] = useState(0);
+
+    const inputRef = useRef(null);
+    const onUploadImage = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        return new Promise((resolve) => {
+            reader.onload = () => {
+                setPicure(reader.result || '/img.png'); // 파일의 컨텐츠
+                resolve();
+            };
+        });
+    }, []);
 
     useEffect(() => {
 
@@ -107,9 +123,11 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
                     picture.length === 0
                         ? <></>
                         : <div className={styles.pictureBox}>
-                            <div className={styles.picture}>
-
-                            </div>
+                            <AiFillMinusCircle
+                                className={styles.minusIcon}
+                                onClick={() => setPicure((prev) => '')}
+                            />
+                            <img alt={'upload diary img'} src={picture} className={styles.picture} />
                         </div>
                 }
                 <textarea
@@ -125,7 +143,13 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
             <div className={styles.bottomNav}>
                 <div className={styles.leftBottom}>
                     <img className={styles.icon} src={'./colorPalette.png'}/>
-                    <AiFillPicture className={styles.icon} />
+                    <AiFillPicture
+                        onClick={()=>{
+                            inputRef.current.click()
+                        }}
+                        className={styles.icon} />
+                    <input style={{display: 'none'}} type="file" accept="image/*" ref={inputRef} onChange={onUploadImage} />
+
                     <TbTemperatureCelsius className={styles.icon} />
                 </div>
 
