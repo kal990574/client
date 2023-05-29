@@ -26,7 +26,7 @@ export default function GroupCard(
         <div
             onClick={(e) => {
                 if(e.target.tagName !== 'BUTTON') {
-                    router.replace('group/detail/'+groupId);
+                    router.push('group/detail/'+groupId);
                 }
             }}
             className={styles.groupCardContainer} style={{background: color}}>

@@ -19,7 +19,7 @@ export default function UserInfoPage() {
 
     const router = useRouter();
     const goEdit = () => {
-        router.replace('/mypage/edit');
+        router.push('/mypage/edit');
     }
 
     const goFollowPage = (e) => {

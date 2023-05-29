@@ -11,7 +11,7 @@ export default function NavigationBottom() {
 
     const onClickIcon = (e) => {
         const token = localStorage.getItem('token');
-        router.replace('/'+e.currentTarget.id);
+        router.push('/'+e.currentTarget.id);
 
         // if(token) {
         //     router.replace('/'+e.currentTarget.id);
@@ -26,7 +26,7 @@ export default function NavigationBottom() {
             <BiSearch id={'search'} className={styles.icon} onClick={onClickIcon} />
             <IoAddCircle
                 onClick={() => {
-                    router.replace('/addCalendar');
+                    router.push('/addCalendar');
                 }}
                 id={'add'}
                 className={styles.icon}

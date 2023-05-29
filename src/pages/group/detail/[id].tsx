@@ -116,7 +116,7 @@ export default function GroupDetail () {
             >
                 <IoIosArrowBack
                     className={styles.icon}
-                    onClick={() => router.replace('/group')}
+                    onClick={() => router.push('/group')}
                 />
                 <h2>{groupInfo.data.name}</h2>
                 <AiFillSetting
