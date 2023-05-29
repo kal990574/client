@@ -1,8 +1,11 @@
 import styles from './UserListItem.module.css';
 import Image from "next/image";
 import {useState} from "react";
+import {api} from "~/utils/api";
 
-export default function UserListItem({name, introduce, follow}) {
+export default function UserListItem({userId, follow}: {userId: string, follow: boolean}) {
+    const userInfoQuery = api.user.getUserInfo.useQuery({id: userId});
+
     const [state, setState] = useState(follow);
     const onClickFollow = () => {
         setState((prev) => !prev);
@@ -19,10 +22,10 @@ export default function UserListItem({name, introduce, follow}) {
                     flexDirection: 'column'
                 }}>
                     <span className={styles.name}>
-                    {name}
+                    {userInfoQuery.data?.name}
                 </span>
                     <span className={styles.introduce}>
-                    {introduce}
+                    {userInfoQuery.data?.name}
                 </span>
                 </div>
 

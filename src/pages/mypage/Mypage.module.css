@@ -64,10 +64,6 @@
     justify-content: center;
 }
 
-.following {
-    margin: 0 10px;
-}
-
 .categorySection {
     width: 100vw;
     height: calc(100% - 320px);
