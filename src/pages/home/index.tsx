@@ -8,8 +8,8 @@ import Calendar from "../../components/calendar/Calendar";
 import {api} from "../../utils/api";
 import {useSession} from "next-auth/react";
 
-
 export default function Home() {
+
     const { data: sessionData, status } = useSession();
     const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
     const myInfoQuery = api.user.getMyInfo.useQuery(undefined, { enabled: sessionData?.user !== undefined });
