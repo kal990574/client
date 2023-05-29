@@ -6,10 +6,12 @@ import styles from './Group.module.css';
 import {BsFillPlusCircleFill} from 'react-icons/bs'
 import GroupCard from "../../components/group/group-card/GroupCard";
 import {useRouter} from "next/router";
-import {GROUP_DUMMY} from "../../common/dummy";
+import {api} from "~/utils/api";
 
-export default function Group() {
+export default function GroupPage() {
     const router = useRouter();
+
+    const myGroupInfos = api.user.getMyGroupInfos.useQuery(undefined);
 
     const addGroup = () => {
         router.push('/group/add');
@@ -27,16 +29,13 @@ export default function Group() {
                 <div className={styles.groupListContainer}>
                     <div className={styles.groupListInnerContainer}>
                         {
-                            GROUP_DUMMY.map((d, index) => {
+                            myGroupInfos.data?.map((d, index) => {
                                 return <GroupCard
-                                    groupId={d.groupId}
-                                    key={d.groupId}
-                                    content={d.content}
-                                    groupName={d.groupName}
-                                    FontColor={d.FontColor}
-                                    InviteColor={d.InviteColor}
-                                    memberList={d.memberList}
-                                    primaryColor={d.primaryColor}
+                                    key={d.id}
+                                    groupId={d.id}
+                                    content={d.summary}
+                                    groupName={d.name}
+                                    memberList={d.participants}
                                 />
                             })
                         }

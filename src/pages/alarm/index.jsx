@@ -1,5 +1,5 @@
 import styles from './Alarm.module.css';
-import {IoIosArrowBack} from "react-icons/all";
+import { IoIosArrowBack } from "react-icons/io";
 import styled from 'styled-components';
 
 const AlarmCard = styled.div`

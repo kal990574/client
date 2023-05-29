@@ -1,6 +1,6 @@
 import styles from './DetailScheduleModal.module.css';
 import '../../calendar/configs';
-import DATE from "../../calendar/configs";
+import { DATE } from "../../calendar/configs";
 import {DETAIL_SCHEDULE} from "../../../common/dummy";
 import DetailScheduleCard from "../../card/detail-schedule-card/DetailScheduleCard";
 import RoundButton from "../../button/round-button/RoundButton";

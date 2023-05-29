@@ -8,7 +8,9 @@
     "vercel-build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "db:create": ""
+    "prisma:generate": "prisma generate",
+    "prisma:db:push": "prisma db push",
+    "prisma:studio": "prisma studio"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.6",
@@ -27,7 +29,6 @@
     "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "styled-component": "^2.8.0",
     "styled-components": "^5.3.10",
     "superjson": "^1.12.2",
     "uiw": "^4.21.25",

@@ -8,6 +8,55 @@ import {
 
 export const userRouter = createTRPCRouter({
     // 사용자 정보 조회
+    getMyInfo: protectedProcedure.query(async ({ ctx, input  }) => {
+        const followerCount = await ctx.prisma.following.count({
+            where: {
+                followeeId: ctx.session.user.id
+            }
+        });
+
+        const followingCount = await ctx.prisma.following.count({
+            where: {
+                followerId: ctx.session.user.id
+            }
+        });
+
+        const userInfo = await ctx.prisma.user.findUniqueOrThrow({
+            where: {
+                id: ctx.session.user.id,
+            }
+        });
+
+        return {
+            ...userInfo,
+            followerCount: followerCount,
+            followingCount: followingCount,
+        }
+    }),
+    getMyGroupInfos: protectedProcedure.query(async ({ ctx, input  }) => {
+        const groupInfos = await ctx.prisma.group.findMany({
+            where: {
+                participants: {
+                    some: {
+                        participantId: ctx.session.user.id
+                    }
+                }
+            },
+            include: {
+                participants: {
+                    include: {
+                        participant: {
+                            select: {
+                                id: true,
+                                name: true,
+                            }
+                        }
+                    }
+                },
+            }
+        })
+        return groupInfos;
+    }),
     getUserInfo: publicProcedure.input(z.object({
         id: z.string(),
     })).query(async ({ ctx, input  }) => {

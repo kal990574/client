@@ -2,8 +2,11 @@ import styles from './GroupCard.module.css';
 import { BiX } from 'react-icons/bi';
 import {CgMathPlus} from "react-icons/cg";
 import {useRouter} from "next/router";
+import {GroupParticipant} from "@prisma/client";
 
-export default function GroupCard({groupId, primaryColor, FontColor, InviteColor, groupName, memberList, content}) {
+export default function GroupCard(
+    {groupId, primaryColor, FontColor, InviteColor, groupName, memberList, content}:
+        {groupId: string, content: string, groupName: string, memberList: (GroupParticipant & {participant: {id: string, name: string | null}})[]}) {
     const color = primaryColor ? primaryColor : '#FDE4F7';
     const fontColor = FontColor ? FontColor : '#FE4545';
     const inviteColor = InviteColor ? InviteColor :'#FA9B9B';
@@ -48,7 +51,7 @@ export default function GroupCard({groupId, primaryColor, FontColor, InviteColor
                 </div>
                 <div className={styles.memberList}>
                     {memberList.map((m, index) => {
-                        return <span key={index}>{m}</span>
+                        return <span key={index}>{m.participant.name}</span>
                     })}
                 </div>
             </div>
