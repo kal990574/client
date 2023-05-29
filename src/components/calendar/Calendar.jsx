@@ -55,7 +55,12 @@ export default function Calendar({
     openModal && render.push(
             viewContent
                 ? render.push(<DetailScheduleModal dateString={day} setOpenModal={setOpenModal} setDay={setDay} />)
-                : render.push(<DetailDiaryModal dateString={day} setOpenModal={setOpenModal} />)
+                : render.push(
+                    <DetailDiaryModal
+                        dateString={day}
+                        setOpenModal={setOpenModal}
+                    />
+                )
     )
 
     return <>{render}</>;

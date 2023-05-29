@@ -12,8 +12,10 @@ export default function GroupCard({groupId, primaryColor, FontColor, InviteColor
 
     return (
         <div
-            onClick={() => {
-                router.replace('group/detail/'+groupId);
+            onClick={(e) => {
+                if(e.target.tagName !== 'BUTTON') {
+                    router.replace('group/detail/'+groupId);
+                }
             }}
             className={styles.groupCardContainer} style={{background: color}}>
             <div className={styles.titleContainer}>
@@ -29,7 +31,11 @@ export default function GroupCard({groupId, primaryColor, FontColor, InviteColor
                     </span>
                 </div>
                 <div className={styles.inviteDiv}>
-                    <button style={{background: inviteColor, color: 'rgba(0, 0, 0, 0.5)',}}>
+                    <button
+                        onClick={(e) => {
+                            router.push('/group/add/member/'+groupId);
+                        }}
+                        style={{background: inviteColor, color: 'rgba(0, 0, 0, 0.5)',}}>
                         {INVITE}
                     </button>
                     <CgMathPlus className={styles.iconPlus} />
