@@ -56,7 +56,7 @@ export default function Search() {
         } else {
             return (
                 <div className={styles.zeroResult}>
-                    잂치하는 검색 결과가 없습니다.
+                    일치하는 검색 결과가 없습니다.
                 </div>
             );
         }
@@ -78,7 +78,7 @@ export default function Search() {
         } else {
             return (
                 <div className={styles.zeroResult}>
-                    잂치하는 검색 결과가 없습니다.
+                    일치하는 검색 결과가 없습니다.
                 </div>
             );
         }

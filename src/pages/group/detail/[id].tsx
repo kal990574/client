@@ -6,8 +6,15 @@ import {GROUP_DUMMY} from "../../../common/dummy";
 import {AiFillSetting} from "react-icons/ai";
 import GroupScheduleCard from "../../../components/card/group-schedule-card/GroupScheduleCard";
 import {useState} from "react";
+import {api} from "~/utils/api";
+import {GroupParticipant} from "@prisma/client";
 
-const DetailModal = ({title, summary, memberList, setOpenDetailModal}) => {
+const DetailModal = ({title, summary, memberList, setOpenDetailModal}: {
+    title: string,
+    summary: string,
+    setOpenDetailModal: any,
+    memberList: (GroupParticipant & {participant: {id: string, name: string | null}})[]
+}) => {
     return (
         <div className={styles.detailModal}>
             <div className={styles.top}>
@@ -23,7 +30,7 @@ const DetailModal = ({title, summary, memberList, setOpenDetailModal}) => {
                         memberList.map((d, index) => {
                             return (
                                 <span key={'member'+index}>
-                                    {d}
+                                    {d.participant.name}
                                 </span>
                             )
                         })
@@ -80,20 +87,18 @@ export const GROUP_SCHEDULE_DUMMY = [
 
 export default function GroupDetail () {
     const router = useRouter();
-    const GROUP_ID = router.query.id;
+    const GROUP_ID = router.query.id as string;
 
     const [openGroupDetail, setOpenGroupDetail] = useState(false);
 
-    const groupData = GROUP_DUMMY.filter(
-        (m) => {
-            return m.groupId.toString() === GROUP_ID});
+    const groupInfo = api.user.getGroupInfo.useQuery(GROUP_ID);
 
     const GroupPrimaryColor = '#FDE4F7';
-    const GroupName = groupData[0].groupName;
     const GroupFontColor = '#FE4545';
-    const GroupIntro = groupData[0].content;
     const GroupInviteColor = '#FA9B9B';
-    const GroupMemberList = groupData[0].memberList;
+
+    if (!groupInfo.data)
+        return null;
 
     return (
         <main
@@ -102,7 +107,7 @@ export default function GroupDetail () {
         >
             {
                 openGroupDetail && <div className={styles.modalBackground} onClick={() => setOpenGroupDetail((prev) => false)}>
-                    <DetailModal setOpenDetailModal={setOpenGroupDetail} title={GroupName} summary={GroupIntro} memberList={GroupMemberList} />
+                    <DetailModal setOpenDetailModal={setOpenGroupDetail} title={groupInfo.data.name} summary={groupInfo.data.summary} memberList={groupInfo.data.participants} />
                 </div>
             }
             <div
@@ -111,9 +116,9 @@ export default function GroupDetail () {
             >
                 <IoIosArrowBack
                     className={styles.icon}
-                    onClick={() => router.replace('/group')}
+                    onClick={() => router.push('/group')}
                 />
-                <h2>{GroupName}</h2>
+                <h2>{groupInfo.data.name}</h2>
                 <AiFillSetting
                     className={styles.icon}
                 />
@@ -130,12 +135,12 @@ export default function GroupDetail () {
                 >
                     <div className={styles.groupIntro}>
                         <h3>그룹 소개</h3>
-                        <span>{GroupIntro}</span>
+                        <span>{groupInfo.data.summary}</span>
                     </div>
                     <div className={styles.groupMember}>
-                        <h3>그룹 멤버 {GroupMemberList.length}명</h3>
+                        <h3>그룹 멤버 {groupInfo.data.participants.length}명</h3>
                         <div>
-                            {GroupMemberList.map((m, index) => <span key={index}>{m}</span>)}
+                            {groupInfo.data.participants.map((m, index) => <span key={index}>{m.participant.name}</span>)}
                         </div>
                     </div>
                 </div>

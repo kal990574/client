@@ -13,17 +13,13 @@ const CategoryItem =  ({color, name}) => {
     )
 }
 
-const UserPage = () => {
-    console.log("UserPage")
-}
-
-const Mypage =() => {
+export default function UserInfoPage() {
     const follower = 14;
     const following = 22;
 
     const router = useRouter();
     const goEdit = () => {
-        router.replace('/mypage/edit');
+        router.push('/mypage/edit');
     }
 
     const goFollowPage = (e) => {
@@ -47,12 +43,12 @@ const Mypage =() => {
                         <button onClick={goEdit} className={styles.profileEditButton}>프로필 편집</button>
                     </div>
                     <div className={styles.followingContainer}>
-                        <div className={styles.following} name={'follower'} onClick={goFollowPage}>
+                        <div className={styles.following} onClick={goFollowPage}>
                             <span>
                                 {follower} 팔로워
                             </span>
                         </div>
-                        <div className={styles.following} name={'following'} onClick={goFollowPage}>
+                        <div className={styles.following} onClick={goFollowPage}>
                             <span>
                                 {following} 팔로잉
                             </span>
@@ -86,22 +82,9 @@ const Mypage =() => {
                         <CategoryItem color={'#FFA6A6'} name={'데이트'} />
                         <CategoryItem color={'#FFA6A6'} name={'데이트'} />
                         <CategoryItem color={'#FFA6A6'} name={'데이트'} />
-
                     </div>
                 </section>
             </div>
         </main>
     )
-}
-
-
-export default function UserInfoPage() {
-    const router = useRouter();
-    const token = localStorage.getItem('token');
-
-    // if(token) {
-        return Mypage();
-    // } else {
-    //     return UserPage();
-    // }
 }
