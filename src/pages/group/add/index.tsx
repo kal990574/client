@@ -13,6 +13,7 @@ export default function GroupAdd() {
     const [memberList, setMemberList] = useState([]);
     const [groupName, setGroupName] = useState('');
     const [openModal, setOpenModal] = useState(false);
+    const [friendData, setFriendData] = useState(FRIENDS_LIST);
 
     const onChangeGroupName = (e) => {
         setGroupName((prev) => e.target.value);
@@ -46,7 +47,7 @@ export default function GroupAdd() {
                             ?  <div className={styles.modal}>
                                 <div className={styles.modalTop}>
                                     <BiX style={{visibility: 'hidden'}} className={styles.icon} />
-                                    <h2>카테고리</h2>
+                                    <h2>색상</h2>
                                     <BiX className={styles.icon} onClick={() => setOpenModal((prev) => false)} />
                                 </div>
                                 <div className={styles.colorModal}>
@@ -75,10 +76,11 @@ export default function GroupAdd() {
                                 </div>
                                 <div className={styles.modalContent}>
                                     {
-                                        FRIENDS_LIST.map((item, index) => {
+                                        friendData.map((item, index) => {
                                             return (
                                                 <div key={index} className={styles.memberListItem} onClick={() => {
                                                     setMemberList((prev) => [...prev, item]);
+                                                    setFriendData(prev => prev.filter(m => !memberList.includes(m)));
                                                     setOpenModal((prev) => false);
                                                 }}>
                                                     <img src={item.src} alt={item.title} />

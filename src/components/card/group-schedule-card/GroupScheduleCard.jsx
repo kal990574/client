@@ -10,6 +10,7 @@ export default function GroupScheduleCard({data, lineColor, groupId}) {
     const router = useRouter();
 
     const date = new Date(data.date);
+    console.log(data);
     const GROUP_MEMBER = [
         {memberId: 0, name: '문서영'},
         {memberId: 1, name: '문채원'},
