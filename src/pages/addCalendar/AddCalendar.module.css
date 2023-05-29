@@ -121,9 +121,9 @@
     font-size: 16px;
 }
 
-.dateLine div:first-child {
-    margin-right: 42px;
-}
+/*.dateLine div:first-child {*/
+/*    margin-right: 42px;*/
+/*}*/
 
 /* add friends */
 .addFriends {
@@ -132,4 +132,19 @@
 
 .scope {
     margin-left: 12px;
+}
+
+.addFriendList {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.addFriendList div {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
 }

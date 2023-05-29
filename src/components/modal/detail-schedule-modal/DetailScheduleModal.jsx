@@ -1,11 +1,10 @@
 import styles from './DetailScheduleModal.module.css';
 import '../../calendar/configs';
-import DATE from "../../calendar/configs";
-import {DETAIL_SCHEDULE} from "../../../common/dummy";
 import DetailScheduleCard from "../../card/detail-schedule-card/DetailScheduleCard";
 import RoundButton from "../../button/round-button/RoundButton";
 import {useRouter} from "next/router";
 import {useState} from "react";
+import {DATE, DETAIL_SCHEDULE} from "~/common/dummy";
 
 /**
  * @returns {JSX.Element}

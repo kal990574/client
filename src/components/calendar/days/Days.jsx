@@ -1,6 +1,6 @@
 import React from "react";
-import DATE from "../configs";
 import styles from './Days.module.css';
+import {DATE} from "~/components/calendar/configs";
 
 export default function Days() {
     const days = [];

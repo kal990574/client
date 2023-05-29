@@ -14,12 +14,16 @@
     z-index: 1000;
     background: #FFFFFF;
     border-radius: 10px;
-    overflow: scroll;
+    overflow: hidden;
     padding-bottom: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .closeIcon {
     position: absolute;
+    top: 0;
     right: 0;
     width: 28px;
     height: 28px;
@@ -52,8 +56,10 @@
 }
 
 .friendsList {
-    width: calc(100% - 76px);
-    margin: 0 38px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-top: 50px;
+    width: calc(100% - 86px);
 }
 
 .friendsItem {

@@ -12,7 +12,7 @@ const ScopeItem = styled.li`
     border-bottom: 1px solid #D9D9D9;
 `;
 
-export default function ScopeModal({close, setScope}) {
+export default function ScopeModal({close, setScope, scope}) {
     return (
         <>
             <div className={styles.layer} onClick={close}></div>
@@ -24,10 +24,17 @@ export default function ScopeModal({close, setScope}) {
                 <div className={styles.content}>
                     <ul>
                         {
-                            SCOPE_DISCLOSURE.map((item) => <ScopeItem key={item.id}>{item.title}</ScopeItem>)
+                            SCOPE_DISCLOSURE.map((item, index) =>
+                                <ScopeItem
+                                    style={item.id === scope ? {background: '#dededede'} : {}}
+                                    onClick={() => setScope((prev) => index)} key={item.id}>{item.title}</ScopeItem>)
                         }
                     </ul>
-                    <button className={styles.button} type={'button'}>확인</button>
+                    <button
+                        onClick={() => {
+                            close();
+                        }}
+                        className={styles.button} type={'button'}>확인</button>
                 </div>
             </div>
         </>

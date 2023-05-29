@@ -9,10 +9,25 @@ import {api} from "../../utils/api";
 import {NextPage} from "next";
 import {SCOPE_DISCLOSURE} from '../../common/dummy';
 import ScopeModal from "../../components/modal/scope-modal/ScopeModal";
+import { TimePicker } from 'react-ios-time-picker';
+
+// <div>
+//     <TimePicker onChange={onChange} value={value} />
+// </div>
 
 // date:
 const AddCalendarPage: NextPage = () => {
     const router = useRouter();
+    const [sTime, setsTime] = useState('10:00');
+    const [eTime, seteTime] = useState('11:00');
+
+    const onChangeS = (timeValue) => {
+        setsTime(timeValue);
+    }
+
+    const onChangeE = (timeValue) => {
+        seteTime(timeValue);
+    }
 
     const { data: sessionData } = useSession();
     const createScheduleMutation  = api.schedule.createSchedule.useMutation();
@@ -21,8 +36,14 @@ const AddCalendarPage: NextPage = () => {
     const [time, setTime] = useState(false);
     const [openColor, setOpenColor] = useState(false);
     const [openFriends, setOpenFriends] = useState(false);
+
     const [scope, setScope] = useState(0);
     const [openScope, setOpenScope] = useState(false);
+    const [memberList, setMemberList] = useState([]);
+
+    const [category, setCategory] = useState({
+        color: '#5c61ff'
+    });
 
     const openScopeModal = () => {
         setOpenScope((prev) => !prev);
@@ -36,17 +57,16 @@ const AddCalendarPage: NextPage = () => {
         setOpenFriends((prev) => !prev);
     };
 
-
     return (
         <main className={styles.container}>
             {
-                openColor ? <ColorModal close={openColorModal} /> : <></>
+                openColor ? <ColorModal close={openColorModal} setCategory={setCategory} /> : <></>
             }
             {
-                openFriends ? <SearchModal close={openSearchFriendsModal} /> : <></>
+                openFriends ? <SearchModal memberList={memberList} setMemberList={setMemberList} close={openSearchFriendsModal} /> : <></>
             }
             {
-                openScope ? <ScopeModal close={openScopeModal} setScope={setScope} /> : <></>
+                openScope ? <ScopeModal scope={scope} close={openScopeModal} setScope={setScope} /> : <></>
             }
             <div className={styles.topNav}>
                 {/* top navigation */}
@@ -75,7 +95,7 @@ const AddCalendarPage: NextPage = () => {
                 <div className={`${styles.innerContainer} ${styles.flexible}`}>
                     {/* color */}
                     <div onClick={openColorModal}>색상</div>
-                    <div onClick={openColorModal} className={styles.colorContainer} style={{background: '#FFA6A6'}}></div>
+                    <div onClick={openColorModal} className={styles.colorContainer} style={{background: category.color}}></div>
                 </div>
                 <div className={`${styles.innerContainer} ${styles.flexible}`}>
                     <div>공개범위</div>
@@ -98,22 +118,26 @@ const AddCalendarPage: NextPage = () => {
                                 {date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일     종일"}
                             </div>
                             : <div className={styles.dateContainer}>
-                                <div className={styles.dateLine}>
-                                    <div>
-                                        start date
-                                    </div>
-                                    <div>
-                                        start time
-                                    </div>
+                                <div style={{marginTop: '20px', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                    <TimePicker style={{width: '50%'}} onChange={onChangeS} value={sTime} cellHeight={40} />
+                                    <TimePicker style={{width: '50%'}} onChange={onChangeE} value={eTime} cellHeight={40} />
                                 </div>
-                                <div className={styles.dateLine}>
-                                    <div>
-                                        end date
-                                    </div>
-                                    <div>
-                                        end time
-                                    </div>
-                                </div>
+                                {/*<div className={styles.dateLine}>*/}
+                                {/*    <div>*/}
+                                {/*        start date*/}
+                                {/*    </div>*/}
+                                {/*    <div>*/}
+                                {/*        start time*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                {/*<div className={styles.dateLine}>*/}
+                                {/*    <div>*/}
+                                {/*        end date*/}
+                                {/*    </div>*/}
+                                {/*    <div>*/}
+                                {/*        end time*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                     }
                 </div>
@@ -126,10 +150,19 @@ const AddCalendarPage: NextPage = () => {
                 </div>
                 <div className={styles.innerContainer}>
                     {/* add friends */}
-                    <div className={styles.addFriends}>
+                    <div className={styles.addFriends} onClick={openSearchFriendsModal}>
                         일정을 함께할 친구를 추가
                     </div>
-                    <BiPlusCircle className={styles.icon24} onClick={openSearchFriendsModal} />
+                    <div className={styles.addFriendList}>
+                        {
+                            memberList.map((d) => {
+                                return <div>
+                                    {d}
+                                </div>
+                            })
+                        }
+                        <BiPlusCircle className={styles.icon24} onClick={openSearchFriendsModal} />
+                    </div>
                 </div>
             </div>
         </main>

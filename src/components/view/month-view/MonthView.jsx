@@ -16,6 +16,7 @@ const DaysScheduleS = styled.div`
   font-size: 14px;
   overflow: hidden;
   padding-top: 1px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
 `;
 
 const DaysScheduleM = styled.div`
@@ -26,6 +27,7 @@ const DaysScheduleM = styled.div`
   font-size: 14px;
   overflow: hidden;
   padding-top: 1px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
 `;
 
 
@@ -39,19 +41,21 @@ const DaysScheduleE = styled.div`
   font-weight: 800;
   overflow: hidden;
   font-size: 14px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
   padding-top: 1px;
 `;
 
 const FullTime = styled.div`
     width: 100%;
     height: 23px;
-    border-radius: 15px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
     color: white;
     font-weight: 800;
     font-size: 14px;
     overflow: hidden;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
   padding-top: 1px;
 `;
 
@@ -62,6 +66,7 @@ const PartTime = styled.div`
   font-weight: 800;
   height: 19px;
   overflow: hidden;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
   padding-top: 1px;
 `;
 
@@ -197,7 +202,7 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                     height: '20px',
                                 }}
                             >
-                                { d.title.slice(0, 5)}
+                               {d.title.slice(0, 5)}
                             </span>
                         </FullTime>
                     );

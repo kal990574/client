@@ -11,18 +11,24 @@ import {useSession} from "next-auth/react";
 
 export default function MyEdit() {
     const {data: sessionData} = useSession();
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const localUser = localStorage.getItem('user');
+    const router = useRouter();
+    // const user = JSON.parse(localUser);
+    const user = {
+        id: 'qwe',
+        name: '김유저',
+        introduce: '나는 김유저입니다.',
+        image: null,
+    };
+
     const updateUserMutation = api.user.updateMyProfile.useMutation();
-
     const userData = api.user.getUserInfo.useQuery({id: user.id}).data;
-
     const [nickName, setNickName] = useState(user.name);
     const [introduce, setIntroduce] = useState(user.introduce);
-    const router = useRouter();
 
-    const inputRef = useRef(null);
+    const inputRef = useRef<any>(null);
     const [img, setImg] = useState(user.image ? user.image : '/img.png');
-    const onUploadImage = useCallback((e) => {
+    const onUploadImage = useCallback((e: any) => {
         if (!e.target.files) {
             return;
         }
@@ -31,13 +37,15 @@ export default function MyEdit() {
         reader.readAsDataURL(file);
         return new Promise((resolve) => {
             reader.onload = () => {
-                setImg(reader.result || '/img.png'); // 파일의 컨텐츠
-                resolve();
+                if(reader.result !== null) {
+                    setImg(reader.result.toString() || '/img.png'); // 파일의 컨텐츠
+                }
+                // resolve();
             };
         });
-        }, []);
+    }, []);
 
-    const onChangeInput = (e) => {
+    const onChangeInput = (e: any) => {
         if(e.target.name ==='nickName') {
             setNickName(e.target.value);
         } else if(e.target.name === 'introduce') {
@@ -63,8 +71,13 @@ export default function MyEdit() {
                 <div className={styles.profileImgContainer}>
                     <input style={{display: 'none'}} type="file" accept="image/*" ref={inputRef} onChange={onUploadImage} />
                     <Image
+                        alt={'user profile img'}
                         className={styles.profileImg}
-                        onClick={()=>{inputRef.current.click()}}
+                        onClick={()=>{
+                            if(inputRef.current !== null) {
+                                inputRef.current.click();
+                            }
+                        }}
                         width={150}
                         height={150}
                         src={img}
@@ -84,7 +97,9 @@ export default function MyEdit() {
                         onChange={onChangeInput}
                         value={nickName}
                         className={styles.nickNameInput}
-                        type={'text'} required="required" />
+                        type={'text'}
+                        required={true}
+                    />
                 </div>
                 <div className={styles.introduceContainer}>
                     <label className={styles.introduceLabel}>프로필 소개</label>

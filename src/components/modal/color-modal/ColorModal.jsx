@@ -4,21 +4,17 @@ import {COLOR_LIST} from '~/common/dummy';
 import {useState} from "react";
 import ColorPaletteModal from "../color-palette-modal/ColorPaletteModal";
 
-export default function ColorModal({close}) {
+export default function ColorModal({close, setCategory}) {
     const [openColorPalette, setOpenColorPalette] = useState(false);
 
     const onClickOpenColorPalette = () => {
         setOpenColorPalette((prev) => true);
     }
 
-    const onClickCloseColorPalette = () => {
-        setOpenColorPalette((prev) => false);
-    }
-
     return (
         <>
             {
-                openColorPalette ? <ColorPaletteModal close={onClickCloseColorPalette} /> : <></>
+                openColorPalette ? <ColorPaletteModal setOpenColorPalette={setOpenColorPalette} /> : <></>
             }
             <div className={styles.layer} onClick={close}></div>
             <div className={styles.modal}>
@@ -34,7 +30,12 @@ export default function ColorModal({close}) {
                     {
                         COLOR_LIST.map((item, index) => {
                             return (
-                                <div key={index} className={styles.colorListItem}>
+                                <div key={index} className={styles.colorListItem}
+                                     onClick={() => {
+                                         setCategory((prev) => item );
+                                         close();
+                                     }}
+                                >
                                     <div className={styles.color} style={{background: item.color}}></div>
                                     <div className={styles.colorName}>
                                         {item.name}

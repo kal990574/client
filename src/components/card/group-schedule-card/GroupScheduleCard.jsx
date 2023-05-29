@@ -4,8 +4,11 @@ import {BiTime} from "react-icons/bi";
 import {MdPlace} from "react-icons/md";
 import {FaUsers} from "react-icons/fa";
 import {DATE} from "../../../common/dummy";
+import {useRouter} from "next/router";
 
-export default function GroupScheduleCard({data, lineColor}) {
+export default function GroupScheduleCard({data, lineColor, groupId}) {
+    const router = useRouter();
+
     const date = new Date(data.date);
     const GROUP_MEMBER = [
         {memberId: 0, name: '문서영'},
@@ -20,6 +23,9 @@ export default function GroupScheduleCard({data, lineColor}) {
 
     return (
         <div
+            onClick={() => {
+                router.push(`/group/${groupId}/schedule/${data.scheduleId}`);
+            }}
             style={{
                 border: `1px solid ${lineColor}`
             }}
@@ -58,9 +64,13 @@ export default function GroupScheduleCard({data, lineColor}) {
                             whiteSpace: 'nowrap'
                         }}
                     >
-                        {data.member.map((m) => {
+                        {data.member.map((m, index) => {
                             return (
-                                <span>{GROUP_MEMBER[m].name}</span>
+                                <span
+                                    key={index + GROUP_MEMBER[m].memberId}
+                                >
+                                    {GROUP_MEMBER[m].name}
+                                </span>
                             )
                         })}
                     </div>

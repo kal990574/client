@@ -79,7 +79,7 @@ export default function Alarm() {
                     </div>
                 </div>
                 {
-                    Object.keys(rendering).map((key) => {
+                    Object.keys(rendering).map((key,index) => {
                         const date = new Date(key);
                         const result = [];
                         rendering[key].forEach((d, index) => {
@@ -87,7 +87,8 @@ export default function Alarm() {
                                 {d}
                             </AlarmCard>);
                         });
-                        return <div className={styles.dayContainer}>
+
+                        return <div className={styles.dayContainer} key={index}>
                             <h3>{date.getFullYear()+'년 '+(date.getMonth()+1)+'월 '+date.getDate()+'일'}</h3>
                             <div className={styles.alarmList}>
                                 {result}

@@ -97,3 +97,72 @@
     height: calc(100% - 30px);
     overflow-y: scroll;
 }
+
+.detailModal {
+    width: 80vw;
+    height: 100vw;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+.modalBackground {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(85 85 85 / 34%);
+    z-index: 9999;
+    top: 0;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.top {
+    width: calc(100% - 20px);
+    height: 32px;
+    padding: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.content {
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 52px);
+}
+
+.content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.content p {
+    height: 30px;
+}
+
+.content h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.content .memberList {
+    width: 100%;
+    height: calc(100% - 82px);
+    padding: 5px 0;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+
+
+

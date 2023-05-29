@@ -43,7 +43,7 @@ export default function Search() {
                     {
                         searchDummyCalendar.map((m, index) => {
                             return (
-                                <div>
+                                <div key={index}>
                                     w
                                 </div>
                             );
