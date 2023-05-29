@@ -6,7 +6,7 @@ import {useEffect} from "react";
 
 export default function MyNavigation({title, success}) {
     const router = useRouter();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const { data: sessionData } = useSession();
 
     const mypage = () => {
         return (
@@ -22,11 +22,11 @@ export default function MyNavigation({title, success}) {
         return (
             <div className={styles.container}>
                 <span
-                    style={ user.name ? {} : {visibility: 'hidden'}}
+                    style={ sessionData?.user.name ? {} : {visibility: 'hidden'}}
                     className={styles.icon} onClick={() => router.push('/mypage')}>취소</span>
                 <h1 className={styles.title}>
                     {
-                        user.name ? title : '프로필 등록'
+                        sessionData?.user.name ? title : '프로필 등록'
                     }
                 </h1>
                 <span className={styles.icon} onClick={success}>완료</span>

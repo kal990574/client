@@ -57,6 +57,25 @@ export const userRouter = createTRPCRouter({
         })
         return groupInfos;
     }),
+    getGroupInfo: protectedProcedure.input(z.string()).query(async ({ ctx, input  }) => {
+        return await ctx.prisma.group.findUnique({
+            where: {
+                id: input
+            },
+            include: {
+                participants: {
+                    include: {
+                        participant: {
+                            select: {
+                                id: true,
+                                name: true,
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    }),
     getUserInfo: publicProcedure.input(z.object({
         id: z.string(),
     })).query(async ({ ctx, input  }) => {

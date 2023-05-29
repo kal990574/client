@@ -5,15 +5,13 @@ import MyNavigation from "../../../components/mypage/nav/my-navigation";
 import {useCallback, useRef, useState} from "react";
 import Image from "next/image";
 import { BiCamera } from "react-icons/bi";
-import {api} from "../../../utils/api";
+import {api} from "~/utils/api";
 import {useSession} from "next-auth/react";
 
 
 export default function MyEdit() {
     const {data: sessionData} = useSession();
-    // const localUser = localStorage.getItem('user');
     const router = useRouter();
-    // const user = JSON.parse(localUser);
     const user = {
         id: 'qwe',
         name: '김유저',

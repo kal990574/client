@@ -5,11 +5,20 @@ import {useRouter} from "next/router";
 import {GroupParticipant} from "@prisma/client";
 
 export default function GroupCard(
-    {groupId, primaryColor, FontColor, InviteColor, groupName, memberList, content}:
-        {groupId: string, content: string, groupName: string, memberList: (GroupParticipant & {participant: {id: string, name: string | null}})[]}) {
-    const color = primaryColor ? primaryColor : '#FDE4F7';
-    const fontColor = FontColor ? FontColor : '#FE4545';
-    const inviteColor = InviteColor ? InviteColor :'#FA9B9B';
+    {
+        groupId,
+        groupName,
+        memberList,
+        content
+    }: {
+        groupId: string,
+        content: string,
+        groupName: string,
+        memberList: (GroupParticipant & {participant: {id: string, name: string | null}})[]
+    }) {
+    const color = '#FDE4F7';
+    const fontColor = '#FE4545';
+    const inviteColor = '#FA9B9B';
     const INVITE = 'invite';
     const router = useRouter();
 
