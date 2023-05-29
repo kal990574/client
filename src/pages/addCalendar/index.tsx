@@ -43,8 +43,8 @@ const AddCalendarPage: NextPage = () => {
     const [openScope, setOpenScope] = useState(false);
     const [memberList, setMemberList] = useState([]);
 
-    const [startDate, setStartDate] = useState(new Date(Number(router.query.date)));
-    const [endDate, setEndDate] = useState(new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 1));
+    const [startDate, setStartDate] = useState(new Date(date));
+    const [endDate, setEndDate] = useState(new Date(date));
 
 
     const [category, setCategory] = useState({
@@ -125,8 +125,14 @@ const AddCalendarPage: NextPage = () => {
                                     <DatePicker
                                         className={styles.dateSpan}
                                         dateFormat={"yyyy년 MM월 dd일"}
-일                                       selected={startDate}
+                                       selected={startDate}
                                         onChange={date => setStartDate(date)}
+                                    />
+                                    <DatePicker
+                                        className={styles.dateSpan}
+                                        dateFormat={"yyyy년 MM월 dd일"}
+                                        selected={endDate}
+                                        onChange={date => setEndDate(date)}
                                     />
                                 </div>
 
