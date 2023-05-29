@@ -11,22 +11,12 @@ import {useSession} from "next-auth/react";
 
 export default function Home() {
     const { data: sessionData, status } = useSession();
-    const [schedules, setSchedule] = useState(api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined }));
-    const [diary, setDiary] = useState(null);
+    const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
+    const myInfoQuery = api.user.getMyInfo.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
     // const [selectedMonth, setSelectedMonth] = useState(new Date());
     const [openMonthPicker, setOpenMonthPicker] = useState(false);
-    const [currentUser, setCurrentUser] = useState(0);
-
-    useEffect(() => {
-        console.log(schedules.data);
-        // console.log(currentUser);
-    }, [schedules, schedules]);
-
-    useEffect(() => {
-        console.log(currentUser);
-        // diary, schedule currentUser에 맞는 데이터 받아서 set
-
-    }, [currentUser]);
 
     const [open, setOpen] = useState(false);
     const [viewType, setViewType] = useState(0);
@@ -37,12 +27,15 @@ export default function Home() {
         }
     }
 
+    if (!myInfoQuery.data)
+        return null;
+
     return(
         <main className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             {/*<NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />*/}
-            <FriendsCircleList setCurrentUser={setCurrentUser} />
-            <Calendar diary={diary} schedules={schedules} setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
+            <FriendsCircleList data={myInfoQuery.data}/>
+            <Calendar setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
             <NavigationBottom />
         </main>
     );

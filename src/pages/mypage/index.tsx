@@ -3,8 +3,9 @@ import MyNavigation from "../../components/mypage/nav/my-navigation";
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {useEffect} from "react";
+import {api} from "~/utils/api";
 
-const CategoryItem =  ({color, name}) => {
+const CategoryItem =  ({color, name}: {color: string, name: string}) => {
     return (
         <div className={styles.categoryItemContainer}>
             <div className={styles.categoryItemColor} style={{background: color}} />
@@ -14,16 +15,16 @@ const CategoryItem =  ({color, name}) => {
 }
 
 export default function UserInfoPage() {
-    const follower = 14;
-    const following = 22;
+    const myInfoQuery = api.user.getMyInfo.useQuery(undefined);
+
 
     const router = useRouter();
     const goEdit = () => {
         router.push('/mypage/edit');
     }
 
-    const goFollowPage = (e) => {
-        router.push('/mypage/follow');
+    const goFriendsPage = (e) => {
+        router.push('/mypage/friends');
     }
 
     return (
@@ -36,23 +37,16 @@ export default function UserInfoPage() {
                     </div>
                     <div className={styles.nameContainer}>
                         <span>
-                            이재현
+                            {myInfoQuery.data?.name}
                         </span>
                     </div>
                     <div className={styles.profileEditButtonContainer}>
                         <button onClick={goEdit} className={styles.profileEditButton}>프로필 편집</button>
                     </div>
                     <div className={styles.followingContainer}>
-                        <div className={styles.following} onClick={goFollowPage}>
-                            <span>
-                                {follower} 팔로워
-                            </span>
-                        </div>
-                        <div className={styles.following} onClick={goFollowPage}>
-                            <span>
-                                {following} 팔로잉
-                            </span>
-                        </div>
+                         <span onClick={goFriendsPage}>
+                             {myInfoQuery.data?.friends.length} 명의 친구가 있어요!
+                         </span>
                     </div>
                 </section>
                 <section className={styles.categorySection}>

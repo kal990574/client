@@ -1,37 +1,20 @@
-import { z } from "zod";
+import {z} from "zod";
 
-import {
-  createTRPCRouter,
-  publicProcedure,
-  protectedProcedure,
-} from "~/server/api/trpc";
+import {createTRPCRouter, protectedProcedure, publicProcedure,} from "~/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
     // 사용자 정보 조회
     getMyInfo: protectedProcedure.query(async ({ ctx, input  }) => {
-        const followerCount = await ctx.prisma.following.count({
-            where: {
-                followeeId: ctx.session.user.id
-            }
-        });
-
-        const followingCount = await ctx.prisma.following.count({
-            where: {
-                followerId: ctx.session.user.id
-            }
-        });
-
         const userInfo = await ctx.prisma.user.findUniqueOrThrow({
             where: {
                 id: ctx.session.user.id,
+            },
+            include: {
+                friends: true,
             }
         });
 
-        return {
-            ...userInfo,
-            followerCount: followerCount,
-            followingCount: followingCount,
-        }
+        return userInfo;
     }),
     getMyGroupInfos: protectedProcedure.query(async ({ ctx, input  }) => {
         const groupInfos = await ctx.prisma.group.findMany({
@@ -79,53 +62,11 @@ export const userRouter = createTRPCRouter({
     getUserInfo: publicProcedure.input(z.object({
         id: z.string(),
     })).query(async ({ ctx, input  }) => {
-        const followerCount = await ctx.prisma.following.count({
-            where: {
-                followeeId: input.id
-            }
-        });
-
-        const followingCount = await ctx.prisma.following.count({
-            where: {
-                followerId: input.id
-            }
-        });
-
-        const userInfo = await ctx.prisma.user.findUniqueOrThrow({
+        return await ctx.prisma.user.findUniqueOrThrow({
             where: {
                 id: input.id,
-            }
+            },
         });
-
-        return {
-            ...userInfo,
-            followerCount: followerCount,
-            followingCount: followingCount,
-        }
-    }),
-    // 해당 사용자를 팔로잉 하는 리스트
-    getFollowerList: publicProcedure.input(z.object({
-        userId: z.string(),
-    })).query(async ({ ctx, input  }) => {
-        const userId = input.userId;
-
-        return ctx.prisma.following.findMany({
-            where: {
-                followerId: userId,
-            }
-        })
-    }),
-    // 해당 사용자가 팔로잉 하는 리스트
-    getFollowingList: publicProcedure.input(z.object({
-        userId: z.string(),
-    })).query(async ({ ctx, input  }) => {
-        const userId = input.userId;
-
-        return ctx.prisma.following.findMany({
-            where: {
-                followeeId: userId,
-            }
-        })
     }),
 
     // 로그인 사용자 하위 카테고리 생성
@@ -165,30 +106,43 @@ export const userRouter = createTRPCRouter({
     }),
 
     // 팔로우 요청 전송
-    sendFollowRequest: protectedProcedure.input(z.object({
+    sendFriendRequest: protectedProcedure.input(z.object({
         id: z.string()
     })).mutation(async ({ ctx, input  }) => {
         const userId = ctx.session.user.id;
 
-        return ctx.prisma.followRequest.create({
+        return ctx.prisma.friendRequest.create({
             data: {
-                followeeId: userId,
-                followerId: input.id,
+                senderId: userId,
+                receiverId: input.id,
             }
         })
     }),
 
-    // 팔로우 요청 액션
-    replyFollowRequest: protectedProcedure.input(z.object({
+    // 친구 신청 액션
+    actionFriendRequest: protectedProcedure.input(z.object({
         id: z.string(),
         isAccept: z.boolean()
     })).mutation(async ({ ctx, input  }) => {
         const userId = ctx.session.user.id;
 
-        const receivedRequest = await ctx.prisma.followRequest.findUniqueOrThrow({
+        const receivedRequest = await ctx.prisma.friendRequest.findUniqueOrThrow({
             where: {
                 id: input.id
             }
         });
+
+        await ctx.prisma.friendRelationship.createMany({
+            data: [
+                {
+                    userSelfId: receivedRequest.senderId,
+                    userOtherId: receivedRequest.receiverId,
+                },
+                {
+                    userSelfId: receivedRequest.receiverId,
+                    userOtherId: receivedRequest.senderId,
+                },
+            ]
+        })
     }),
 });

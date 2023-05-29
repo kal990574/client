@@ -45,19 +45,20 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  introduce     String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
 
+  SentFriendRequest                 FriendRequest[]             @relation("friendRequest_sender")
+  ReceivedFriendRequest             FriendRequest[]             @relation("friendRequest_receiver")
+  friends                           FriendRelationship[]        @relation("friendRelationship_userSelf")
+  friendOf                          FriendRelationship[]        @relation("friendRelationship_userOther")
   ScheduleParticipant               ScheduleParticipant[]
   ScheduleParticipantInviteSents    ScheduleParticipantInvite[] @relation("scheduleParticipant_sender")
   ScheduleParticipantInviteReceives ScheduleParticipantInvite[] @relation("scheduleParticipant_receiver")
-  Following                         Following[]                 @relation("followee")
-  Follower                          Following[]                 @relation("follower")
-  SentFollowRequests                FollowRequest[]             @relation("followRequest_sender")
-  ReceivedFollowRequests            FollowRequest[]             @relation("followRequest_receiver")
   OwnedSchedules                    Schedule[]
   GroupParticipant                  GroupParticipant[]
   Categories                        Category[]
@@ -72,32 +73,32 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model FollowRequest {
+model FriendRequest {
   id String @id @default(cuid())
 
-  followerId String
-  follower   User   @relation("followRequest_sender", fields: [followerId], references: [id], onDelete: Cascade)
+  senderId String
+  sender   User   @relation("friendRequest_sender", fields: [senderId], references: [id], onDelete: Cascade)
 
-  followeeId String
-  followee   User   @relation("followRequest_receiver", fields: [followeeId], references: [id], onDelete: Cascade)
+  receiverId String
+  receiver   User   @relation("friendRequest_receiver", fields: [receiverId], references: [id], onDelete: Cascade)
 
-  @@unique([followerId, followeeId])
-  @@index([followerId])
-  @@index([followeeId])
+  @@unique([senderId, receiverId])
+  @@index([receiverId])
+  @@index([senderId])
 }
 
-model Following {
+model FriendRelationship {
   id String @id @default(cuid())
 
-  followerId String
-  follower   User   @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  userSelfId String
+  userSelf   User   @relation("friendRelationship_userSelf", fields: [userSelfId], references: [id], onDelete: Cascade)
 
-  followeeId String
-  followee   User   @relation("followee", fields: [followeeId], references: [id], onDelete: Cascade)
+  userOtherId String
+  userOther   User   @relation("friendRelationship_userOther", fields: [userOtherId], references: [id], onDelete: Cascade)
 
-  @@unique([followerId, followeeId])
-  @@index([followerId])
-  @@index([followeeId])
+  @@unique([userSelfId, userOtherId])
+  @@index([userSelfId])
+  @@index([userOtherId])
 }
 
 model Category {
