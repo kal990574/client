@@ -12,12 +12,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
@@ -178,8 +172,9 @@ enum GroupRole {
 }
 
 model Group {
-  id   String @id @default(cuid())
-  name String
+  id      String @id @default(cuid())
+  name    String
+  summary String
 
   schedules    GroupSchedule[]
   participants GroupParticipant[]

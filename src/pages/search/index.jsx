@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './Search.module.css';
-import {IoIosArrowBack, TiDelete} from "react-icons/all";
+import {IoIosArrowBack} from "react-icons/io";
+import {TiDelete} from "react-icons/ti";
 import {BiSearch} from "react-icons/bi";
 import {useRouter} from "next/router";
 import UserListItem from "../../components/mypage/user-list-item/user-list-item";

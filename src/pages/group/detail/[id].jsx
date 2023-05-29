@@ -1,7 +1,7 @@
 import styles from './GroupDetail.module.css';
 import {BiX} from "react-icons/bi";
 import {useRouter} from "next/router";
-import {IoIosArrowBack} from "react-icons/all";
+import {IoIosArrowBack} from "react-icons/io";
 import {GROUP_DUMMY} from "../../../common/dummy";
 import {AiFillSetting} from "react-icons/ai";
 import GroupScheduleCard from "../../../components/card/group-schedule-card/GroupScheduleCard";
@@ -88,11 +88,11 @@ export default function GroupDetail () {
         (m) => {
             return m.groupId.toString() === GROUP_ID});
 
-    const GroupPrimaryColor = groupData[0].primaryColor;
+    const GroupPrimaryColor = '#FDE4F7';
     const GroupName = groupData[0].groupName;
-    const GroupFontColor = groupData[0].FontColor;
+    const GroupFontColor = '#FE4545';
     const GroupIntro = groupData[0].content;
-    const GroupInviteColor = groupData[0].InviteColor;
+    const GroupInviteColor = '#FA9B9B';
     const GroupMemberList = groupData[0].memberList;
 
     return (
