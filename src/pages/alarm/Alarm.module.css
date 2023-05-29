@@ -1,5 +1,32 @@
 .container {
     width: 100vw;
     height: 100vh;
+    background-color: #F5BF55;
 }
 
+.topNav {
+    background-color: #0070f3;
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    padding: 10px
+}
+
+.topNav h2 {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.contentContainer {
+    width: 100%;
+    height: calc(100% - 52px);
+    background-color: #3E00EF;
+}

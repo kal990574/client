@@ -6,25 +6,7 @@ import styles from './Group.module.css';
 import {BsFillPlusCircleFill} from 'react-icons/bs'
 import GroupCard from "../../components/group/group-card/GroupCard";
 import {useRouter} from "next/router";
-
-const dummy = [
-    {
-        primaryColor: '#FDE4F7',
-        FontColor: '#FE4545',
-        InviteColor: '#FA9B9B',
-        groupName: '사이버보안 캡스톤디자인 스터디',
-        memberList: ['손진혁', '이재현', '장연지'],
-        content: '사이버보안 캡스톤디자인 스터디입니다.'
-    },
-    {
-        primaryColor: '#FFFDCF',
-        FontColor: '#FEB445',
-        InviteColor: '#FAE59B',
-        groupName: '해머',
-        memberList: ['손진혁', '이재현', '장연지', '한창민'],
-        content: '사이버보안학과 해머'
-    },
-]
+import {GROUP_DUMMY} from "../../common/dummy";
 
 export default function Group() {
     const router = useRouter();
@@ -45,8 +27,17 @@ export default function Group() {
                 <div className={styles.groupListContainer}>
                     <div className={styles.groupListInnerContainer}>
                         {
-                            dummy.map((d, index) => {
-                                return <GroupCard key={index} content={d.content} groupName={d.groupName} FontColor={d.FontColor} InviteColor={d.InviteColor} memberList={d.memberList} primaryColor={d.primaryColor} />
+                            GROUP_DUMMY.map((d, index) => {
+                                return <GroupCard
+                                    groupId={d.groupId}
+                                    key={d.groupId}
+                                    content={d.content}
+                                    groupName={d.groupName}
+                                    FontColor={d.FontColor}
+                                    InviteColor={d.InviteColor}
+                                    memberList={d.memberList}
+                                    primaryColor={d.primaryColor}
+                                />
                             })
                         }
                     </div>

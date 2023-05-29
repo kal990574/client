@@ -1,15 +1,21 @@
 import styles from './GroupCard.module.css';
 import { BiX } from 'react-icons/bi';
 import {CgMathPlus} from "react-icons/cg";
+import {useRouter} from "next/router";
 
-export default function GroupCard({primaryColor, FontColor, InviteColor, groupName, memberList, content}) {
+export default function GroupCard({groupId, primaryColor, FontColor, InviteColor, groupName, memberList, content}) {
     const color = primaryColor ? primaryColor : '#FDE4F7';
     const fontColor = FontColor ? FontColor : '#FE4545';
     const inviteColor = InviteColor ? InviteColor :'#FA9B9B';
     const INVITE = 'invite';
+    const router = useRouter();
 
     return (
-        <div className={styles.groupCardContainer} style={{background: color}}>
+        <div
+            onClick={() => {
+                router.replace('group/detail/'+groupId);
+            }}
+            className={styles.groupCardContainer} style={{background: color}}>
             <div className={styles.titleContainer}>
                 <h1 style={{color: fontColor}}>{
                     groupName
@@ -30,12 +36,15 @@ export default function GroupCard({primaryColor, FontColor, InviteColor, groupNa
                 </div>
             </div>
             <div className={styles.memberContainer}>
-                <span style={{color: fontColor, fontWeight: 700, marginRight: '10px',}}>
+                <div
+                    style={{width: '30px', color: fontColor, fontWeight: 700, marginRight: '10px',}}>
                     멤버
-                </span>
-                <span>
-                    {memberList}
-                </span>
+                </div>
+                <div className={styles.memberList}>
+                    {memberList.map((m, index) => {
+                        return <span key={index}>{m}</span>
+                    })}
+                </div>
             </div>
         </div>
     );

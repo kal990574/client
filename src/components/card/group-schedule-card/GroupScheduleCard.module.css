@@ -1,0 +1,44 @@
+.container {
+    width: calc(100% - 22px);
+    height: 40vw;
+    margin: 10px 0;
+    border-radius: 15px;
+    padding:10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.mainContent {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.mainContent h2 {
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.subContent {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.subContentItem span {
+    margin-right: 10px;
+}
+
+.subContentItem {
+    height: 20px;
+    display: flex;
+    align-content: center;
+    line-height: 1;
+}

@@ -23,7 +23,7 @@ export default function Login() {
         e.preventDefault();
         if(userId.value === 'admin' && userPw.value === 'admin') {
             alert("로그인 성공");
-            router.push('/calendar');
+            router.push('/home');
         }
 
     }
@@ -34,7 +34,11 @@ export default function Login() {
                 <section className={styles.logoContainer}>
                     <div>
                         {/* 임시 이미지 */}
-                        <Image className={styles.logoImg} src={'./gathering.png'}/>
+                        <Image
+                            width={120}
+                            height={120}
+                            className={styles.logoImg}
+                            src={'/logo.png'}/>
                     </div>
                     <div className={styles.appTitleContainer}>
                         <h1>CALENDARY</h1>
@@ -62,16 +66,9 @@ export default function Login() {
                 {/*    </div>*/}
                 {/*</div>*/}
             </main>
-            <footer className={styles.footerContainer}>
-                <div>
-                    <span>Github: ~~~~~</span>
-                    <span>개발자: 진재연</span>
-                </div>
-
-                <p className={styles.copyright}>
-                    &copy; 2023 copyright
-                </p>
-            </footer>
+            {/*<footer className={styles.footerContainer}>*/}
+            {/*    */}
+            {/*</footer>*/}
         </section>
     );
 }

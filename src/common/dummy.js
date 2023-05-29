@@ -73,4 +73,35 @@ const DIARY_DUMMY = [
     {date: '2023-05-16', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 0  },
 ];
 
-export {FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE, DIARY_DUMMY};
+const GROUP_DUMMY = [
+    {
+        groupId: 0,
+        primaryColor: '#FDE4F7',
+        FontColor: '#FE4545',
+        InviteColor: '#FA9B9B',
+        groupName: '사이버보안 캡스톤디자인 스터디',
+        memberList: ['손진혁', '이재현', '장연지'],
+        content: '사이버보안 캡스톤디자인 스터디입니다.'
+    },
+    {
+        groupId: 1,
+        primaryColor: '#FFFDCF',
+        FontColor: '#FEB445',
+        InviteColor: '#FAE59B',
+        groupName: '해머',
+        memberList: ['손진혁', '이재현', '장연지', '한창민', '이민서', '임수진', '문채원', '전주현', '문서영'],
+        content: '사이버보안학과 해머'
+    },
+];
+
+const DATE = {
+    0: '일요일',
+    1: '월요일',
+    2: '화요일',
+    3: '수요일',
+    4: '목요일',
+    5: '금요일',
+    6: '토요일',
+};
+
+export {DATE, GROUP_DUMMY, FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE, DIARY_DUMMY};

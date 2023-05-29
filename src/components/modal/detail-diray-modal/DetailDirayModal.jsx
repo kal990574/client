@@ -5,6 +5,7 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import {AiFillPicture, AiFillMinusCircle} from "react-icons/ai";
 import {TbTemperatureCelsius} from "react-icons/tb";
 import EmojiModal from "~/components/modal/emoji-modal/EmojiModal";
+import {DATE} from "~/common/dummy";
 
 export const EMOJI = [
     {src: './emoji/0.png'},
@@ -56,15 +57,6 @@ export default function DetailDiaryModal({dateString, type, setOpenModal}) {
 
     const nickName = '❤️';
     const date = new Date(dateString);
-    const DATE = {
-        0: '일요일',
-        1: '월요일',
-        2: '화요일',
-        3: '수요일',
-        4: '목요일',
-        5: '금요일',
-        6: '토요일',
-    };
 
     const handleResizeHeight = () => {
         textarea.current.style.height = 'auto';

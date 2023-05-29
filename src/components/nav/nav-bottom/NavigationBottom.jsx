@@ -10,13 +10,14 @@ export default function NavigationBottom() {
     const router = useRouter();
 
     const onClickIcon = (e) => {
-        console.log(e.currentTarget.id);
         const token = localStorage.getItem('token');
-        if(token) {
-            router.replace('/'+e.currentTarget.id);
-        } else {
-            signIn("kakao")
-        }
+        router.replace('/'+e.currentTarget.id);
+
+        // if(token) {
+        //     router.replace('/'+e.currentTarget.id);
+        // } else {
+        //     signIn("kakao")
+        // }
     }
 
     return (

@@ -11,6 +11,7 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
     const endDate = endOfWeek(monthEnd);
     const today = new Date();
 
+
     // diary data
     const data = DIARY_DUMMY;
     data.forEach((d, index) => {
@@ -48,7 +49,7 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                 {/* current day*/}
                                 {formattedDate}
                             </span>
-                            { result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
+                            { !viewContent && result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
                         </div>,
                     );
                 } else {
@@ -58,7 +59,7 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                 {/* not currnet date*/}
                                 {formattedDate}
                             </span>
-                            { result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
+                            { !viewContent && result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
                         </div>,
                     );
                 }
