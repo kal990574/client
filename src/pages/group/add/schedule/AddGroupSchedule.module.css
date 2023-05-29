@@ -1,0 +1,80 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.top {
+    width: calc(100% - 30px);
+    height: 32px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+.content {
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: #F5BF55;
+}
+
+.groupContent {
+    width: 100%;
+    padding-top: 20px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupContent h3 {
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.inputContainer {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.inputStyle {
+    width: calc(80vw - 10px);
+    height: 49px;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 24px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.inputStyle:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid blue;
+}
+
+.mainInputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scheduleInputContainer {
+    width: 100%;
+    height: calc(100% - 126px);
+    background-color: #DBD8FF;
+}
+
+.scheduleDateContainer {
+
+}
