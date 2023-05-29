@@ -28,7 +28,7 @@ export default function UserListItem({name, introduce, follow}) {
 
                 <button onClick={onClickFollow} className={ !state ? styles.followButton : styles.followingButton}>
                     {
-                        state ? '팔로잉' : '팔로우'
+                        state ? '신청 취소' : '친구 신청'
                     }
                 </button>
             </div>

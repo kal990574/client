@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Image from "next/image";
 import {useEffect} from "react";
 
-const CategoryItem =  ({color, name}) => {
+const CategoryItem =  ({color, name}: {color: string, name: string}) => {
     return (
         <div className={styles.categoryItemContainer}>
             <div className={styles.categoryItemColor} style={{background: color}} />

@@ -1,7 +1,7 @@
 import styles from './AddGroupMember.module.css';
 import {BsCheckLg} from "react-icons/bs";
 import {IoIosArrowBack} from "react-icons/io";
-import {GROUP_DUMMY} from "../../../../common/dummy";
+import {GROUP_DUMMY} from "~/common/dummy";
 import {useRouter} from "next/router";
 import {IoAddCircleSharp, IoCloseCircleOutline, IoCloseCircleSharp} from "react-icons/io5";
 import {useState} from "react";
@@ -9,7 +9,10 @@ import {useState} from "react";
 export default function AddGroupMember() {
     // 현재 그룹에 포함된 인원 외 사람들 리스트 보여줌.
     const router = useRouter();
-    const data = GROUP_DUMMY[router.query.id];
+
+    const groupId = router.query.id as string;
+
+    const data = GROUP_DUMMY[0];
     const [addMember, setAddMember] = useState([]);
 
     const INVITABLE = [

@@ -12,12 +12,11 @@ import {useSession} from "next-auth/react";
 export default function Home() {
     const { data: sessionData, status } = useSession();
     const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
+    const myInfoQuery = api.user.getMyInfo.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
     // const [selectedMonth, setSelectedMonth] = useState(new Date());
     const [openMonthPicker, setOpenMonthPicker] = useState(false);
-
-    useEffect(() => {
-        console.log(schedules.data);
-    }, [schedules]);
 
     const [open, setOpen] = useState(false);
     const [viewType, setViewType] = useState(0);
@@ -28,11 +27,14 @@ export default function Home() {
         }
     }
 
+    if (!myInfoQuery.data)
+        return null;
+
     return(
         <main className={styles.container} onClick={onClickView}>
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             {/*<NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />*/}
-            <FriendsCircleList />
+            <FriendsCircleList data={myInfoQuery.data}/>
             <Calendar setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
             <NavigationBottom />
         </main>
