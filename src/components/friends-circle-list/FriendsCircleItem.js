@@ -2,9 +2,11 @@ import React from 'react';
 import styles from './FriendsCircleItem.module.css';
 import Image from "next/image";
 
-export default function FriendsCircleItem({index, selected, title, src, setSelected}) {
+export default function FriendsCircleItem({setCurrentUser, index, selected, title, src, setSelected}) {
     return (
-        <li className={styles.container}>
+        <li className={styles.container} onClick={() => {
+            setCurrentUser((prev) => index)
+        }}>
             <button onClick={() => setSelected((prev) => index)}>
                 <div className={selected ? styles.selectedProfileImgBox : styles.profileImgBox}>
                     <div className={styles.profileImgInnerBox}>

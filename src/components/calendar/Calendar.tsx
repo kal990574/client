@@ -8,7 +8,7 @@ import DetailScheduleModal from "../modal/detail-schedule-modal/DetailScheduleMo
 import {useSession} from "next-auth/react";
 import DetailDiaryModal from "~/components/modal/detail-diray-modal/DetailDirayModal";
 
-export default function Calendar({ viewType, setOpenMonthPicker }: {viewType: number, setOpenMonthPicker: any}) {
+export default function Calendar({diary, schedules, viewType, setOpenMonthPicker }: {viewType: number, setOpenMonthPicker: any}) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [viewContent, setViewContent] = useState(true); // ture: calendar, false: diary
     const [day, setDay] = useState(null);
@@ -45,7 +45,7 @@ export default function Calendar({ viewType, setOpenMonthPicker }: {viewType: nu
             { /* Calendar Area */ }
             {
                 (viewType == 0) && (
-                    <MonthView key={'monthView'} stateDay={day} setDay={setDay} viewContent={viewContent} currentDate={currentDate} />
+                    <MonthView diary={diary} schedules={schedules} key={'monthView'} stateDay={day} setDay={setDay} viewContent={viewContent} currentDate={currentDate} />
                 )
             }
             {

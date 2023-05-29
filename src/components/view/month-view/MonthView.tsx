@@ -70,7 +70,7 @@ const PartTime = styled.div`
   padding-top: 1px;
 `;
 
-export default function MonthView({stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
+export default function MonthView({diary, schedules, stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -126,6 +126,9 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
         2: {color: '#f2b0ff'},
         3: {color: '#1f48ff'},
     };
+
+    // viewContent === true -> calendar
+    // const data = viewContent ? schedules : diary;
 
     // diary data
     const data = viewContent ? CALENDAR_SCHEDULE_DUMMY : DIARY_DUMMY;
