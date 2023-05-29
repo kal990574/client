@@ -9,7 +9,7 @@ const FriendsPage: NextPage = () => {
 
     return (
         <main className={styles.container}>
-            <MyNavigation title={'이재현'} />
+            <MyNavigation title={myInfoQuery.data?.name} />
             <div className={styles.contentContainer}>
                 <div className={styles.listContainer}>
                     {

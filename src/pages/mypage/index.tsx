@@ -37,7 +37,7 @@ export default function UserInfoPage() {
                     </div>
                     <div className={styles.nameContainer}>
                         <span>
-                            이재현
+                            {myInfoQuery.data?.name}
                         </span>
                     </div>
                     <div className={styles.profileEditButtonContainer}>
