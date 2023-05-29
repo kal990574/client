@@ -30,9 +30,7 @@ const dummy = [
     {name: '장연지', introduce: '안녕 난 연지', follow: true},
     {name: '장연지', introduce: '안녕 난 연지', follow: true},
     {name: '장연지', introduce: '안녕 난 연지', follow: true},
-
-
-]
+];
 
 export default function Follow() {
     const follower = 14;

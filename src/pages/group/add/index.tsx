@@ -1,12 +1,12 @@
 import styles from './GroupAdd.module.css';
-import CustomHead from "../../../components/head/CustomHead";
+import CustomHead from "~/components/head/CustomHead";
 import NavigationTop from "../../../components/nav/nav-top/NavigationTop";
-import MyNavigation from "../../../components/mypage/nav/my-navigation";
+import MyNavigation from "~/components/mypage/nav/my-navigation";
 import {useState} from "react";
 import {BiX} from "react-icons/bi";
-import {COLOR_LIST, FRIENDS_LIST} from "../../../common/dummy";
+import {COLOR_LIST, FRIENDS_LIST} from "~/common/dummy";
 import {AiFillMinusCircle} from "react-icons/ai";
-import {PRIMARY_COLOR} from "../../../components/calendar/configs";
+import {PRIMARY_COLOR} from "~/components/calendar/configs";
 
 export default function GroupAdd() {
     const [color, setColor] = useState('');
@@ -106,7 +106,7 @@ export default function GroupAdd() {
                         value={groupName}
                         name={'groupName'}
                         type={'text'}
-                        required={'required'} />
+                        required={true} />
                 {/*</div>*/}
                 <div className={styles.categoryContainer}>
                     <h2 id={'color'} className={styles.font16_700} onClick={(e) => {
