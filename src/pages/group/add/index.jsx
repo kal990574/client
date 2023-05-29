@@ -6,9 +6,10 @@ import {useState} from "react";
 import {BiX} from "react-icons/bi";
 import {COLOR_LIST, FRIENDS_LIST} from "../../../common/dummy";
 import {AiFillMinusCircle} from "react-icons/ai";
+import {PRIMARY_COLOR} from "../../../components/calendar/configs";
 
 export default function GroupAdd() {
-    const [category, setCategory] = useState('');
+    const [color, setColor] = useState('');
     const [memberList, setMemberList] = useState([]);
     const [groupName, setGroupName] = useState('');
     const [openModal, setOpenModal] = useState(false);
@@ -41,25 +42,24 @@ export default function GroupAdd() {
                     }}
                 >
                     {
-                       openModal === 'category'
+                       openModal === 'color'
                             ?  <div className={styles.modal}>
                                 <div className={styles.modalTop}>
                                     <BiX style={{visibility: 'hidden'}} className={styles.icon} />
                                     <h2>카테고리</h2>
                                     <BiX className={styles.icon} onClick={() => setOpenModal((prev) => false)} />
                                 </div>
-                                <div className={styles.modalContent}>
+                                <div className={styles.colorModal}>
                                     {
-                                        COLOR_LIST.map((item, index) => {
+                                        Object.keys(PRIMARY_COLOR).map((key, index) => {
+                                            const data = PRIMARY_COLOR[key];
                                             return (
                                                 <div key={index} className={styles.colorListItem} onClick={() => {
-                                                    setCategory((prev) => index);
+                                                    setColor((prev) => key);
                                                     setOpenModal((prev) => false);
                                                 }}>
-                                                    <div className={styles.color} style={{background: item.color}}></div>
-                                                    <div className={styles.colorName}>
-                                                        {item.name}
-                                                    </div>
+                                                    <div className={styles.color} style={{background: data.primary}}></div>
+                                                    <span>{key}</span>
                                                 </div>
                                             )
                                         })
@@ -109,19 +109,19 @@ export default function GroupAdd() {
                         required={'required'} />
                 {/*</div>*/}
                 <div className={styles.categoryContainer}>
-                    <h2 id={'category'} className={styles.font16_700} onClick={(e) => {
+                    <h2 id={'color'} className={styles.font16_700} onClick={(e) => {
                         setOpenModal((prev) => e.target.id)
-                    }}>카테고리 선택</h2>
+                    }}>색상 선택</h2>
                     <div onClick={(e) => {
-                        if(category === '') {
-                            setOpenModal((prev) => 'category');
+                        if(color === '') {
+                            setOpenModal((prev) => 'color');
                         }
                     }}>
-                        { category.length === 0 ? '' : COLOR_LIST[category].name}
-                        { category.length === 0
+                        { color.length === 0 ? '' : color}
+                        { color.length === 0
                             ? <></>
                             : <AiFillMinusCircle
-                                onClick={() => setCategory(() => '')}
+                                onClick={() => setColor(() => '')}
                                 style={{width: '20px', height: '20px', marginLeft: '10px'}} />}
                     </div>
                 </div>

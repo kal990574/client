@@ -8,40 +8,43 @@ import styled from 'styled-components';
 const DaysScheduleS = styled.div`
   margin-left: 1px;
   width: calc(100% - 1px);
-  height: 20px;
+  height: 19px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   color: white;
   font-weight: 800;
   font-size: 14px;
   overflow: hidden;
+  padding-top: 1px;
 `;
 
 const DaysScheduleM = styled.div`
   width: 100%;
-  height: 20px;
+  height: 19px;
   color: white;
   font-weight: 800;
   font-size: 14px;
   overflow: hidden;
+  padding-top: 1px;
 `;
 
 
 const DaysScheduleE = styled.div`
   margin-right: 1px;
   width: calc(100% - 1px);
-  height: 20px;
+  height: 19px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   color: white;
   font-weight: 800;
   overflow: hidden;
   font-size: 14px;
+  padding-top: 1px;
 `;
 
 const FullTime = styled.div`
     width: 100%;
-    height: 24px;
+    height: 23px;
     border-radius: 15px;
   display: flex;
   align-items: center;
@@ -49,6 +52,7 @@ const FullTime = styled.div`
     font-weight: 800;
     font-size: 14px;
     overflow: hidden;
+  padding-top: 1px;
 `;
 
 const PartTime = styled.div`
@@ -56,8 +60,9 @@ const PartTime = styled.div`
   border-radius: 15px;
   font-size: 14px;
   font-weight: 800;
-  height: 20px;
+  height: 19px;
   overflow: hidden;
+  padding-top: 1px;
 `;
 
 export default function MonthView({stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
@@ -131,7 +136,7 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
 
 
     const onClickEvent = (e) => {
-        setDay(e.target.id);
+        setDay(e.currentTarget.id);
     }
 
     const rows = [];
@@ -186,13 +191,13 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                     overflow: 'hidden',
                                     margin: '0',
                                     textOverflow: 'ellipsis',
-                                    textAlign: 'center',
                                     lineHeight: 'inherit',
+                                    whiteSpace: 'nowrap',
                                     paddingLeft: '1px',
                                     height: '20px',
                                 }}
                             >
-                                {d.title}
+                                { d.title.slice(0, 5)}
                             </span>
                         </FullTime>
                     );
@@ -209,13 +214,13 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                     overflow: 'hidden',
                                     margin: '0',
                                     textOverflow: 'ellipsis',
-                                    textAlign: 'center',
                                     lineHeight: 'inherit',
+                                    whiteSpace: 'nowrap',
                                     paddingLeft: '1px',
                                     height: '20px',
                                 }}
                             >
-                                {d.title}
+                                { d.title.slice(0, 5)}
                             </span>
                         </PartTime>
                     );
@@ -241,13 +246,13 @@ export default function MonthView({stateDay, setDay, viewContent, currentDate, s
                                     overflow: 'hidden',
                                     margin: '0',
                                     textOverflow: 'ellipsis',
-                                    // textAlign: 'center',
                                     lineHeight: 'inherit',
+                                    whiteSpace: 'nowrap',
                                     height: '20px',
                                 }}
                             >
-                                { d.startDate.getDate() +1 === day.getDate() ? d.title : ''}
-                                { d.startDate.getDate() +2 === day.getDate() ? d.title.slice(5,) : ''}
+                                { d.startDate.getDate() +1 === day.getDate() ? d.title.slice(0, 5) : ''}
+                                { d.startDate.getDate() +2 === day.getDate() ? d.title.slice(5,11) : ''}
                                 { d.startDate.getDate() +3 === day.getDate() ? d.title.slice(11,) : ''}
 
                             </span>
