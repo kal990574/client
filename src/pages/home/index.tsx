@@ -12,7 +12,6 @@ import {useSession} from "next-auth/react";
 export default function Home() {
     const { data: sessionData, status } = useSession();
     const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
-
     const myInfoQuery = api.user.getMyInfo.useQuery(undefined, { enabled: sessionData?.user !== undefined });
 
     // const [selectedMonth, setSelectedMonth] = useState(new Date());
