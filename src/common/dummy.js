@@ -94,6 +94,60 @@ const GROUP_DUMMY = [
     },
 ];
 
+const CALENDAR_SCHEDULE_DUMMY = [
+    {   scheduleId: 0,
+        title: '자격증 시험 접수 기간',
+        summary: '자격증 시험 접수 기간, url ~~~',
+        categoryName: 1,
+        startDate: '2023-05-01',
+        startTime: '9am',
+        location: '',
+        endDate: '2023-05-10',
+        endTime: '6pm',
+    },
+    {   scheduleId: 1,
+        title: '수진이랑 카공',
+        summary: '수진이랑 카공',
+        categoryName: 0,
+        startDate: '2023-05-17',
+        startTime: '2pm',
+        location: '에이바웃커피',
+        endDate: '2023-05-17',
+        endTime: '8pm',
+    },
+    {   scheduleId: 2,
+        title: '채원이랑 카공',
+        summary: '채원이랑 카공',
+        categoryName: 0,
+        startDate: '2023-05-19',
+        startTime: '3pm',
+        location: '스타벅스',
+        endDate: '2023-05-19',
+        endTime: '8pm',
+    },
+    {   scheduleId: 3,
+        title: '자격증 필기 시험',
+        summary: '정보처리기사 필기 시험',
+        categoryName: 1,
+        startDate: '2023-05-23',
+        startTime: '2pm',
+        location: '',
+        endDate: '2023-05-23',
+        endTime: '4pm',
+    },
+    {   scheduleId: 4,
+        title: '롤 이벤트 기간',
+        summary: '롤 이벤트',
+        categoryName: 3,
+        startDate: '2023-05-24',
+        startTime: '',
+        location: '',
+        endDate: '2023-05-24',
+        endTime: '',
+    },
+];
+
+
 const DATE = {
     0: '일요일',
     1: '월요일',
@@ -104,4 +158,4 @@ const DATE = {
     6: '토요일',
 };
 
-export {DATE, GROUP_DUMMY, FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE, DIARY_DUMMY};
+export {CALENDAR_SCHEDULE_DUMMY, DATE, GROUP_DUMMY, FRIENDS_LIST, DETAIL_SCHEDULE, COLOR_LIST, SCOPE_DISCLOSURE, DIARY_DUMMY};

@@ -1,18 +1,17 @@
 .container {
     width: 100vw;
     height: 100vh;
-    background-color: #F5BF55;
 }
 
 .topNav {
-    background-color: #0070f3;
     width: calc(100% - 20px);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 32px;
-    padding: 10px
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
 }
 
 .topNav h2 {
@@ -26,7 +25,38 @@
 }
 
 .contentContainer {
+    width: calc(100% - 20px);
+    height: calc(100% - 72px);
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.todayContainer {
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+.dayContainer {
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+.dayContainer h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.todayContainer h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.alarmList {
     width: 100%;
-    height: calc(100% - 52px);
-    background-color: #3E00EF;
 }
