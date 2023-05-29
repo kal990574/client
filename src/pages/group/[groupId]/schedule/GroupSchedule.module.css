@@ -42,6 +42,7 @@
 }
 
 .main .mainContent h2 {
+    margin: 10px 0;
     font-size: 26px;
     font-weight: 800;
 }
@@ -74,4 +75,9 @@
     width: 100%;
     height: calc(100% - 26px);
     background-color: #F5BF55;
+}
+
+.subContent {
+    width: 100%;
+    height: calc(100% - 120px);
 }

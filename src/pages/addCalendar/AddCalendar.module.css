@@ -44,7 +44,7 @@
 
 /* color */
 .innerContainer {
-    width: calc(100% - 48px);
+    width: 100%;
     padding: 0 24px;
     margin-bottom: 22px;
 }
@@ -106,8 +106,13 @@
 }
 
 .dateContainer {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
 .dateLine {
@@ -147,4 +152,31 @@
     font-size: 18px;
     font-weight: 600;
     margin-right: 10px;
+}
+
+.dateSpan {
+    width: 40vw;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.dateBox {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dateBox .dateSpan {
+    font-size: 16px;
+    text-align: center;
+}
+
+.timeBox {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

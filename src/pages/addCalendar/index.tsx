@@ -1,7 +1,7 @@
 import styles from './AddCalendar.module.css';
 import { BiX, BiTime, BiPlusCircle } from 'react-icons/bi';
 import {useRouter} from "next/router";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import ColorModal from "../../components/modal/color-modal/ColorModal";
 import SearchModal from "../../components/modal/search-modal/SearchModal";
 import {useSession} from "next-auth/react";
@@ -10,6 +10,7 @@ import {NextPage} from "next";
 import {SCOPE_DISCLOSURE} from '../../common/dummy';
 import ScopeModal from "../../components/modal/scope-modal/ScopeModal";
 import { TimePicker } from 'react-ios-time-picker';
+import DatePicker from "react-datepicker";
 
 // <div>
 //     <TimePicker onChange={onChange} value={value} />
@@ -18,6 +19,7 @@ import { TimePicker } from 'react-ios-time-picker';
 // date:
 const AddCalendarPage: NextPage = () => {
     const router = useRouter();
+
     const [sTime, setsTime] = useState('10:00');
     const [eTime, seteTime] = useState('11:00');
 
@@ -40,6 +42,10 @@ const AddCalendarPage: NextPage = () => {
     const [scope, setScope] = useState(0);
     const [openScope, setOpenScope] = useState(false);
     const [memberList, setMemberList] = useState([]);
+
+    const [startDate, setStartDate] = useState(new Date(Number(router.query.date)));
+    const [endDate, setEndDate] = useState(new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 1));
+
 
     const [category, setCategory] = useState({
         color: '#5c61ff'
@@ -114,30 +120,50 @@ const AddCalendarPage: NextPage = () => {
                     </div>
                     {
                         !time
-                            ? <div style={{marginTop: '12px'}}>
-                                {date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일     종일"}
+                            ? <div style={{marginTop: '20px'}}>
+                                <div>
+                                    <DatePicker
+                                        className={styles.dateSpan}
+                                        dateFormat={"yyyy년 MM월 dd일"}
+일                                       selected={startDate}
+                                        onChange={date => setStartDate(date)}
+                                    />
+                                </div>
+
                             </div>
                             : <div className={styles.dateContainer}>
-                                <div style={{marginTop: '20px', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                    <TimePicker style={{width: '50%'}} onChange={onChangeS} value={sTime} cellHeight={40} />
-                                    <TimePicker style={{width: '50%'}} onChange={onChangeE} value={eTime} cellHeight={40} />
+                                <div className={styles.dateBox}>
+                                    <DatePicker
+                                        className={styles.dateSpan}
+                                        dateFormat={"yyyy년 MM월 dd일"}
+                                        selected={startDate}
+                                        onChange={date => {
+                                            if(endDate.getFullYear() >= date.getFullYear()
+                                                && endDate.getMonth() >= date.getMonth()
+                                                && endDate.getDate() >= date.getDate()
+                                            ) {
+                                                setStartDate(date)
+                                            }
+                                        }}
+                                    />
+                                    <DatePicker
+                                        className={styles.dateSpan}
+                                        dateFormat={"yyyy년 MM월 dd일"}
+                                        selected={endDate}
+                                        onChange={date => {
+                                            if(startDate.getFullYear() <= date.getFullYear()
+                                                && startDate.getMonth() <= date.getMonth()
+                                                && startDate.getDate() <= date.getDate()
+                                            ) {
+                                                setStartDate(date)
+                                            }}
+                                        }
+                                    />
                                 </div>
-                                {/*<div className={styles.dateLine}>*/}
-                                {/*    <div>*/}
-                                {/*        start date*/}
-                                {/*    </div>*/}
-                                {/*    <div>*/}
-                                {/*        start time*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={styles.dateLine}>*/}
-                                {/*    <div>*/}
-                                {/*        end date*/}
-                                {/*    </div>*/}
-                                {/*    <div>*/}
-                                {/*        end time*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
+                            <div className={styles.timeBox}>
+                                <TimePicker style={{width: '50%'}} onChange={onChangeS} value={sTime} cellHeight={40} />
+                                <TimePicker style={{width: '50%'}} onChange={onChangeE} value={eTime} cellHeight={40} />
+                            </div>
                             </div>
                     }
                 </div>
