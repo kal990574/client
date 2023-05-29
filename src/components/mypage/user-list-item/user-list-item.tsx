@@ -25,7 +25,7 @@ export default function UserListItem({userId, follow}: {userId: string, follow: 
                     {userInfoQuery.data?.name}
                 </span>
                     <span className={styles.introduce}>
-                    {userInfoQuery.data?.name}
+                    {userInfoQuery.data?.introduce}
                 </span>
                 </div>
 
