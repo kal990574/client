@@ -66,3 +66,9 @@
 .today {
     background-color: lightgrey;
 }
+
+.dayFlex {
+    display: flex;
+    flex-direction: column;
+}
+
