@@ -12,6 +12,11 @@ import {useSession} from "next-auth/react";
 export default function MyEdit() {
     const {data: sessionData} = useSession();
     const router = useRouter();
+
+    const userInfoQuery = api.user.getMyInfo.useQuery(undefined, {
+        staleTime: Infinity,
+    });
+
     const user = {
         id: 'qwe',
         name: '김유저',
