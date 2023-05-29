@@ -1,7 +1,7 @@
 import styles from './GroupDetail.module.css';
 import {BiX} from "react-icons/bi";
 import {useRouter} from "next/router";
-import {IoIosArrowBack} from "react-icons/io";
+import {IoIosArrowBack, IoMdAddCircleOutline} from "react-icons/io";
 import {GROUP_DUMMY} from "../../../common/dummy";
 import {AiFillSetting} from "react-icons/ai";
 import GroupScheduleCard from "../../../components/card/group-schedule-card/GroupScheduleCard";
@@ -150,6 +150,9 @@ export default function GroupDetail () {
                     <h2
                         style={{borderBottom: `2px solid ${GroupInviteColor}`}}
                     >그룹 일정</h2>
+                    <IoMdAddCircleOutline onClick={() => {
+                        router.push(`/group/add/schedule/${GROUP_ID}`);
+                    }} className={styles.addIcon} />
                     <div
                         className={styles.groupScheduleList}
                         // style={{background: GroupInviteColor, border: `1px solid ${GroupFontColor}`, borderRadius: '15px'}}
