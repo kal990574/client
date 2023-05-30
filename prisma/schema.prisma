@@ -63,6 +63,7 @@ model User {
   GroupParticipant                  GroupParticipant[]
   Categories                        Category[]
   ScheduleParticipantInvite         ScheduleParticipantInvite[]
+  diaries                           Diary[]
 }
 
 model VerificationToken {
@@ -135,6 +136,15 @@ model Schedule {
   participantInvites ScheduleParticipantInvite[]
 
   @@index([categoryId])
+  @@index([ownerId])
+}
+
+model Diary {
+  id String @id @default(cuid())
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
   @@index([ownerId])
 }
 
