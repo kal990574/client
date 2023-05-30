@@ -5,6 +5,8 @@ import DetailScheduleModal from "../../modal/detail-schedule-modal/DetailSchedul
 import {CALENDAR_SCHEDULE_DUMMY, DIARY_DUMMY} from "~/common/dummy";
 import styled from 'styled-components';
 import {useRouter} from "next/router";
+import {useSession} from "next-auth/react";
+import {api} from "~/utils/api";
 
 const DaysScheduleS = styled.div`
   margin-left: 1px;
@@ -71,19 +73,22 @@ const PartTime = styled.div`
   padding-top: 1px;
 `;
 
-export default function MonthView({diary, schedules, stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
+export const isSameDate = (date1, date2) => {
+    return date1.getFullYear() === date2.getFullYear()
+        && date1.getMonth() === date2.getMonth()
+        && date1.getDate() === date2.getDate();
+}
+
+export default function MonthView({diary, stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
+    const { data: sessionData, status } = useSession();
+    const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
+
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
     const today = new Date();
     const router = useRouter();
-
-    const isSameDate = (date1, date2) => {
-        return date1.getFullYear() === date2.getFullYear()
-            && date1.getMonth() === date2.getMonth()
-            && date1.getDate() === date2.getDate();
-    }
 
     const checkDaysSchedule = (standard, start, end) => {
         // 1 start
@@ -134,7 +139,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
 
     // diary data
     const data = viewContent
-        ? CALENDAR_SCHEDULE_DUMMY :
+        ? schedules.data :
         DIARY_DUMMY.map(d => ({
             ...d, date: new Date(d.date)
         }));
@@ -191,7 +196,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                     dayRender.push(
                         <FullTime
                             style={{
-                                background: `${CATEGORY[d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
                             }}
                         >
                             <span
@@ -214,7 +219,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                     dayRender.push(
                         <PartTime
                             style={{
-                                border: `2px solid ${CATEGORY[d.categoryName].color}`
+                                border: `2px solid ${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
                             }}
                         >
                             <span
@@ -237,7 +242,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                     dayRender.push(
                         <DaysScheduleS
                             style={{
-                                background: `${CATEGORY[d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
                             }}
                         >
                         </DaysScheduleS>
@@ -246,7 +251,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                     dayRender.push(
                         <DaysScheduleM
                             style={{
-                                background: `${CATEGORY[d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
                             }}
                         >
                             <span
@@ -272,7 +277,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                     dayRender.push(
                         <DaysScheduleE
                             style={{
-                                background: `${CATEGORY[d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
                             }}
                         />
                     );
