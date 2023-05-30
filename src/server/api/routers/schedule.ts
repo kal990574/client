@@ -11,7 +11,7 @@ export const scheduleRouter = createTRPCRouter({
   createSchedule: protectedProcedure.input(z.object({
     title: z.string(),
     summary: z.string(),
-    categoryName: z.optional(z.string()),
+    categoryId: z.optional(z.string()),
     startDate: z.date(),
     startTime: z.optional(z.date()),
     location: z.optional(z.string()),
