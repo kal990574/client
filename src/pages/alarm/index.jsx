@@ -1,6 +1,7 @@
 import styles from './Alarm.module.css';
 import { IoIosArrowBack } from "react-icons/io";
 import styled from 'styled-components';
+import {useRouter} from "next/router";
 
 const AlarmCard = styled.div`
   width: 100%;
@@ -9,6 +10,7 @@ const AlarmCard = styled.div`
 
 export default function Alarm() {
     const today = new Date();
+    const router = useRouter();
 
     let dummy = [
         {date: '2023-05-29', img: '', message: '민서님이 팔로우하였습니다.'},
@@ -61,7 +63,7 @@ export default function Alarm() {
     return (
         <main className={styles.container}>
             <div className={styles.topNav}>
-                <IoIosArrowBack className={styles.icon} />
+                <IoIosArrowBack className={styles.icon} onClick={() => router.back()} />
                 <h2>알림</h2>
                 <IoIosArrowBack className={styles.icon} style={{visibility: 'hidden'}} />
             </div>

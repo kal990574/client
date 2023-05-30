@@ -46,6 +46,9 @@ const AddCalendarPage: NextPage = () => {
     const [startDate, setStartDate] = useState(new Date(date));
     const [endDate, setEndDate] = useState(new Date(date));
 
+    const [title , setTitle] = useState('');
+    const [content , setContent] = useState('');
+
 
     const [category, setCategory] = useState({
         color: '#5c61ff'
@@ -78,25 +81,40 @@ const AddCalendarPage: NextPage = () => {
                 {/* top navigation */}
                 <BiX className={styles.icon24} onClick={(e) => {router.back()}} />
                 <div className={styles.text16} onClick={() => {
-                    createScheduleMutation.mutate({
-                        title: "testTitle",
-                        summary: "test Summary",
-                        startDate: new Date(),
-                        endDate: new Date(),
-                    }, {
-                        onSuccess: () => router.push("/")
-                    })
+                    if(time) {
+                        createScheduleMutation.mutate({
+                            title: title,
+                            summary: content,
+                            startDate: startDate,
+                            endDate: endDate,
+                        }, {
+                            onSuccess: () => router.push("/home")
+                        })
+                    } else {
+                        createScheduleMutation.mutate({
+                            title: title,
+                            summary: content,
+                            startDate: startDate,
+                            endDate: endDate,
+                        }, {
+                            onSuccess: () => router.push("/home")
+                        })
+                    }
                 }}>저장</div>
             </div>
             <div className={styles.formContainer}>
                 {/* input */}
                 <div className={styles.lineInputContainer}>
                     {/* title */}
-                    <input className={styles.lineInput} placeholder={"제목 추가( 필수 입력 )"}/>
+                    <input onChange={(e) => {
+                        setTitle(e.currentTarget.value);
+                    }} value={title} className={styles.lineInput} placeholder={"제목 추가( 필수 입력 )"}/>
                 </div>
                 <div className={styles.lineInputContainer}>
                     {/* content */}
-                    <input className={styles.lineInput} placeholder={"내용 추가"} />
+                    <input onChange={(e) => {
+                        setContent(e.currentTarget.value);
+                    }} value={content} className={styles.lineInput} placeholder={"내용 추가"} />
                 </div>
                 <div className={`${styles.innerContainer} ${styles.flexible}`}>
                     {/* color */}
