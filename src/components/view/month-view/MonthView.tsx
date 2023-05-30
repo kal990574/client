@@ -131,17 +131,11 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
     // const data = viewContent ? schedules : diary;
 
     // diary data
-    const data = viewContent ? CALENDAR_SCHEDULE_DUMMY : DIARY_DUMMY;
-    !viewContent && data.forEach((d, index) => {
-        data[index].date = new Date(d.date)
-    });
-
-    // calendar data
-    viewContent && CALENDAR_SCHEDULE_DUMMY.forEach((d, index) => {
-        data[index].startDate = new Date(d.startDate);
-        data[index].endDate = new Date(d.endDate);
-    });
-
+    const data = viewContent
+        ? CALENDAR_SCHEDULE_DUMMY :
+        DIARY_DUMMY.map(d => ({
+            ...d, date: new Date(d.date)
+        }));
 
     const onClickEvent = (e) => {
         setDay(e.currentTarget.id);
