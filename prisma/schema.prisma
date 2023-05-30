@@ -102,26 +102,28 @@ model FriendRelationship {
 }
 
 model Category {
-  name    String @id
+  id      String @id
+  name    String
   ownerId String
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   schedules Schedule[]
 
+  @@unique([name, ownerId])
   @@index([ownerId])
 }
 
 model Schedule {
-  id           String    @id @default(cuid())
-  title        String
-  summary      String
-  categoryName String?
-  category     Category? @relation(fields: [categoryName], references: [name], onDelete: Cascade)
-  startDate    DateTime  @db.Date
-  startTime    DateTime? @db.Time
-  endDate      DateTime  @db.Date
-  endTime      DateTime? @db.Time
-  location     String?
+  id         String    @id @default(cuid())
+  title      String
+  summary    String
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  startDate  DateTime  @db.Date
+  startTime  DateTime? @db.Time
+  endDate    DateTime  @db.Date
+  endTime    DateTime? @db.Time
+  location   String?
 
   ownerId String
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
@@ -132,6 +134,7 @@ model Schedule {
   participants       ScheduleParticipant[]
   participantInvites ScheduleParticipantInvite[]
 
+  @@index([categoryId])
   @@index([ownerId])
 }
 
