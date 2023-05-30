@@ -34,6 +34,14 @@ export const scheduleRouter = createTRPCRouter({
   }),
 
   // 참가되어 있는 모든 스케줄 조회
+  getById: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.prisma.schedule.findUnique({
+      where: {
+        id: input
+      }
+    });
+  }),
+  // 참가되어 있는 모든 스케줄 조회
   getSchedules: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.schedule.findMany({
       where: {
