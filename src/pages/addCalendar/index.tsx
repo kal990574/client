@@ -12,11 +12,6 @@ import ScopeModal from "../../components/modal/scope-modal/ScopeModal";
 import { TimePicker } from 'react-ios-time-picker';
 import DatePicker from "react-datepicker";
 
-// <div>
-//     <TimePicker onChange={onChange} value={value} />
-// </div>
-
-// date:
 const AddCalendarPage: NextPage = () => {
     const router = useRouter();
 
@@ -84,7 +79,7 @@ const AddCalendarPage: NextPage = () => {
                         startDate: new Date(),
                         endDate: new Date(),
                     }, {
-                        onSuccess: () => router.push("/")
+                        onSuccess: () => router.push("/viewSchedule?id=1")
                     })
                 }}>저장</div>
             </div>
