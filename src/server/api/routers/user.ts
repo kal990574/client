@@ -91,7 +91,8 @@ export const userRouter = createTRPCRouter({
 
     // 프로필 수정
     updateMyProfile: protectedProcedure.input(z.object({
-        
+        name: z.optional(z.string()),
+        introduce: z.optional(z.string()),
     })).mutation(async ({ ctx, input  }) => {
         const userId = ctx.session.user.id;
 
@@ -99,9 +100,7 @@ export const userRouter = createTRPCRouter({
             where: {
                 id: userId,
             },
-            data: {
-
-            },
+            data: input,
         })
     }),
 

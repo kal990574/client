@@ -7,30 +7,19 @@ import Image from "next/image";
 import { BiCamera } from "react-icons/bi";
 import {api} from "~/utils/api";
 import {useSession} from "next-auth/react";
+import {User} from "@prisma/client";
 
 
-export default function MyEdit() {
-    const {data: sessionData} = useSession();
+const EditForm = ({userServerData}: {userServerData: User}) => {
     const router = useRouter();
 
-    const userInfoQuery = api.user.getMyInfo.useQuery(undefined, {
-        staleTime: Infinity,
-    });
-
-    const user = {
-        id: 'qwe',
-        name: '김유저',
-        introduce: '나는 김유저입니다.',
-        image: null,
-    };
-
     const updateUserMutation = api.user.updateMyProfile.useMutation();
-    const userData = api.user.getUserInfo.useQuery({id: user.id}).data;
-    const [nickName, setNickName] = useState(user.name);
-    const [introduce, setIntroduce] = useState(user.introduce);
+
+    const [nickName, setNickName] = useState(userServerData.name ?? "");
+    const [introduce, setIntroduce] = useState(userServerData.introduce ?? "");
 
     const inputRef = useRef<any>(null);
-    const [img, setImg] = useState(user.image ? user.image : '/img.png');
+    const [img, setImg] = useState(userServerData.image ? userServerData.image : '/img.png');
     const onUploadImage = useCallback((e: any) => {
         if (!e.target.files) {
             return;
@@ -117,5 +106,22 @@ export default function MyEdit() {
                 </div>
             </div>
         </main>
+    )
+}
+
+export default function MyEdit() {
+    const userInfoQuery = api.user.getMyInfo.useQuery(undefined, {
+        staleTime: Infinity,
+    });
+
+    if (!userInfoQuery.data) {
+        return (
+            <>
+            Loading...
+            </>
+        )
+    }
+    return (
+        <EditForm userServerData={userInfoQuery.data}/>
     )
 }
