@@ -61,7 +61,11 @@ export default function Calendar({diary, schedules, viewType, setOpenMonthPicker
 
             {
                 (openModal && viewContent) && (
-                    <DetailScheduleModal dateString={day} setOpenModal={setOpenModal} setDay={setDay} />
+                    <DetailScheduleModal
+                        schedules={schedules.data}
+                        dateString={day}
+                        setOpenModal={setOpenModal}
+                        setDay={setDay} />
                 )
             }
 

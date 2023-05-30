@@ -11,15 +11,18 @@ export default function DetailScheduleCard({props}) {
     }
     let time = [];
 
-    if(props.timeType === 'full') {
+    if(props.type === 'full') {
         time.push(<span className={styles.time}>종일</span>)
     } else {
-        time.push(<span className={styles.time}>{props.timeStampS} ~ {props.timeStampE}</span>
-        )
+        if(props.startTime !== null && props.endTime !== null) {
+            time.push(<span className={styles.time}>종일</span>)
+        } else{
+            time.push(<span className={styles.time}>{props.startTime} ~ {props.endTime}</span>)
+        }
     }
     return (
         <div className={styles.container} onClick={onClick}>
-            <div style={{background: props.color}} className={styles.color}>
+            <div style={ props.color === undefined ? {background: 'blue'} : {background: props.color}} className={styles.color}>
             </div>
             <div>
                 <h3 className={styles.title}>{props.title}</h3>

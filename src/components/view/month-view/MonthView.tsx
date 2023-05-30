@@ -73,6 +73,12 @@ const PartTime = styled.div`
   padding-top: 1px;
 `;
 
+export const isSameDate = (date1, date2) => {
+    return date1.getFullYear() === date2.getFullYear()
+        && date1.getMonth() === date2.getMonth()
+        && date1.getDate() === date2.getDate();
+}
+
 export default function MonthView({diary, stateDay, setDay, viewContent, currentDate, selectedDate, onDateClick}) {
     const { data: sessionData, status } = useSession();
     const schedules = api.schedule.getSchedules.useQuery(undefined, { enabled: sessionData?.user !== undefined });
@@ -83,12 +89,6 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
     const endDate = endOfWeek(monthEnd);
     const today = new Date();
     const router = useRouter();
-
-    const isSameDate = (date1, date2) => {
-        return date1.getFullYear() === date2.getFullYear()
-            && date1.getMonth() === date2.getMonth()
-            && date1.getDate() === date2.getDate();
-    }
 
     const checkDaysSchedule = (standard, start, end) => {
         // 1 start

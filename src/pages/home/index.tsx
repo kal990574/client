@@ -34,7 +34,7 @@ export default function Home() {
             <CustomHead title={'Calendar'} content={'CalendarPage'}/>
             {/*<NavigationTop open={open} setOpen={setOpen} viewType={viewType} setViewType={setViewType} />*/}
             <FriendsCircleList data={myInfoQuery.data}/>
-            <Calendar setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
+            <Calendar schedules={schedules} setOpenMonthPicker={setOpenMonthPicker} viewType={viewType} />
             <NavigationBottom />
         </main>
     );
