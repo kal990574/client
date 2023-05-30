@@ -19,10 +19,12 @@ const AddCalendarPage: NextPage = () => {
     const [eTime, seteTime] = useState('11:00');
 
     const onChangeS = (timeValue) => {
+        console.log(timeValue);
         setsTime(timeValue);
     }
 
     const onChangeE = (timeValue) => {
+        console.log(timeValue);
         seteTime(timeValue);
     }
 
@@ -90,6 +92,7 @@ const AddCalendarPage: NextPage = () => {
                             title: title,
                             summary: content,
                             startDate: startDate,
+                            // startTime: new Date(null, null, null, )
                             endDate: endDate,
                         }, {
                             onSuccess: () => router.push("/viewSchedule?id=1")

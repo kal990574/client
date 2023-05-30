@@ -71,15 +71,25 @@ export const userRouter = createTRPCRouter({
 
     // 로그인 사용자 하위 카테고리 생성
     createCategory: protectedProcedure.input(z.object({
-        name: z.string()
+        name: z.string(),
+        color: z.string(),
     })).mutation(async ({ ctx, input  }) => {
-
+        await ctx.prisma.category.create({
+            data: {
+                ownerId: ctx.session.user.id,
+                ...input
+            }
+        });
     }),
 
 
     // 로그인 사용자 하위 카테고리 조회
     getCategories: protectedProcedure.query(async ({ ctx, input  }) => {
-
+        return await ctx.prisma.category.findMany({
+            where: {
+                ownerId: ctx.session.user.id,
+            }
+        });
     }),
 
     // 로그인 사용자 하위 카테고리 삭제

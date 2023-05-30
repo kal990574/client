@@ -1,5 +1,5 @@
 import styles from './GroupSchedule.module.css';
-import {IoIosArrowBack} from "react-icons/all";
+import {IoIosArrowBack} from "react-icons/io";
 import {GROUP_SCHEDULE_DUMMY} from "../../detail/[id]";
 import {useRouter} from "next/router";
 
