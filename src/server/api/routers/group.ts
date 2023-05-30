@@ -52,6 +52,7 @@ export const groupRouter = createTRPCRouter({
   createGroup: protectedProcedure.input(
       z.object({
         name: z.string(),
+        summary: z.string()
       })
   ).mutation(async ({ ctx, input  }) => {
     const userId = ctx.session.user.id;
@@ -59,6 +60,7 @@ export const groupRouter = createTRPCRouter({
     return await ctx.prisma.group.create({
       data: {
         name: input.name,
+        summary: input.summary,
         participants: {
           create: {
             participantId: userId,
