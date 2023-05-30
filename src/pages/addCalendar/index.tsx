@@ -85,7 +85,7 @@ const AddCalendarPage: NextPage = () => {
                             startDate: startDate,
                             endDate: endDate,
                         }, {
-                            onSuccess: () => router.push("/viewSchedule?id=1")
+                            onSuccess: (data) => router.push(`/viewSchedule?id=${data.id}`)
                         })
                     } else {
                         createScheduleMutation.mutate({
@@ -95,7 +95,7 @@ const AddCalendarPage: NextPage = () => {
                             // startTime: new Date(null, null, null, )
                             endDate: endDate,
                         }, {
-                            onSuccess: () => router.push("/viewSchedule?id=1")
+                            onSuccess: (data) => router.push(`/viewSchedule?id=${data.id}`)
                         })
                     }
                 }}>저장</div>

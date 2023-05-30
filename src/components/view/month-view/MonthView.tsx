@@ -73,7 +73,7 @@ const PartTime = styled.div`
   padding-top: 1px;
 `;
 
-export const isSameDate = (date1, date2) => {
+export const isSameDate = (date1: Date, date2: Date) => {
     return date1.getFullYear() === date2.getFullYear()
         && date1.getMonth() === date2.getMonth()
         && date1.getDate() === date2.getDate();
@@ -196,7 +196,7 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
                     dayRender.push(
                         <FullTime
                             style={{
-                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName]?.color}`
                             }}
                         >
                             <span
@@ -216,10 +216,11 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
                         </FullTime>
                     );
                 } else if( d.type === 'part') {
+                    console.log(d);
                     dayRender.push(
                         <PartTime
                             style={{
-                                border: `2px solid ${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
+                                border: `2px solid ${CATEGORY[d.categoryName === null ? 1 : d.categoryName]?.color}`
                             }}
                         >
                             <span
@@ -242,7 +243,7 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
                     dayRender.push(
                         <DaysScheduleS
                             style={{
-                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName]?.color}`
                             }}
                         >
                         </DaysScheduleS>
@@ -251,7 +252,7 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
                     dayRender.push(
                         <DaysScheduleM
                             style={{
-                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName]?.color}`
                             }}
                         >
                             <span
@@ -277,7 +278,7 @@ export default function MonthView({diary, stateDay, setDay, viewContent, current
                     dayRender.push(
                         <DaysScheduleE
                             style={{
-                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName].color}`
+                                background: `${CATEGORY[d.categoryName === null ? 1 : d.categoryName]?.color}`
                             }}
                         />
                     );
