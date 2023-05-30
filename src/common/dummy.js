@@ -63,14 +63,14 @@ const SCOPE_DISCLOSURE = [
 ]
 
 const DIARY_DUMMY = [
-    {date: '2023-05-28', content: '나는 배가 너무 고파용', icon: 0, picture: '', scope: 0  },
-    {date: '2023-05-29', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
-    {date: '2023-05-30', content: '나는 배가 너무 고파용', icon: 3, picture: '', scope: 1  },
-    {date: '2023-05-25', content: '나는 배가 너무 고파용', icon: 6, picture: '', scope: 2  },
-    {date: '2023-05-24', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 1  },
-    {date: '2023-05-01', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
-    {date: '2023-05-05', content: '나는 배가 너무 고파용', icon: 4, picture: '', scope: 1  },
-    {date: '2023-05-16', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 0  },
+    {id: 0, date: '2023-05-28', content: '나는 배가 너무 고파용', icon: 0, picture: '', scope: 0  },
+    {id: 1, date: '2023-05-29', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
+    {id: 2, date: '2023-05-30', content: '나는 배가 너무 고파용', icon: 3, picture: '', scope: 1  },
+    {id: 3,date: '2023-05-25', content: '나는 배가 너무 고파용', icon: 6, picture: '', scope: 2  },
+    {id: 4, date: '2023-05-24', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 1  },
+    {id: 5, date: '2023-05-01', content: '나는 배가 너무 고파용', icon: 2, picture: '', scope: 2  },
+    {id: 6, date: '2023-05-05', content: '나는 배가 너무 고파용 마라탕, 소고기, 짬뽕, 햄버거 맛있겠다용', icon: 4, picture: '', scope: 1  },
+    {id: 7, date: '2023-05-16', content: '나는 배가 너무 고파용', icon: 7, picture: '', scope: 0  },
 ];
 
 const GROUP_DUMMY = [

@@ -83,6 +83,7 @@ export default function AddGroupSchedule() {
         <main className={styles.container}>
             <div className={styles.top}>
                 <BiX className={styles.icon} onClick={() => router.back() } />
+                <h1>그룹 일정 추가</h1>
                 <IoCheckmarkSharp onClick={() => {
                     alert('일정 등록');
                 }} className={styles.icon} />
