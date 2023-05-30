@@ -8,7 +8,7 @@ export default function FriendsCircleItem({user_id, selected, setSelected}: { us
 
     if (!userInfoQuery.data)
         return null;
-    
+
     return (
         <li className={styles.container}>
             <button onClick={() => setSelected(user_id)}>
@@ -16,7 +16,9 @@ export default function FriendsCircleItem({user_id, selected, setSelected}: { us
                     <div className={styles.profileImgInnerBox}>
                         <Image width={56}
                                alt={'user profile image'}
-                        height={56} className={styles.profileImg} src={""}/>
+                               height={56}
+                               className={styles.profileImg}
+                               src={"/img.png"}/>
                     </div>
                     {/*<span className={styles.profileImgContainer}>*/}
                     {/*</span>*/}
