@@ -4,6 +4,7 @@ import {addDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek} from 
 import DetailScheduleModal from "../../modal/detail-schedule-modal/DetailScheduleModal";
 import {CALENDAR_SCHEDULE_DUMMY, DIARY_DUMMY} from "~/common/dummy";
 import styled from 'styled-components';
+import {useRouter} from "next/router";
 
 const DaysScheduleS = styled.div`
   margin-left: 1px;
@@ -76,6 +77,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
     const today = new Date();
+    const router = useRouter();
 
     const isSameDate = (date1, date2) => {
         return date1.getFullYear() === date2.getFullYear()
@@ -142,9 +144,13 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
         data[index].endDate = new Date(d.endDate);
     });
 
-
     const onClickEvent = (e) => {
-        setDay(e.currentTarget.id);
+        const temp = e.currentTarget.children[1];
+        if(!viewContent && temp !== undefined && temp.tagName === 'IMG') {
+            router.push('/diary/'+temp.id);
+        } else {
+            setDay(e.currentTarget.id);
+        }
     }
 
     const rows = [];
@@ -287,7 +293,7 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                                 {/* current day*/}
                                 {formattedDate}
                             </span>
-                            {  !viewContent && result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
+                            {  !viewContent && result.length > 0 ? <img id={result[0].id} className={styles.emojiImg} src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
                             { viewContent && result.length > 0 ?
                                 <div className={styles.dayFlex}>
                                     {dayRender}
@@ -302,7 +308,9 @@ export default function MonthView({diary, schedules, stateDay, setDay, viewConte
                                 {/* not currnet date*/}
                                 {formattedDate}
                             </span>
-                            { !viewContent && result.length > 0 ? <img src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} /> : <></> }
+                            { !viewContent && result.length > 0 ?
+                                <img id={result[0].id} className={styles.emojiImg} src={'./emoji/'+result[0].icon+'.png'} alt={'diary icon'} />
+                                : <></> }
                             { viewContent && result.length > 0 ?
                                 <div className={styles.dayFlex}>
                                     {dayRender}
