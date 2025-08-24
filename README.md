@@ -1,153 +1,50 @@
-# 사용자 중심의 공유 캘린더 및 다이어리 서비스
+# 📅 사용자 중심의 공유 캘린더 및 다이어리 서비스
 
-## 개요
+React를 기반으로 개발된 웹 애플리케이션으로,  
+사용자가 일정을 등록하고 공유하며, 개인 다이어리를 작성할 수 있는 기능을 제공합니다.
 
-이 프로젝트는 사용자 중심의 공유 캘린더 및 다이어리 서비스를 개발하기 위한 것입니다. React를 기반으로 클라이언트 인터페이스를 구현하였으며, 주요 기능으로는 일정 추가, 수정, 삭제, 공유 및 다이어리 항목 관리가 포함됩니다.
+---
 
-## 기능
+## 📌 프로젝트 개요
 
-- **캘린더**: 사용자가 날짜를 선택하고 일정을 관리할 수 있습니다.
-- **다이어리**: 사용자들이 일기를 작성하고 관리할 수 있습니다.
-- **일정 공유**: 사용자가 다른 사람과 캘린더 일정을 공유할 수 있습니다.
+- 사용자 일정 관리와 공유를 위한 **웹 기반 캘린더 시스템** 구현
+- 개인적인 메모나 일기를 남길 수 있는 **다이어리 기능** 제공
+- **React** 기반 SPA(Single Page Application) 구조로 구성
+- React 컴포넌트를 활용한 **모듈화된 UI 설계**
 
-## 기술 스택
+---
 
-- **React**: 클라이언트 사이드 UI 라이브러리
-- **React-Calendar**: 캘린더 컴포넌트
+## 🔹 핵심 기능
 
-## 클라이언트 인터페이스 구현
+### ✅ 캘린더 기능
+- 날짜 선택 및 일정 추가, 수정, 삭제
+- `react-calendar`를 활용한 직관적인 UI 구성
 
-### 캘린더 컴포넌트
+### ✅ 다이어리 기능
+- 사용자가 일기 또는 메모를 작성하고 목록 관리 가능
+- 간단한 글쓰기 및 항목 추가/삭제 기능 제공
 
-이 컴포넌트는 날짜를 선택할 수 있는 캘린더 UI를 제공합니다.
+### ✅ 일정 공유 기능
+- 이메일 입력을 통해 캘린더 일정을 타 사용자와 공유 가능
+- 모달 기반 UI로 사용자 경험 향상
 
-```jsx
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+---
 
-const CalendarComponent = () => {
-  const [date, setDate] = useState(new Date());
+## 🛠 사용 기술
 
-  const handleDateChange = (newDate) => {
-    setDate(newDate);
-    // 여기에 날짜 변경 시 처리할 로직 추가
-  };
+- **React**: 사용자 인터페이스 구성
+- **React-Calendar**: 캘린더 컴포넌트 구현
+- **JavaScript (ES6+)**: 컴포넌트 로직 구현
+- **CSS**: 기본적인 UI 스타일링
+- (선택적으로 연동 가능한 기술: Firebase, Node.js, Express 등)
 
-  return (
-    <div>
-      <h2>Shared Calendar</h2>
-      <Calendar
-        onChange={handleDateChange}
-        value={date}
-      />
-    </div>
-  );
-};
+---
 
-export default CalendarComponent;
+## 🎯 구현 포인트
 
-```
+- 캘린더, 다이어리, 공유 기능을 **컴포넌트 단위로 모듈화**  
+- `useState` 훅을 활용한 상태 관리  
+- 이벤트 핸들링 및 사용자 입력 처리  
+- 다이어리와 캘린더 데이터를 통합하여 **사용자 중심의 일정 관리** 제공  
 
-### 다이어리 컴포넌트
-
-이 컴포넌트는 사용자들이 다이어리 항목을 추가하고 목록을 표시할 수 있도록 합니다.
-
-```jsx
-import React, { useState } from 'react';
-
-const DiaryComponent = () => {
-  const [entries, setEntries] = useState([]);
-
-  const addEntry = (entry) => {
-    setEntries([...entries, entry]);
-  };
-
-  return (
-    <div>
-      <h2>Diary</h2>
-      <button onClick={() => addEntry('New Entry')}>Add Entry</button>
-      <ul>
-        {entries.map((entry, index) => (
-          <li key={index}>{entry}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default DiaryComponent;
-
-```
-
-### 일정 공유 기능
-
-이 컴포넌트는 이메일을 입력하여 캘린더 일정을 공유할 수 있는 모달을 제공합니다.
-
-```jsx
-import React, { useState } from 'react';
-
-const ShareModal = ({ isOpen, onClose }) => {
-  const [email, setEmail] = useState('');
-
-  const handleShare = () => {
-    // 여기에 일정 공유 로직 추가
-    console.log(`Shared with: ${email}`);
-    onClose();
-  };
-
-  return (
-    isOpen ? (
-      <div className="modal">
-        <h2>Share Calendar</h2>
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button onClick={handleShare}>Share</button>
-        <button onClick={onClose}>Close</button>
-      </div>
-    ) : null
-  );
-};
-
-export default ShareModal;
-
-```
-
-### 전체 애플리케이션 통합
-
-이 코드는 위의 컴포넌트들을 통합하여 전체 애플리케이션을 구성합니다.
-
-```jsx
-import React, { useState } from 'react';
-import CalendarComponent from './CalendarComponent';
-import DiaryComponent from './DiaryComponent';
-import ShareModal from './ShareModal';
-
-const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openShareModal = () => setIsModalOpen(true);
-  const closeShareModal = () => setIsModalOpen(false);
-
-  return (
-    <div>
-      <header>
-        <h1>My Calendar and Diary</h1>
-        <button onClick={openShareModal}>Share Calendar</button>
-      </header>
-      <main>
-        <CalendarComponent />
-        <DiaryComponent />
-      </main>
-      <ShareModal isOpen={isModalOpen} onClose={closeShareModal} />
-    </div>
-  );
-};
-
-export default App;
-
-```
+---
