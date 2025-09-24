@@ -34,9 +34,10 @@ React를 기반으로 개발된 웹 애플리케이션으로,
 
 - **React**: 사용자 인터페이스 구성
 - **React-Calendar**: 캘린더 컴포넌트 구현
-- **JavaScript (ES6+)**: 컴포넌트 로직 구현
+- **TypeScript (ES6+)**: 컴포넌트 로직 구현
 - **CSS**: 기본적인 UI 스타일링
-- (선택적으로 연동 가능한 기술: Firebase, Node.js, Express 등)
+- **Next.js**: 서버 로직 구현
+- **Vercel**: Serverless 환경에서 애플리케이션 배포
 
 ---
 
